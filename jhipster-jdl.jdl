@@ -9,8 +9,8 @@ entity UserProfile {
 /** not an ignored comment */
 entity Comment {
 	commentText String
-	timePosted ZoneDateTime
-    likes Int
+	timePosted ZonedDateTime
+    likes Integer
   
 }
 
@@ -24,10 +24,9 @@ entity BookMark {
  */
 entity NewsArticle {
 	title String
-    media Picture
     articleText String
-    timePosted ZoneDateTime
-    likes Int
+    timePosted ZonedDateTime
+    likes Integer
 }
 
 /**
@@ -35,36 +34,28 @@ entity NewsArticle {
  */
 entity Category {
 	name String
-  
-
 }
+
 entity Picture {
 	imageURL String
     caption String
-
 }
 
 relationship OneToOne {
-	NewsArticle{picture} to Picture
+	NewsArticle{picture(caption)} to Picture
+	UserProfile{user(login)} to User{userProfile}
 }
 
 relationship ManyToMany {
-	NewsArticle{categories} to Category{ required}
-}
-
-// defining multiple OneToMany relationships with comments
-relationship OneToMany {
-	NewsArticle to Comment{newsarticle}
-	
+	NewsArticle{categories(name)} to Category{articles}
 }
 
 relationship ManyToOne {
-	BookMark to UserProfile
-    BookMark { required} to NewsArticle
-    Comment to UserProfile
-    NewsArticle to UserProfile
-    Comment { required} to NewsArticle
-    
+	BookMark{createdBy(login)} to UserProfile
+    BookMark{linksTo(title)} to NewsArticle
+    Comment{author(login)} to UserProfile
+    NewsArticle{author(login)} to UserProfile
+    Comment{article(title)} to NewsArticle
 }
 
 
