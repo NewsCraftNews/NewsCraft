@@ -153,7 +153,7 @@ public class NewsArticleResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of newsArticles in body.
      */
     @GetMapping("/news-articles")
-    public List<NewsArticle> getAllNewsArticles(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public List<NewsArticle> getAllNewsArticles(@RequestParam(required = false, defaultValue = "true") boolean eagerload) {
         log.debug("REST request to get all NewsArticles");
         if (eagerload) {
             return newsArticleRepository.findAllWithEagerRelationships();

@@ -81,7 +81,7 @@ export const NewsArticle = () => {
                             {j === newsArticle.categories.length - 1 ? '' : ', '}
                           </span>
                         ))
-                      : null}
+                      : "bruh"}
                   </td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
