@@ -1,0 +1,28 @@
+{
+  "applications": "*",
+  "changelogDate": "20230830211229",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "book_mark",
+  "fields": [],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "BookMark",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "userProfile",
+      "relationshipName": "createdBy",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "title",
+      "otherEntityName": "newsArticle",
+      "relationshipName": "linksTo",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}
