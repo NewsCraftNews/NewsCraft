@@ -1,0 +1,4 @@
+BaseName: NewsCraft
+PackageName: ncn.newscraft
+
+Using: React, MySQL
