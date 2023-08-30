@@ -1,0 +1,70 @@
+
+
+
+entity UserProfile {
+    login String
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Comment {
+	commentText String
+	timePosted ZoneDateTime
+    likes Int
+  
+}
+
+entity BookMark {
+
+}
+
+/**
+ * Task entity.
+ * @author The JHipster team.
+ */
+entity NewsArticle {
+	title String
+    media Picture
+    articleText String
+    timePosted ZoneDateTime
+    likes Int
+}
+
+/**
+ * The Employee entity.
+ */
+entity Category {
+	name String
+  
+
+}
+entity Picture {
+	imageURL String
+    caption String
+
+}
+
+relationship OneToOne {
+	NewsArticle{picture} to Picture
+}
+
+relationship ManyToMany {
+	NewsArticle{categories} to Category{ required}
+}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	NewsArticle to Comment{newsarticle}
+	
+}
+
+relationship ManyToOne {
+	BookMark to UserProfile
+    BookMark { required} to NewsArticle
+    Comment to UserProfile
+    NewsArticle to UserProfile
+    Comment { required} to NewsArticle
+    
+}
+
+
