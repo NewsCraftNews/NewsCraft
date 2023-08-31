@@ -48,6 +48,19 @@ public class CacheConfiguration {
             createCache(cm, ncn.newscraft.domain.User.class.getName());
             createCache(cm, ncn.newscraft.domain.Authority.class.getName());
             createCache(cm, ncn.newscraft.domain.User.class.getName() + ".authorities");
+            createCache(cm, ncn.newscraft.domain.UserProfile.class.getName());
+            createCache(cm, ncn.newscraft.domain.UserProfile.class.getName() + ".bookMarks");
+            createCache(cm, ncn.newscraft.domain.UserProfile.class.getName() + ".comments");
+            createCache(cm, ncn.newscraft.domain.UserProfile.class.getName() + ".newsArticles");
+            createCache(cm, ncn.newscraft.domain.Comment.class.getName());
+            createCache(cm, ncn.newscraft.domain.BookMark.class.getName());
+            createCache(cm, ncn.newscraft.domain.NewsArticle.class.getName());
+            createCache(cm, ncn.newscraft.domain.NewsArticle.class.getName() + ".comments");
+            createCache(cm, ncn.newscraft.domain.NewsArticle.class.getName() + ".categories");
+            createCache(cm, ncn.newscraft.domain.Category.class.getName());
+            createCache(cm, ncn.newscraft.domain.Category.class.getName() + ".requireds");
+            createCache(cm, ncn.newscraft.domain.Picture.class.getName());
+            createCache(cm, ncn.newscraft.domain.Category.class.getName() + ".articles");
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -1,0 +1,55 @@
+{
+  "applications": "*",
+  "changelogDate": "20230830211230",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "news_article",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "articleText",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "timePosted",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "likes",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "Task entity.\\n@author The JHipster team.",
+  "jpaMetamodelFiltering": false,
+  "name": "NewsArticle",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "caption",
+      "otherEntityName": "picture",
+      "ownerSide": true,
+      "relationshipName": "picture",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "userProfile",
+      "relationshipName": "author",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "category",
+      "otherEntityRelationshipName": "articles",
+      "ownerSide": true,
+      "relationshipName": "categories",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "no"
+}

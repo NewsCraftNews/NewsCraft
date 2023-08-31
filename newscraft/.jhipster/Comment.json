@@ -1,0 +1,42 @@
+{
+  "applications": "*",
+  "changelogDate": "20230830211228",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "comment",
+  "fields": [
+    {
+      "fieldName": "commentText",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "timePosted",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "likes",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "not an ignored comment",
+  "jpaMetamodelFiltering": false,
+  "name": "Comment",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "userProfile",
+      "relationshipName": "author",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "title",
+      "otherEntityName": "newsArticle",
+      "relationshipName": "article",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}
