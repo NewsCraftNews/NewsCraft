@@ -1,0 +1,24 @@
+{
+  "applications": "*",
+  "changelogDate": "20230830211232",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "picture",
+  "fields": [
+    {
+      "fieldName": "imageURL",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "caption",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Picture",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

@@ -1,0 +1,29 @@
+{
+  "applications": "*",
+  "changelogDate": "20230830211231",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "category",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "The Employee entity.",
+  "jpaMetamodelFiltering": false,
+  "name": "Category",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "newsArticle",
+      "otherEntityRelationshipName": "categories",
+      "ownerSide": false,
+      "relationshipName": "articles",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "no"
+}
