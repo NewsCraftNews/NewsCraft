@@ -66,7 +66,7 @@ function showArticleList(data) {
         let title = document.createElement('h3');
         let body = document.createElement('p');
         let by = document.createElement('p');
-        title.innerHTML = `<a href="/articles.html?id=${post.id}">${post.title}</a>`;
+        title.innerHTML = `<a href="/articledetails.html?id=${post.id}">${post.title}</a>`;
         body.innerHTML = `${post.timePosted}`;
         //let postedTime = dateOf(post.time)
         by.innerHTML = `${post.likes}`;
