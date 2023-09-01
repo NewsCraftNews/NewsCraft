@@ -14,6 +14,7 @@ import { INewsArticle } from 'app/shared/model/news-article.model';
 import { getEntities as getNewsArticles } from 'app/entities/news-article/news-article.reducer';
 import { IBookMark } from 'app/shared/model/book-mark.model';
 import { getEntity, updateEntity, createEntity, reset } from './book-mark.reducer';
+import WeatherApp from "app/modules/home/Weatherapp";
 
 export const BookMarkUpdate = () => {
   const dispatch = useAppDispatch();
@@ -82,6 +83,10 @@ export const BookMarkUpdate = () => {
           <h2 id="newsCraftApp.bookMark.home.createOrEditLabel" data-cy="BookMarkCreateUpdateHeading">
             Create or edit a Book Mark
           </h2>
+          <div>
+            <h1>My Weather App</h1>
+            <WeatherApp /> {/* Use the WeatherApp component here */}
+          </div>
         </Col>
       </Row>
       <Row className="justify-content-center">
