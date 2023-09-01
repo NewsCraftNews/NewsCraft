@@ -28,6 +28,7 @@ export const Category = () => {
   };
 
   return (
+
     <div>
       <h2 id="category-heading" data-cy="CategoryHeading">
         Categories

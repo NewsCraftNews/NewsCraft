@@ -1,5 +1,7 @@
-// WeatherApp.tsx
-import React, { useState, useEffect, CSSProperties } from 'react';
+
+
+import React, {useState, useEffect, CSSProperties} from 'react';
+
 const slideStyles: CSSProperties = {
     width: "100%",
     height: "100%",
@@ -57,43 +59,8 @@ const dotStyle: CSSProperties = {
     fontSize: "20px",
 };
 
-const WeatherApp: React.FC = () => {
-    const containerStyles = {
-        width: "600px",
-        height: "200px",
-        margin: "0 auto",
-    };
-    const [weatherData, setWeatherData] = useState<any>(null);
-    useEffect(() => {
-        // Replace 'YOUR_API_KEY' with your actual OpenWeatherMap API key
-        const apiKey = '0821b299f5bd3f5a9ff121892bdf1fec';
-        const city = 'Wilmington'; // Replace with the name of the city you want to get weather data for
 
-        // Fetch weather data from OpenWeatherMap API
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
-            .then((response) => response.json())
-            .then((data) => setWeatherData(data))
-            .catch((error) => console.error('Error fetching weather data:', error));
-    }, []);
-
-    console.log(weatherData);
-
-
-
-    let slides = [
-        {
-            text: `Temperature: ${weatherData ? weatherData.main.temp : "Loading..."}°C`,
-            title: "slide1",
-            url: "https://clipart-library.com/img1/798831.png",
-        },
-        {
-            text: `Weather: ${weatherData ? weatherData.weather[0].description : "Loading..."}`,
-            title: "slide2",
-            url: "http://localhost:3000/image2.png",
-        },
-    ];
-
-
+const WeatherSlider = ({ slides }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const goToPrevious = () => {
         const isFirstSlide = currentIndex === 0;
@@ -116,23 +83,10 @@ const WeatherApp: React.FC = () => {
     };
     const slideStylesWidthBackground = {
         ...slideStyles,
-        color: 'black', // Text color
-        fontSize: '16px', // Font size
-    };
-    const slideStylesWithText = {
-        ...slideStyles,
-        color: 'black', // Text color
-        fontSize: '16px', // Font size
         backgroundImage: `url(${slides[currentIndex].url})`,
-        backgroundPosition: 'top left',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: '50%',
     };
-
-
 
     return (
-        <div style={containerStyles}>
         <div style={sliderStyles}>
             <div>
                 <div onClick={goToPrevious} style={leftArrowStyles}>
@@ -143,10 +97,9 @@ const WeatherApp: React.FC = () => {
                 </div>
             </div>
 
-            <div style={slideStylesWithText} onClick={handleClick}>
-                {slides[currentIndex].text}
-            </div>
+            <div style={slideStylesWidthBackground} onClick={handleClick}>
 
+            </div>
             <div style={dotsContainerStyles}>
                 {slides.map((slide: any, slideIndex: React.Key) => (
                     <div
@@ -159,21 +112,7 @@ const WeatherApp: React.FC = () => {
                 ))}
             </div>
         </div>
-        </div>
     );
 };
 
-export default WeatherApp;
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default WeatherSlider;
