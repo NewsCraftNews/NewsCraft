@@ -82,7 +82,7 @@ const WeatherApp: React.FC = () => {
 
     let slides = [
         {
-            text: `Temperature: ${weatherData ? weatherData.main.temp : "Loading..."}°C`,
+            text: `Temperature: ${weatherData ? weatherData.main.temp : "Loading..."}°K`,
             title: "slide1",
             url: "https://clipart-library.com/img1/798831.png",
         },
@@ -164,16 +164,3 @@ const WeatherApp: React.FC = () => {
 };
 
 export default WeatherApp;
-
-
-
-
-
-
-
-
-
-
-
-
-

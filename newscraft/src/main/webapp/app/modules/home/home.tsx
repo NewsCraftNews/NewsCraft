@@ -8,7 +8,7 @@ import { Row, Col, Alert } from 'reactstrap';
 import { useAppSelector } from 'app/config/store';
 
 import WeatherApp from './Weatherapp';
-import WeatherSlider from "./WeatherSlider";
+
 export const Home = () => {
   const account = useAppSelector(state => state.authentication.account);
 
@@ -18,12 +18,9 @@ export const Home = () => {
         <span className="hipster rounded" />
       </Col>
       <Col md="9">
-
-          <div>
-              <h1>My Weather App</h1>
-              <WeatherApp /> {/* Use the WeatherApp component here */}
-          </div>
-
+          {/*<div>*/}
+          {/*    <WeatherApp /> /!* Use the WeatherApp component here *!/*/}
+          {/*</div>*/}
         {account?.login ? (
           <h2>Welcome, News Crafter!</h2>
         ) : (
@@ -46,7 +43,6 @@ export const Home = () => {
               <br />- Administrator (login=&quot;admin&quot; and password=&quot;admin&quot;) <br />- User (login=&quot;user&quot; and
               password=&quot;user&quot;).
             </Alert>
-
             <Alert color="warning">
               You don&apos;t have an account yet?&nbsp;
               <Link to="/account/register" className="alert-link">
