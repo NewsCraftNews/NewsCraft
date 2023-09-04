@@ -93,13 +93,16 @@ function showArticleDetail(post) {
     let title = document.createElement('h2');
     let body = document.createElement('p');
     let by = document.createElement('p');
+    let likes = document.createElement('p');
     title.innerHTML = `${post.title}`;
-    // body.innerHTML = `${post.description}`;
+    body.innerHTML = `${post.timePosted}`;
     //let postedTime = dateOf(post.time)
-    // by.innerHTML = `${post.origin}`;
+    likes.innerHTML = `${post.likes}`;
+    by.innerHTML = `${post.articleText}`;
 
     li.appendChild(title);
     li.appendChild(body);
+    li.appendChild(likes);
     li.appendChild(by);
     detail.appendChild(li);
 
