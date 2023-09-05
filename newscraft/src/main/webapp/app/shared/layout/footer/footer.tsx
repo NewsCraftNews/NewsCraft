@@ -29,16 +29,14 @@ const Footer = () => (
           <a href="https://www.linkedin.com/in/santosherreralopez/" target="_blank" rel="noopener noreferrer">
             Santos Herrera-Lopez
           </a>
+          <br />
+          Source Code:&nbsp;
+          <a href="https://github.com/NewsCraftNews/NewsCraft/tree/main" target="_blank" rel="noopener noreferrer">
+  {/*           <FontAwesomeIcon icon={['fa', 'github']} /> */}
+            Github
+          </a>
         </p>
       </Col>
-    </Row>
-    <Row>
-      <p>Source Code:&nbsp;
-        <a href="https://github.com/NewsCraftNews/NewsCraft/tree/main" target="_blank" rel="noopener noreferrer">
-{/*           <FontAwesomeIcon icon={['fa', 'github']} /> */}
-          Github
-        </a>
-      </p>
     </Row>
   </div>
 );
