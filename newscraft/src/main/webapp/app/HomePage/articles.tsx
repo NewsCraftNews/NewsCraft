@@ -30,23 +30,25 @@ export const ArticleList = () => {
             <FontAwesomeIcon icon="sync" spin={loading} /> Refresh list
           </Button>
         </div>
-      </h2>
+      </h1>
       <div className="table-responsive">
         {newsArticleList && newsArticleList.length > 0 ? (
           <Table responsive>
             <thead>
               <tr>
-                <th>Title</th>
-                <th>Article Text</th>
+                <th><h3>Title</h3></th>
+                <th><h3>Article Text</h3></th>
               </tr>
             </thead>
             <tbody>
               {newsArticleList.map((newsArticle, i) => (
                 <tr key={`entity-${i}`} data-cy="entityTable">
                   <td>
-                    <NavLink tag={Link} to={`/news-article/${newsArticle.id}`} activeClassName="active">{newsArticle.title}</NavLink>
+                    <h4>
+                      <NavLink tag={Link} to={`/article/${newsArticle.id}`} activeClassName="active">{newsArticle.title}</NavLink>
+                    </h4>
                   </td>
-                  <td>{newsArticle.articleText.substring(0, 250)}</td>
+                  <td>{newsArticle.articleText.substring(0, 1000)}</td>
                 </tr>
               ))}
             </tbody>
