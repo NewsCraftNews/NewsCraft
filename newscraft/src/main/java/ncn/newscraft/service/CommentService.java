@@ -1,0 +1,66 @@
+package ncn.newscraft.service;
+
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Objects;
+
+import ncn.newscraft.repository.CommentRepository;
+import ncn.newscraft.repository.UserProfileRepository;
+import ncn.newscraft.service.dto.CommentDTO;
+import ncn.newscraft.service.mapper.CommentMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.cache.CacheManager;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import static java.util.stream.Collectors.toList;
+
+/**
+ * Service class for managing comments.
+ */
+@Service
+@Transactional
+public class CommentService {
+    private final Logger log = LoggerFactory.getLogger(UserService.class);
+
+    private final CommentRepository commentRepository;
+
+    private final UserProfileRepository userProfileRepository;
+
+    private final CommentMapper mapper;
+
+    private final CacheManager cacheManager;
+
+    public CommentService(
+        CommentRepository commentRepository,
+        UserProfileRepository userProfileRepository,
+        CommentMapper mapper,
+        CacheManager cacheManager
+    ) {
+        this.commentRepository = commentRepository;
+        this.userProfileRepository = userProfileRepository;
+        this.mapper = mapper;
+        this.cacheManager = cacheManager;
+    }
+
+    public List<CommentDTO> getAllComments() {
+        return mapper.commentsToCommentDTOs(commentRepository.findAllWithEagerRelationships());
+    }
+
+    public List<CommentDTO> getCommentsByArticleId(Long article_id) {
+        return getAllComments()
+            .stream()
+            .filter(commentDTO -> commentDTO.getArticleId() != null)
+            .filter(commentDTO -> commentDTO.getArticleId().equals(article_id))
+            .collect(toList());
+    }
+
+    public List<CommentDTO> getCommentsByLogin(String login) {
+        return getAllComments()
+            .stream()
+            .filter(commentDTO -> commentDTO.getAuthor() != null)
+            .filter(commentDTO -> commentDTO.getAuthor().equals(login))
+            .collect(toList());
+    }
+}
