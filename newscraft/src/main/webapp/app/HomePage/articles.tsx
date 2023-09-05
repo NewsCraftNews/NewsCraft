@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Table } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Button, Table, NavLink } from 'reactstrap';
+import { NavLink as Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { useAppDispatch, useAppSelector } from 'app/config/store';
@@ -29,10 +29,6 @@ export const ArticleList = () => {
           <Button className="me-2" color="info" onClick={handleSyncList} disabled={loading}>
             <FontAwesomeIcon icon="sync" spin={loading} /> Refresh list
           </Button>
-          <Link to="/news-article/new" className="btn btn-primary jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
-            <FontAwesomeIcon icon="plus" />
-            &nbsp; Create a new News Article
-          </Link>
         </div>
       </h2>
       <div className="table-responsive">
@@ -42,24 +38,15 @@ export const ArticleList = () => {
               <tr>
                 <th>Title</th>
                 <th>Article Text</th>
-                <th>Author</th>
-                <th />
               </tr>
             </thead>
             <tbody>
               {newsArticleList.map((newsArticle, i) => (
                 <tr key={`entity-${i}`} data-cy="entityTable">
-                  <td>{newsArticle.title}</td>
-                  <td>{newsArticle.articleText.substring(0, 250)}</td>
-                  <td>{newsArticle.author ? <Link to={`/user-profile/${newsArticle.author.id}`}>{newsArticle.author.login}</Link> : ''}</td>
-
-                  <td className="text-end">
-                    <div className="btn-group flex-btn-group-container">
-                      <Button tag={Link} to={`/news-article/${newsArticle.id}`} color="info" size="sm" data-cy="entityDetailsButton">
-                        <FontAwesomeIcon icon="eye" /> <span className="d-none d-md-inline">View</span>
-                      </Button>
-                    </div>
+                  <td>
+                    <NavLink tag={Link} to={`/news-article/${newsArticle.id}`} activeClassName="active">{newsArticle.title}</NavLink>
                   </td>
+                  <td>{newsArticle.articleText.substring(0, 250)}</td>
                 </tr>
               ))}
             </tbody>
