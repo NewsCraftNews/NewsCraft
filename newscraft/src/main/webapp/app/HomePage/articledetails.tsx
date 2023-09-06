@@ -8,6 +8,7 @@ import { TextFormat } from 'react-jhipster';
 
 import { getEntity } from 'app/entities/news-article/news-article.reducer';
 import { INewsArticle } from "app/shared/model/news-article.model";
+import { CommentSection } from "app/HomePage/articlecomments"
 
 export const Article = () => {
   const dispatch = useAppDispatch();
@@ -41,6 +42,7 @@ export const Article = () => {
         Written by {newsArticleEntity.author ? newsArticleEntity.author.login : ''}
       </p>
       <p>{newsArticleEntity.articleText}</p>
+      <CommentSection />
     </div>
   );
 };

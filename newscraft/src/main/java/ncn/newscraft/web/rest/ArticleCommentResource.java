@@ -39,7 +39,7 @@ public class ArticleCommentResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of comments in body.
      */
     @GetMapping("/news-articles/{id}/comments")
-    public List<CommentDTO> getAllComments(@PathVariable Long id) {
+    public List<Comment> getAllComments(@PathVariable Long id) {
         log.debug("REST request to get Comment associated with Article : {}", id);
         return commentService.getCommentsByArticleId(id);
     }

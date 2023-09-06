@@ -4,6 +4,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 
+import ncn.newscraft.domain.Comment;
 import ncn.newscraft.repository.CommentRepository;
 import ncn.newscraft.repository.UserProfileRepository;
 import ncn.newscraft.service.dto.CommentDTO;
@@ -48,19 +49,21 @@ public class CommentService {
         return mapper.commentsToCommentDTOs(commentRepository.findAllWithEagerRelationships());
     }
 
-    public List<CommentDTO> getCommentsByArticleId(Long article_id) {
+    public List<Comment> getCommentsByArticleId(Long article_id) {
         return getAllComments()
             .stream()
             .filter(commentDTO -> commentDTO.getArticleId() != null)
             .filter(commentDTO -> commentDTO.getArticleId().equals(article_id))
+            .map(commentDTO -> mapper.dtoToComment(commentDTO))
             .collect(toList());
     }
 
-    public List<CommentDTO> getCommentsByLogin(String login) {
+    public List<Comment> getCommentsByLogin(String login) {
         return getAllComments()
             .stream()
             .filter(commentDTO -> commentDTO.getAuthor() != null)
             .filter(commentDTO -> commentDTO.getAuthor().equals(login))
+            .map(commentDTO -> mapper.dtoToComment(commentDTO))
             .collect(toList());
     }
 }

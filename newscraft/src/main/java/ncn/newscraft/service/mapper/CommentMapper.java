@@ -1,6 +1,8 @@
 package ncn.newscraft.service.mapper;
 
 import ncn.newscraft.domain.Comment;
+import ncn.newscraft.domain.User;
+import ncn.newscraft.domain.UserProfile;
 import ncn.newscraft.service.dto.CommentDTO;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +28,13 @@ public class CommentMapper {
             comment.setTimePosted(commentDTO.getTimePosted());
             comment.setLikes(commentDTO.getLikes());
             // article doesn't get set
-            // author doesn't get set
+
+            // author gets very BARELY set up
+            // id and user is NULL
+            UserProfile up = new UserProfile();
+            up.setLogin(commentDTO.getAuthor());
+            comment.setAuthor(up);
+
             return comment;
         }
         return null;
