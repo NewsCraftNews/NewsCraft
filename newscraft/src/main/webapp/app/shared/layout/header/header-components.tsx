@@ -32,7 +32,6 @@ export const Home = () => (
 export const Articles = () => (
   <NavItem>
     <NavLink tag={Link} to="/articlelist" className="d-flex align-items-center">
-{/*       <FontAwesomeIcon icon="home" /> */}
       <FontAwesomeIcon icon={faNewspaper} />
       <span>Articles</span>
     </NavLink>

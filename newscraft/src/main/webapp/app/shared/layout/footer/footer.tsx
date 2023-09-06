@@ -1,11 +1,8 @@
 import './footer.scss';
 
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { IconProp } from '@fortawesome/fontawesome-svg-core';
-// import { faGithub } from '@fortawesome/free-brands-svg-icons';
-
-// const faPropIcon = faGithub as IconProp;
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 import { Col, Row } from 'reactstrap';
 
@@ -32,8 +29,7 @@ const Footer = () => (
           <br />
           Source Code:&nbsp;
           <a href="https://github.com/NewsCraftNews/NewsCraft/tree/main" target="_blank" rel="noopener noreferrer">
-  {/*           <FontAwesomeIcon icon={['fa', 'github']} /> */}
-            Github
+            <FontAwesomeIcon icon={faGithub} />
           </a>
         </p>
       </Col>
