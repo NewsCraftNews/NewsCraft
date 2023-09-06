@@ -18,6 +18,15 @@ const apiUrl = 'api/comments';
 
 // Actions
 
+export const getArticleComments = createAsyncThunk(
+  'comment/fetch_entity_list',
+  async (id: string | number) => {
+    const requestUrl = `api/news-articles/${id}/comments`;
+    return axios.get<IComment[]>(requestUrl);
+  },
+  { serializeError: serializeAxiosError }
+);
+
 export const getEntities = createAsyncThunk('comment/fetch_entity_list', async ({ page, size, sort }: IQueryParams) => {
   const requestUrl = `${apiUrl}?cacheBuster=${new Date().getTime()}`;
   return axios.get<IComment[]>(requestUrl);
@@ -90,6 +99,15 @@ export const CommentSlice = createEntitySlice({
         state.entity = {};
       })
       .addMatcher(isFulfilled(getEntities), (state, action) => {
+        const { data } = action.payload;
+
+        return {
+          ...state,
+          loading: false,
+          entities: data,
+        };
+      })
+      .addMatcher(isFulfilled(getArticleComments), (state, action) => {
         const { data } = action.payload;
 
         return {

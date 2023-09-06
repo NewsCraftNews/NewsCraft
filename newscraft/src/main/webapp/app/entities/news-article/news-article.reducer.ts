@@ -4,6 +4,8 @@ import { createAsyncThunk, isFulfilled, isPending, isRejected } from '@reduxjs/t
 import { cleanEntity } from 'app/shared/util/entity-utils';
 import { IQueryParams, createEntitySlice, EntityState, serializeAxiosError } from 'app/shared/reducers/reducer.utils';
 import { INewsArticle, defaultValue } from 'app/shared/model/news-article.model';
+import { IComment } from 'app/shared/model/comment.model';
+
 
 const initialState: EntityState<INewsArticle> = {
   loading: false,
