@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Row, Col, Alert } from 'reactstrap';
 
 import { useAppSelector } from 'app/config/store';
+import News from './BreakingNewsComponent';
 
 export const Home = () => {
   const account = useAppSelector(state => state.authentication.account);
@@ -16,6 +17,7 @@ export const Home = () => {
         <span className="hipster rounded" />
       </Col>
       <Col md="9">
+        <News />
         {account?.login ? (
           <h2>Welcome, News Crafter!</h2>
         ) : (
