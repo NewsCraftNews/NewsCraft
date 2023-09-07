@@ -4,8 +4,6 @@ import { createAsyncThunk, isFulfilled, isPending, isRejected } from '@reduxjs/t
 import { cleanEntity } from 'app/shared/util/entity-utils';
 import { IQueryParams, createEntitySlice, EntityState, serializeAxiosError } from 'app/shared/reducers/reducer.utils';
 import { INewsArticle, defaultValue } from 'app/shared/model/news-article.model';
-import { IComment } from 'app/shared/model/comment.model';
-
 
 const initialState: EntityState<INewsArticle> = {
   loading: false,
@@ -23,7 +21,7 @@ const apiUrl = 'api/news-articles';
 export const getEntitiesOfCategory = createAsyncThunk(
     'newsArticle/fetch_entity_list',
      async (name: String) => {
-  const requestUrl = `api/category/${name}/articles?cacheBuster=${new Date().getTime()}`;
+  const requestUrl = `api/categories/${name}/articles?cacheBuster=${new Date().getTime()}`;
   return axios.get<INewsArticle[]>(requestUrl);
 });
 

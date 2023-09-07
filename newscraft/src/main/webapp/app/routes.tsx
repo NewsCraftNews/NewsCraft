@@ -37,7 +37,7 @@ const AppRoutes = () => {
         <Route path="login" element={<Login />} />
         <Route path="logout" element={<Logout />} />
 {/*         <Route path="articlelist" element={<ArticleList />}/> */}
-{/*         <Route path="articlelist/:category_name" element={<ArticleList />}/> */}
+        <Route path="articlelist/:category_name" element={<ArticleList />}/>
         <Route path="article/:id" element={<Article />}/>
         <Route path="account">
           <Route
