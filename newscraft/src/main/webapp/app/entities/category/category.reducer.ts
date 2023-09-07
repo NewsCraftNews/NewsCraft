@@ -24,7 +24,7 @@ export const getEntities = createAsyncThunk('category/fetch_entity_list', async 
 });
 
 export const getSomeEntities = createAsyncThunk('category/fetch_entity_list', async (limit: string | number) => {
-  const requestUrl = `${apiUrl}?limit=${limit}?cacheBuster=${new Date().getTime()}`;
+  const requestUrl = `${apiUrl}?limit=${limit}`;
   return axios.get<ICategory[]>(requestUrl);
 });
 

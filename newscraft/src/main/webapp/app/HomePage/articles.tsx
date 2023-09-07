@@ -4,7 +4,7 @@ import { NavLink as Link, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { useAppDispatch, useAppSelector } from 'app/config/store';
-import { getEntitiesOfCategory } from "app/entities/news-article/news-article.reducer";
+import { getEntities, getEntitiesOfCategory } from "app/entities/news-article/news-article.reducer";
 import { INewsArticle } from "app/shared/model/news-article.model";
 
 export const ArticleList = () => {
@@ -16,11 +16,14 @@ export const ArticleList = () => {
   const loading = useAppSelector(state => state.newsArticle.loading);
 
   useEffect(() => {
-    dispatch(getEntitiesOfCategory(category_name));
+    console.log(category_name);
+    if(category_name) dispatch(getEntitiesOfCategory(category_name));
+    else dispatch(getEntities({});
   }, []);
 
   const handleSyncList = () => {
-    dispatch(getEntitiesOfCategory(category_name));
+    if(category_name) dispatch(getEntitiesOfCategory(category_name));
+    else dispatch(getEntities({});
   };
 
   return (
