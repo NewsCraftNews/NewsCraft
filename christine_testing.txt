@@ -1,8 +1,0 @@
-  "overrides": {
-    "@fortawesome/free-brands-svg-icons": {
-      "@fortawesome/fontawesome-common-types": "6.2.0"
-    },
-    "@fortawesome/free-regular-svg-icons": {
-      "@fortawesome/fontawesome-common-types": "6.2.0"
-    }
-  },
