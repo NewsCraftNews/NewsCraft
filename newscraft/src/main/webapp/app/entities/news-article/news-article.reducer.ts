@@ -20,6 +20,13 @@ const apiUrl = 'api/news-articles';
 
 // Actions
 
+export const getEntitiesOfCategory = createAsyncThunk(
+    'newsArticle/fetch_entity_list',
+     async (name: String) => {
+  const requestUrl = `api/category/${name}/articles?cacheBuster=${new Date().getTime()}`;
+  return axios.get<INewsArticle[]>(requestUrl);
+});
+
 export const getEntities = createAsyncThunk('newsArticle/fetch_entity_list', async ({ page, size, sort }: IQueryParams) => {
   const requestUrl = `${apiUrl}?cacheBuster=${new Date().getTime()}`;
   return axios.get<INewsArticle[]>(requestUrl);
@@ -90,6 +97,15 @@ export const NewsArticleSlice = createEntitySlice({
         state.updating = false;
         state.updateSuccess = true;
         state.entity = {};
+      })
+      .addMatcher(isFulfilled(getEntitiesOfCategory), (state, action) => {
+        const { data } = action.payload;
+
+        return {
+          ...state,
+          loading: false,
+          entities: data,
+        };
       })
       .addMatcher(isFulfilled(getEntities), (state, action) => {
         const { data } = action.payload;

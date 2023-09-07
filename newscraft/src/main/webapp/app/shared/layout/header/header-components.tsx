@@ -28,11 +28,11 @@ export const Home = () => (
   </NavItem>
 );
 
-export const Articles = () => (
-  <NavItem>
-    <NavLink tag={Link} to="/articlelist" className="d-flex align-items-center">
-      <FontAwesomeIcon icon={faNewspaper} />
-      <span>Articles</span>
-    </NavLink>
-  </NavItem>
-);
+// export const Articles = () => (
+//   <NavItem>
+//     <NavLink tag={Link} to="/articlelist" className="d-flex align-items-center">
+//       <FontAwesomeIcon icon={faNewspaper} />
+//       <span>Articles</span>
+//     </NavLink>
+//   </NavItem>
+// );

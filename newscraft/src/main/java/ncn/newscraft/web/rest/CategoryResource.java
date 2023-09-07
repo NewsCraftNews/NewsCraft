@@ -2,12 +2,14 @@ package ncn.newscraft.web.rest;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import ncn.newscraft.domain.Category;
+import ncn.newscraft.domain.NewsArticle;
 import ncn.newscraft.repository.CategoryRepository;
 import ncn.newscraft.web.rest.errors.BadRequestAlertException;
 import org.slf4j.Logger;
@@ -169,16 +171,23 @@ public class CategoryResource {
         return ResponseUtil.wrapOrNotFound(category);
     }
 
-//    /**
-//     * {@code GET  /categories} : get all the categories, with a limit.
-//     *
-//     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of categories in body.
-//     */
-//    @GetMapping("/categories")
-//    public List<Category> getSomeCategories(@RequestParam Integer limit) {
-//        log.debug("REST request to get {} Categories", limit);
-//        return categoryRepository.findAll().stream().limit(limit).collect(Collectors.toList());
-//    }
+    /**
+     * {@code GET  /categories/:name/articles} : get the articles associated with "categoryName".
+     *
+     * @param name the name of the category to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with list of articles, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping("/categories/{name}/articles")
+    public List<NewsArticle> getCategoryArticles(@PathVariable String name) {
+        log.debug("REST request to get Category : {}", name);
+        List<Category> categoryFound =
+            categoryRepository.findAll()
+            .stream()
+            .filter(category -> category.getName().equalsIgnoreCase(name))
+            .collect(Collectors.toList());
+        return categoryFound.isEmpty() ? new ArrayList<>() : new ArrayList<>(categoryFound.get(0).getArticles());
+    }
+
     /**
      * {@code DELETE  /categories/:id} : delete the "id" category.
      *

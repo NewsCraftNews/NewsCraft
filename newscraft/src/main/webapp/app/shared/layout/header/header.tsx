@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { Navbar, Nav, NavbarToggler, Collapse } from 'reactstrap';
 import LoadingBar from 'react-redux-loading-bar';
 
-import { Home, Brand, Articles } from './header-components';
+import { Home, Brand } from './header-components';
 import { CategoriesMenu } from './categoryheader';
 import { AdminMenu, EntitiesMenu, AccountMenu } from '../menus';
 
@@ -33,7 +33,7 @@ const Header = (props: IHeaderProps) => {
 
   return (
     <div id="app-header">
-{/*       {renderDevRibbon()} */}
+       {renderDevRibbon()}
       <LoadingBar className="loading-bar" />
       <Navbar data-cy="navbar" dark expand="md" fixed="top" style={{backgroundColor: '#56aeff'}}>
         <NavbarToggler aria-label="Menu" onClick={toggleMenu} />
@@ -41,7 +41,6 @@ const Header = (props: IHeaderProps) => {
         <Collapse isOpen={menuOpen} navbar>
           <Nav id="header-tabs-left" className="me-auto" navbar>
             <Home />
-            <Articles />
             <CategoriesMenu />
           </Nav>
           <Nav id="header-tabs-right" className="ms-auto" navbar>
