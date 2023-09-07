@@ -6,6 +6,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 import { Col, Row } from 'reactstrap';
 
+
 const Footer = () => (
   <div className="footer page-content">
     <Row>
