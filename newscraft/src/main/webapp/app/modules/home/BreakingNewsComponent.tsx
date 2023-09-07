@@ -35,12 +35,19 @@ const leftArrowStyles: CSSProperties = {
 const sliderStyles: CSSProperties = {
   position: "relative",
   height: "100%",
-
-
 };
 
 const dotsContainerStyles: CSSProperties = {
   display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "row",
+};
+
+const divStyle: CSSProperties = {
+  width: "600px",
+  height: "200px",
+  alignItems: "center",
   justifyContent: "center",
   flexDirection: "row",
 };
@@ -56,16 +63,15 @@ const BreakingNews: React.FC = () => {
   const containerStyles = {
     width: "600px",
     height: "200px",
-    margin: "0 auto",
+    margin: "0 auto 0 0",
     // Set a fixed height for the slide container
     overflow: 'auto',
     backgroundColor: '#333',
      // Add a border
     border: '2px solid #333',
     borderRadius: '10px',
-
-
   };
+
 
   const [newsData, setNewsData] = useState<any>(null);
   useEffect(() => {
@@ -142,7 +148,7 @@ const BreakingNews: React.FC = () => {
 
 
   return (
-    <div>
+    <div style={divStyle}>
 
     <div style={containerStyles}>
       <div style={sliderStyles}>
