@@ -19,12 +19,12 @@ export interface IHeaderProps {
 const Header = (props: IHeaderProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // const renderDevRibbon = () =>
-  //   props.isInProduction === false ? (
-  //     <div className="ribbon dev">
-  //       <a href="">Development</a>
-  //     </div>
-  //   ) : null;
+  const renderDevRibbon = () =>
+    props.isInProduction === false ? (
+      <div className="ribbon dev">
+        <a href="">Development</a>
+      </div>
+    ) : null;
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
@@ -32,22 +32,24 @@ const Header = (props: IHeaderProps) => {
 
   return (
     <div id="app-header">
-      {/*{renderDevRibbon()}*/}
+{/*       {renderDevRibbon()} */}
       <LoadingBar className="loading-bar" />
       <Navbar data-cy="navbar" dark expand="md" fixed="top" style={{backgroundColor: '#56aeff'}}>
         <NavbarToggler aria-label="Menu" onClick={toggleMenu} />
         <Brand />
         <Collapse isOpen={menuOpen} navbar>
-          <Nav id="header-tabs" className="ms-auto" navbar>
+          <Nav id="header-tabs-left" className="me-auto" navbar>
             <Home />
             <Articles />
+          </Nav>
+          <Nav id="header-tabs-right" className="ms-auto" navbar>
             {props.isAuthenticated && <EntitiesMenu />}
             {props.isAuthenticated && props.isAdmin && (
               <AdminMenu showOpenAPI={props.isOpenAPIEnabled} showDatabase={!props.isInProduction} />
             )}
             <AccountMenu isAuthenticated={props.isAuthenticated} />
           </Nav>
-        </Collapse>
+         </Collapse>
       </Navbar>
     </div>
   );
