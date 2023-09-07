@@ -171,6 +171,16 @@ public class CategoryResource {
         return ResponseUtil.wrapOrNotFound(category);
     }
 
+//    /**
+//     * {@code GET  /categories} : get all the categories, with a limit.
+//     *
+//     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of categories in body.
+//     */
+//    @GetMapping("/categories")
+//    public List<Category> getSomeCategories(@RequestParam Integer limit) {
+//        log.debug("REST request to get {} Categories", limit);
+//        return categoryRepository.findAll().stream().limit(limit).collect(Collectors.toList());
+//    }
     /**
      * {@code GET  /categories/:name/articles} : get the articles associated with "categoryName".
      *
