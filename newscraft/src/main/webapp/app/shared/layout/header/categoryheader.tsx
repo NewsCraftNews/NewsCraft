@@ -19,10 +19,10 @@ export const CategoriesMenu = () => {
     dispatch(getSomeEntities(4));
   }, []);
 
-{/*     <NavLink tag={Link} to='/category/{id}' className="d-flex align-items-center"> */}
+{/*     <NavLink tag={Link} to={`/articlelist/${category.name}`} className="d-flex align-items-center"> */}
   return categoryList.map((category, i) => (
-    <NavItem>
-     <NavLink id={`category-${i}`} className="d-flex align-items-center">
+    <NavItem key={`category-${category.id}`}>
+     <NavLink tag={Link} to={`/articlelist/${category.name.toLowerCase()}`} className="d-flex align-items-center">
        {category.name}
      </NavLink>
     </NavItem> ))
