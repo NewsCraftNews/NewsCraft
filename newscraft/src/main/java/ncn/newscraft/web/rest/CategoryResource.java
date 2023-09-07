@@ -5,6 +5,8 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 import ncn.newscraft.domain.Category;
 import ncn.newscraft.repository.CategoryRepository;
 import ncn.newscraft.web.rest.errors.BadRequestAlertException;
@@ -143,9 +145,15 @@ public class CategoryResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of categories in body.
      */
     @GetMapping("/categories")
-    public List<Category> getAllCategories() {
-        log.debug("REST request to get all Categories");
-        return categoryRepository.findAll();
+    public List<Category> getAllCategories(@RequestParam(required = false) Integer limit) {
+        if(limit == null) {
+            log.debug("REST request to get all Categories");
+            return categoryRepository.findAll();
+        }
+        else{
+            log.debug("REST request to get {} Categories", limit);
+            return categoryRepository.findAll().stream().limit(limit).collect(Collectors.toList());
+        }
     }
 
     /**
@@ -161,6 +169,16 @@ public class CategoryResource {
         return ResponseUtil.wrapOrNotFound(category);
     }
 
+//    /**
+//     * {@code GET  /categories} : get all the categories, with a limit.
+//     *
+//     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of categories in body.
+//     */
+//    @GetMapping("/categories")
+//    public List<Category> getSomeCategories(@RequestParam Integer limit) {
+//        log.debug("REST request to get {} Categories", limit);
+//        return categoryRepository.findAll().stream().limit(limit).collect(Collectors.toList());
+//    }
     /**
      * {@code DELETE  /categories/:id} : delete the "id" category.
      *
