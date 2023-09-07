@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './articlepictures.scss'
 
 import { APP_DATE_TIME_FORMAT } from 'app/config/constants';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
@@ -31,7 +32,7 @@ export const Article = () => {
    * ARTICLE_TEXT
    */
   return (
-    <div>
+    <div className="article-padding">
       <h1 data-cy="NewsArticleHeading">
         {newsArticleEntity.title}
       </h1>
@@ -39,6 +40,9 @@ export const Article = () => {
         Posted on&nbsp;
         {newsArticleEntity.timePosted ? <TextFormat value={newsArticleEntity.timePosted} type="date" format={APP_DATE_TIME_FORMAT} /> : null}
         <br />
+         <div className="article-picture">
+         <img src="content/images/Money.jpeg" alt="Article Photo" />
+          </div>
         Written by {newsArticleEntity.author ? newsArticleEntity.author.login : ''}
       </p>
       <p>{newsArticleEntity.articleText}</p>

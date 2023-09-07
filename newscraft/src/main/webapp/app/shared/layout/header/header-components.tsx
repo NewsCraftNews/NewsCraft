@@ -8,15 +8,15 @@ import { faNewspaper } from '@fortawesome/free-solid-svg-icons'
 
 export const BrandIcon = props => (
   <div {...props} className="brand-icon">
-    <img src="content/images/NewsCraftTransparent.png" alt="Logo" />
+    <img src="content/images/KN.png" alt="Logo" />
   </div>
 );
 
 export const Brand = () => (
   <NavbarBrand tag={Link} to="/" className="brand-logo">
     <BrandIcon />
-    <span className="brand-title">NewsCraft</span>
-    <span className="navbar-version">{VERSION}</span>
+  <span className="brand-title"></span>
+  <span className="navbar-version">{VERSION}</span>
   </NavbarBrand>
 );
 
