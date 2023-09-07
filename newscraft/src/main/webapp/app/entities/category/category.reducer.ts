@@ -23,6 +23,11 @@ export const getEntities = createAsyncThunk('category/fetch_entity_list', async 
   return axios.get<ICategory[]>(requestUrl);
 });
 
+export const getSomeEntities = createAsyncThunk('category/fetch_entity_list', async (limit: string | number) => {
+  const requestUrl = `${apiUrl}?limit=${limit}`;
+  return axios.get<ICategory[]>(requestUrl);
+});
+
 export const getEntity = createAsyncThunk(
   'category/fetch_entity',
   async (id: string | number) => {
@@ -90,6 +95,15 @@ export const CategorySlice = createEntitySlice({
         state.entity = {};
       })
       .addMatcher(isFulfilled(getEntities), (state, action) => {
+        const { data } = action.payload;
+
+        return {
+          ...state,
+          loading: false,
+          entities: data,
+        };
+      })
+      .addMatcher(isFulfilled(getSomeEntities), (state, action) => {
         const { data } = action.payload;
 
         return {
