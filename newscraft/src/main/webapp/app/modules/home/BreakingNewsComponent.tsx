@@ -93,9 +93,16 @@ const BreakingNews: React.FC = () => {
       text2: `Content: ${newsData ? newsData.results[1].description : "Loading..."}`,
     },
     {
-      text: `Content: ${newsData ? newsData.results[1].description : "Loading..."}`,
-      title: "slide2",
-      url: "http://localhost:3000/image2.png",
+      text: `Title: ${newsData ? newsData.results[2].title : "Loading..."}`,
+      title: "slide1",
+      url: "https://media.istockphoto.com/id/1183338499/vector/0547.jpg?s=612x612&w=0&k=20&c=yNkIf4DxCEkOb0EXoq5kQ0XX1k5T53QYQLgL_j2Rg5M=",
+      text2: `Content: ${newsData ? newsData.results[2].description : "Loading..."}`,
+    },
+    {
+      text: `Title: ${newsData ? newsData.results[3].title : "Loading..."}`,
+      title: "slide1",
+      url: "https://media.istockphoto.com/id/1183338499/vector/0547.jpg?s=612x612&w=0&k=20&c=yNkIf4DxCEkOb0EXoq5kQ0XX1k5T53QYQLgL_j2Rg5M=",
+      text2: `Content: ${newsData ? newsData.results[3].description : "Loading..."}`,
     },
   ];
 
@@ -150,18 +157,10 @@ const BreakingNews: React.FC = () => {
 
         <div style={slideStylesWithText} onClick={handleClick}>
           {slides[currentIndex].text}
+          <br/> <br/> <br/> <br/> <br/>
+          {slides[currentIndex].text2}
         </div>
       </div>
-
-        {slides.map((slide: any, slideIndex: React.Key) => (
-          <div
-            style={dotStyle}
-            key={slideIndex}
-            onClick={() => goToSlide(slideIndex)}
-          >
-            ●
-          </div>
-        ))}
       </div>
       <div style={dotsContainerStyles}>
       {slides.map((slide: any, slideIndex: React.Key) => (
