@@ -8,7 +8,7 @@ import { faNewspaper } from '@fortawesome/free-solid-svg-icons'
 
 export const BrandIcon = props => (
   <div {...props} className="brand-icon">
-    <img src="content/images/NewsCraftTransparent.png" alt="Logo" />
+    <img src="content/images/NewsCraftTransparent3.png" alt="Logo" />
   </div>
 );
 
