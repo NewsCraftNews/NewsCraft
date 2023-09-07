@@ -38,6 +38,7 @@ const sliderStyles: CSSProperties = {
 };
 
 const dotsContainerStyles: CSSProperties = {
+  paddingLeft: "100%",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -45,6 +46,7 @@ const dotsContainerStyles: CSSProperties = {
 };
 
 const divStyle: CSSProperties = {
+  paddingLeft: "40%",
   width: "600px",
   height: "200px",
   alignItems: "center",
@@ -61,7 +63,7 @@ const dotStyle: CSSProperties = {
 const BreakingNews: React.FC = () => {
 
   const containerStyles = {
-    width: "600px",
+    width: "200%",
     height: "200px",
     margin: "0 auto 0 0",
     // Set a fixed height for the slide container
@@ -75,14 +77,16 @@ const BreakingNews: React.FC = () => {
 
   const [newsData, setNewsData] = useState<any>(null);
   useEffect(() => {
-    // Replace 'YOUR_API_KEY' with your actual OpenWeatherMap API key
+    // ApiKeys
     const apiKey = 'pub_28913a8dcc770b2edef6b4b77131ecbf52201';
+    const apiKey2 ='pub_29020fd2922d18a540758f747c11ab8c9fac7';
 
 
-    // Fetch weather data from OpenWeatherMap API
-    fetch(`https://newsdata.io/api/1/news?apikey=${apiKey}&country=us&timeframe=48&category=top,world`)
-
+    // Fetch weather data from API
+    fetch(`https://newsdata.io/api/1/news?apikey=${apiKey2}&country=us&timeframe=48&category=top,world`)
+      //gets-response
       .then((response) => response.json())
+      //sets data
       .then((data) => setNewsData(data))
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
@@ -90,7 +94,7 @@ const BreakingNews: React.FC = () => {
   console.log(newsData);
 
 
-
+  // sets the newsData into slides component
   const slides = [
     {
       text: `Title: ${newsData ? newsData.results[1].title : "Loading..."}`,
@@ -112,19 +116,14 @@ const BreakingNews: React.FC = () => {
     },
   ];
 
-
+//Logic for slide method names explain actions
   const [currentIndex, setCurrentIndex] = useState(0);
   const goToPrevious = () => {
     const isFirstSlide = currentIndex === 0;
     const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex);
   };
-  function handleClick() {
-    // Redirect to the desired URL
-    if(currentIndex==5){
-      window.location.href = 'https://codepen.io/gaearon/pen/gWWZgR?editors=0010';
-    }
-  }
+
   const goToNext = () => {
     const isLastSlide = currentIndex === slides.length - 1;
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
@@ -146,7 +145,7 @@ const BreakingNews: React.FC = () => {
   };
 
 
-
+//returns component
   return (
     <div style={divStyle}>
 
@@ -161,7 +160,7 @@ const BreakingNews: React.FC = () => {
           </div>
         </div>
 
-        <div style={slideStylesWithText} onClick={handleClick}>
+        <div style={slideStylesWithText} >
           {slides[currentIndex].text}
           <br/> <br/> <br/> <br/> <br/>
           {slides[currentIndex].text2}
