@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Table, NavLink } from 'reactstrap';
-import { NavLink as Link } from 'react-router-dom';
+import { NavLink as Link, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { useAppDispatch, useAppSelector } from 'app/config/store';
-import { getEntities } from "app/entities/news-article/news-article.reducer";
+import { getEntitiesOfCategory } from "app/entities/news-article/news-article.reducer";
 import { INewsArticle } from "app/shared/model/news-article.model";
 
 export const ArticleList = () => {
   const dispatch = useAppDispatch();
 
+  const { category_name } = useParams<'category_name'>();
+
   const newsArticleList = useAppSelector(state => state.newsArticle.entities);
   const loading = useAppSelector(state => state.newsArticle.loading);
 
   useEffect(() => {
-    dispatch(getEntities({}));
+    dispatch(getEntitiesOfCategory(category_name));
   }, []);
 
   const handleSyncList = () => {
-    dispatch(getEntities({}));
+    dispatch(getEntitiesOfCategory(category_name));
   };
 
   return (
