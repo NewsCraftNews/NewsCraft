@@ -4,8 +4,6 @@ import { createAsyncThunk, isFulfilled, isPending, isRejected } from '@reduxjs/t
 import { cleanEntity } from 'app/shared/util/entity-utils';
 import { IQueryParams, createEntitySlice, EntityState, serializeAxiosError } from 'app/shared/reducers/reducer.utils';
 import { INewsArticle, defaultValue } from 'app/shared/model/news-article.model';
-import { IComment } from 'app/shared/model/comment.model';
-
 
 const initialState: EntityState<INewsArticle> = {
   loading: false,
@@ -19,6 +17,13 @@ const initialState: EntityState<INewsArticle> = {
 const apiUrl = 'api/news-articles';
 
 // Actions
+
+export const getEntitiesOfCategory = createAsyncThunk(
+    'newsArticle/fetch_entity_list',
+     async (name: String) => {
+  const requestUrl = `api/categories/${name}/articles?cacheBuster=${new Date().getTime()}`;
+  return axios.get<INewsArticle[]>(requestUrl);
+});
 
 export const getEntities = createAsyncThunk('newsArticle/fetch_entity_list', async ({ page, size, sort }: IQueryParams) => {
   const requestUrl = `${apiUrl}?cacheBuster=${new Date().getTime()}`;
@@ -90,6 +95,15 @@ export const NewsArticleSlice = createEntitySlice({
         state.updating = false;
         state.updateSuccess = true;
         state.entity = {};
+      })
+      .addMatcher(isFulfilled(getEntitiesOfCategory), (state, action) => {
+        const { data } = action.payload;
+
+        return {
+          ...state,
+          loading: false,
+          entities: data,
+        };
       })
       .addMatcher(isFulfilled(getEntities), (state, action) => {
         const { data } = action.payload;
