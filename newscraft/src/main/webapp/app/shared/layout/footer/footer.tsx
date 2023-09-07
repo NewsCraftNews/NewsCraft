@@ -29,8 +29,7 @@ const Footer = () => (
           <br />
           Source Code:&nbsp;
           <a href="https://github.com/NewsCraftNews/NewsCraft/tree/main" target="_blank" rel="noopener noreferrer">
-{/*             <FontAwesomeIcon icon={faGithub} /> */}
-            GitHub
+            <FontAwesomeIcon icon={faGithub} />
           </a>
         </p>
       </Col>
