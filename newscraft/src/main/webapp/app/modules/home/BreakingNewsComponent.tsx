@@ -46,8 +46,7 @@ const dotsContainerStyles: CSSProperties = {
 };
 
 const divStyle: CSSProperties = {
-  paddingLeft: "40%",
-  width: "600px",
+  width: "200px",
   height: "200px",
   alignItems: "center",
   justifyContent: "center",
@@ -83,7 +82,7 @@ const BreakingNews: React.FC = () => {
 
 
     // Fetch weather data from API
-    fetch(`https://newsdata.io/api/1/news?apikey=${apiKey2}&country=us&timeframe=48&category=top,world`)
+    fetch(`https://newsdata.io/api/1/news?apikey=${apiKey}&country=us&timeframe=48&category=top,world`)
       //gets-response
       .then((response) => response.json())
       //sets data
