@@ -45,7 +45,7 @@ const Header = (props: IHeaderProps) => {
             <CategoriesMenu />
           </Nav>
           <Nav id="header-tabs-right" className="ms-auto" navbar>
-            {props.isAuthenticated && <EntitiesMenu />}
+            {props.isAuthenticated && props.isAdmin && <EntitiesMenu />}
             {props.isAuthenticated && props.isAdmin && (
               <AdminMenu showOpenAPI={props.isOpenAPIEnabled} showDatabase={!props.isInProduction} />
             )}
