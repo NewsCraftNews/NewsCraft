@@ -7,6 +7,8 @@ import { useAppDispatch, useAppSelector } from 'app/config/store';
 import { getEntities, getEntitiesOfCategory } from "app/entities/news-article/news-article.reducer";
 import { INewsArticle } from "app/shared/model/news-article.model";
 
+// export const refreshPage = ArticleList.handleSyncList();
+
 export const ArticleList = () => {
   const dispatch = useAppDispatch();
 
@@ -17,12 +19,12 @@ export const ArticleList = () => {
 
   useEffect(() => {
     if(category_name) dispatch(getEntitiesOfCategory(category_name));
-    else dispatch(getEntities({});
-  }, []);
+    else dispatch(getEntities({}));
+  }, [category_name]);
 
   const handleSyncList = () => {
     if(category_name) dispatch(getEntitiesOfCategory(category_name));
-    else dispatch(getEntities({});
+    else dispatch(getEntities({}));
   };
 
   return (
