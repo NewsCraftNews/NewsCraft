@@ -8,6 +8,7 @@ import { getArticleComments } from "app/entities/comment/comment.reducer";
 import { IComment } from "app/shared/model/comment.model";
 import {TextFormat} from "react-jhipster";
 import {APP_DATE_TIME_FORMAT, APP_TIMESTAMP_FORMAT} from "app/config/constants";
+import { CommentsSection } from '@slydragonn/react-easy-comments';
 
 export const CommentSection = () => {
   const dispatch = useAppDispatch();
@@ -22,12 +23,17 @@ export const CommentSection = () => {
   }, []);
 
   return commentList.map((comment, i) => (
-    <NavItem key={`category-${category.id}`}>
-      <NavLink tag={Link} to={`/articlelist/${category.name.toLowerCase()}`} className="d-flex align-items-center">
-        {category.name}
-      </NavLink>
-    </NavItem> ))
-};
+    <div>
+    <p key={`category-${comment.id}`}>
+      Written by&nbsp;
+      {comment.author.login}
+      <br/>
+      Posted on&nbsp;
+      {<TextFormat value={comment.timePosted} type="date" format={APP_TIMESTAMP_FORMAT}/>}
+      <br/>
+      {comment.commentText}
+    </p>
+    </div>))
 //     <div className="table-responsive">
 //       {commentList && commentList.length > 0 ? (
 //         <Table responsive>
@@ -51,7 +57,6 @@ export const CommentSection = () => {
 //         !loading && <div className="alert alert-warning">No Comments found</div>
 //       )}
 //     </div>
-  );
 };
 
 export default CommentSection;
