@@ -3,7 +3,7 @@ import React from 'react';
 import { NavItem, NavLink, NavbarBrand } from 'reactstrap';
 import { NavLink as Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faNewspaper } from '@fortawesome/free-solid-svg-icons'
+import { faNewspaper, faBook } from '@fortawesome/free-solid-svg-icons';
 
 export const BrandIcon = props => (
   <div {...props} className="brand-icon">
@@ -28,11 +28,11 @@ export const Home = () => (
   </NavItem>
 );
 
-// export const Articles = () => (
-//   <NavItem>
-//     <NavLink tag={Link} to="/articlelist" className="d-flex align-items-center">
-//       <FontAwesomeIcon icon={faNewspaper} />
-//       <span>Articles</span>
-//     </NavLink>
-//   </NavItem>
-// );
+export const UserMenu = () => (
+  <NavItem>
+    <NavLink tag={Link} to="/userhome" className="d-flex align-items-center">
+      <FontAwesomeIcon icon={faBook} />
+      <span> User Homepage</span>
+    </NavLink>
+  </NavItem>
+);
