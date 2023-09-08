@@ -17,12 +17,12 @@ export const ArticleList = () => {
 
   useEffect(() => {
     if(category_name) dispatch(getEntitiesOfCategory(category_name));
-    else dispatch(getEntities({});
+    else dispatch(getEntities({}));
   }, []);
 
   const handleSyncList = () => {
     if(category_name) dispatch(getEntitiesOfCategory(category_name));
-    else dispatch(getEntities({});
+    else dispatch(getEntities({}));
   };
 
   return (
