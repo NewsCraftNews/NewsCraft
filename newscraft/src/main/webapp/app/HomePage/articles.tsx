@@ -16,7 +16,6 @@ export const ArticleList = () => {
   const loading = useAppSelector(state => state.newsArticle.loading);
 
   useEffect(() => {
-    console.log(category_name);
     if(category_name) dispatch(getEntitiesOfCategory(category_name));
     else dispatch(getEntities({});
   }, []);
