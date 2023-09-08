@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 import { getArticleComments } from "app/entities/comment/comment.reducer";
 import { IComment } from "app/shared/model/comment.model";
+import {TextFormat} from "react-jhipster";
+import {APP_DATE_TIME_FORMAT, APP_TIMESTAMP_FORMAT} from "app/config/constants";
 
 export const CommentSection = () => {
   const dispatch = useAppDispatch();
@@ -23,16 +25,17 @@ export const CommentSection = () => {
     <div className="table-responsive">
       {commentList && commentList.length > 0 ? (
         <Table responsive>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Comment Text</th>
-            </tr>
-          </thead>
+          {/*<thead>*/}
+          {/*  <tr>*/}
+          {/*    <th>ID</th>*/}
+          {/*    <th>Comment Text</th>*/}
+          {/*  </tr>*/}
+          {/*</thead>*/}
           <tbody>
             {commentList.map((comment, i) => (
               <tr key={`entity-${i}`} data-cy="entityTable">
-                <td>{comment.id}</td>
+                <td>{comment.author.login}</td>
+                <td>{<TextFormat value={comment.timePosted} type="date" format={APP_TIMESTAMP_FORMAT} />}</td>
                 <td>{comment.commentText}</td>
               </tr>
             ))}
