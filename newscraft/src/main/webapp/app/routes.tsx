@@ -11,6 +11,7 @@ import Logout from 'app/modules/login/logout';
 import Home from 'app/modules/home/home';
 import ArticleList from "app/HomePage/articles";
 import Article from "app/HomePage/articledetails";
+import UserHome from "app/user-pages/home";
 import EntitiesRoutes from 'app/entities/routes';
 import PrivateRoute from 'app/shared/auth/private-route';
 import ErrorBoundaryRoutes from 'app/shared/error/error-boundary-routes';
@@ -37,10 +38,16 @@ const AppRoutes = () => {
         <Route path="login" element={<Login />} />
         <Route path="logout" element={<Logout />} />
 {/*         <Route path="articlelist" element={<ArticleList />}/> */}
+        <Route path="articlelist/:category_name" element={<ArticleList />} />
+        <Route path="article/:id" element={<Article />} />
         <Route
-          path="articlelist/:category_name"
-          element={<ArticleList />}/>
-        <Route path="article/:id" element={<Article />}/>
+          path="userhome"
+          element={
+            <PrivateRoute hasAnyAuthorities={[AUTHORITIES.USER]}>
+              <UserHome />
+            </PrivateRoute>
+          }
+        />
         <Route path="account">
           <Route
             path="*"
