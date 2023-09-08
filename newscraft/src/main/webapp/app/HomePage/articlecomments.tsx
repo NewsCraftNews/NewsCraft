@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Table, NavLink } from 'reactstrap';
+import {Button, Table, NavLink, NavItem} from 'reactstrap';
 import { NavLink as Link, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -21,30 +21,36 @@ export const CommentSection = () => {
     dispatch(getArticleComments(id));
   }, []);
 
-  return (
-    <div className="table-responsive">
-      {commentList && commentList.length > 0 ? (
-        <Table responsive>
-          {/*<thead>*/}
-          {/*  <tr>*/}
-          {/*    <th>ID</th>*/}
-          {/*    <th>Comment Text</th>*/}
-          {/*  </tr>*/}
-          {/*</thead>*/}
-          <tbody>
-            {commentList.map((comment, i) => (
-              <tr key={`entity-${i}`} data-cy="entityTable">
-                <td>{comment.author.login}</td>
-                <td>{<TextFormat value={comment.timePosted} type="date" format={APP_TIMESTAMP_FORMAT} />}</td>
-                <td>{comment.commentText}</td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      ) : (
-        !loading && <div className="alert alert-warning">No Comments found</div>
-      )}
-    </div>
+  return commentList.map((comment, i) => (
+    <NavItem key={`category-${category.id}`}>
+      <NavLink tag={Link} to={`/articlelist/${category.name.toLowerCase()}`} className="d-flex align-items-center">
+        {category.name}
+      </NavLink>
+    </NavItem> ))
+};
+//     <div className="table-responsive">
+//       {commentList && commentList.length > 0 ? (
+//         <Table responsive>
+//           {/*<thead>*/}
+//           {/*  <tr>*/}
+//           {/*    <th>ID</th>*/}
+//           {/*    <th>Comment Text</th>*/}
+//           {/*  </tr>*/}
+//           {/*</thead>*/}
+//           <tbody>
+//             {commentList.map((comment, i) => (
+//               <tr key={`entity-${i}`} data-cy="entityTable">
+//                 <td>{comment.author.login}</td>
+//                 <td>{<TextFormat value={comment.timePosted} type="date" format={APP_TIMESTAMP_FORMAT} />}</td>
+//                 <td>{comment.commentText}</td>
+//               </tr>
+//             ))}
+//           </tbody>
+//         </Table>
+//       ) : (
+//         !loading && <div className="alert alert-warning">No Comments found</div>
+//       )}
+//     </div>
   );
 };
 
