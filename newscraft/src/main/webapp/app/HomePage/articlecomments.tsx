@@ -31,6 +31,7 @@ export const CommentSection = () => {
         <BoxComponent comments={comment} />
         <br/>
       </div>))}
+
   </div>
   )};
 
