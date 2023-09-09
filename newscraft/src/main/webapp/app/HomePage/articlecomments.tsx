@@ -23,16 +23,16 @@ export const CommentSection = () => {
   }, []);
 
   return commentList.map((comment, i) => (
-    <div>
-    <p key={`category-${comment.id}`}>
-      Written by&nbsp;
-      {comment.author.login}
-      <br/>
-      Posted on&nbsp;
-      {<TextFormat value={comment.timePosted} type="date" format={APP_TIMESTAMP_FORMAT}/>}
-      <br/>
-      {comment.commentText}
-    </p>
+    <div key={`category-${comment.id}`}>
+      <p key={`category-${comment.id}`}>
+        Written by&nbsp;
+        {comment.author.login}
+        <br/>
+        Posted on&nbsp;
+        {<TextFormat value={comment.timePosted} type="date" format={APP_TIMESTAMP_FORMAT}/>}
+        <br/>
+        {comment.commentText}
+      </p>
     </div>))
 //     <div className="table-responsive">
 //       {commentList && commentList.length > 0 ? (
