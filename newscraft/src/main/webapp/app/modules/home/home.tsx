@@ -10,6 +10,8 @@ import { Row, Col, Alert } from 'reactstrap';
 
 import { useAppSelector } from 'app/config/store';
 import News from './BreakingNewsComponent';
+import WeatherApp from "app/modules/home/WeatherApp";
+
 
 import WeatherApp from "app/modules/home/WeatherApp";
 
@@ -26,8 +28,6 @@ export const Home = () => {
       ) : (
         <h2>Welcome, News Reader!</h2>
       )}
-
-
 
       <br/>
       <Col md="8">
@@ -51,12 +51,7 @@ export const Home = () => {
               <WeatherApp />
             </div>
             <div />
-
           </div>
-
-
-
-
 
           <section id="feature_news_section" className="feature_news_section">
             <div className="container">
@@ -228,9 +223,8 @@ export const Home = () => {
             GitHub
           </a>
           !
+
         </p>
-
-
 
       </Col>
       <Col md="4">
@@ -327,7 +321,11 @@ export const Home = () => {
 </Col>
 
     </Row>
+
   );
 };
 
 export default Home;
+
+
+
