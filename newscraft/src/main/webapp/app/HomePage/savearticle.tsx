@@ -7,14 +7,12 @@ import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
 // import { IBookMark } from 'app/shared/model/book-mark.model';
-// import { getUserBookmark } from 'app/entities/book-mark/book-mark.reducer';
+// import { getUserBookmark, deleteUserBookmark } from 'app/entities/book-mark/book-mark.reducer';
 
 export const BookmarkButton = () => {
-//   const dispatch = useAppDispatch();
-//   const { id } = useParams<'id'>();
+  const dispatch = useAppDispatch();
+  const { id } = useParams<'id'>();
 
-  let tempVar: boolean = true;
-//   let activeToggle: boolean = true;
   const loggedInUser = useAppSelector(state => state.authentication.account.login);
   const isAuthenticated = useAppSelector(state => state.authentication.isAuthenticated);
   const [toggle, setToggle] = useState(true);
@@ -22,6 +20,11 @@ export const BookmarkButton = () => {
 //   useEffect(() => {
 //     dispatch(getUserBookmark());
 //   }, []);
+
+//   const handleSyncList = () => {
+//     if(category_name) dispatch(getEntitiesOfCategory(category_name));
+//     else dispatch(getEntities({}));
+//   };
 
 // it looks ugly now BUT IT WORKS!
   return (
