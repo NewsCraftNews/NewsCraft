@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import {Button, Table, NavLink, NavItem} from 'reactstrap';
+import { Button, Table, NavLink, NavItem } from 'reactstrap';
 import { NavLink as Link, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 import { getArticleComments } from "app/entities/comment/comment.reducer";
 import { IComment } from "app/shared/model/comment.model";
-import {TextFormat} from "react-jhipster";
-import {APP_DATE_TIME_FORMAT, APP_TIMESTAMP_FORMAT} from "app/config/constants";
+import { TextFormat } from "react-jhipster";
+import { APP_DATE_TIME_FORMAT, APP_TIMESTAMP_FORMAT } from "app/config/constants";
 import { CommentsSection } from '@slydragonn/react-easy-comments';
 
 export const CommentSection = () => {

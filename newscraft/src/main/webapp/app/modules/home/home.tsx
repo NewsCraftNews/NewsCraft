@@ -19,7 +19,7 @@ export const Home = () => {
         <h2>Welcome, News Reader!</h2>
       )}
       <Col md="9">
-        <News />
+{/*         <News /> */}
         <br/>
 
         <p className="lead">This is your homepage</p>
