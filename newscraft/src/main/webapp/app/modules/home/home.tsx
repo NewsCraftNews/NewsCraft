@@ -10,7 +10,9 @@ import { Row, Col, Alert } from 'reactstrap';
 
 import { useAppSelector } from 'app/config/store';
 import News from './BreakingNewsComponent';
+
 import WeatherApp from "app/modules/home/WeatherApp";
+
 
 
 export const Home = () => {
@@ -31,6 +33,7 @@ export const Home = () => {
       <Col md="8">
         <Row>
           <div className="grid-container">
+
             <div className="article-container">
             <h1 className="article-title">Breaking News: Exciting Headline Here</h1>
             <p className="article-meta">Published on September 8, 2023 by Your Name</p>
@@ -209,27 +212,24 @@ export const Home = () => {
 
 
 </Row>
-        <br/>
 
+        <br/>
         <p className="lead">This is your homepage</p>
         {account?.login ? (
           <div>
             <Alert color="success">You are logged in as user &quot;{account.login}&quot;.</Alert>
           </div>
         ) : (
-          <div>
-
-          </div>
+          <div></div>
         )}
-
         <p>
           If you like this project, don&apos;t forget to give us a star on{' '}
           <a href="https://github.com/NewsCraftNews/NewsCraft/tree/main" target="_blank" rel="noopener noreferrer">
             GitHub
           </a>
           !
-
         </p>
+
 
 
       </Col>
@@ -325,12 +325,9 @@ export const Home = () => {
 
       </div>
 </Col>
-    </Row>
 
+    </Row>
   );
 };
 
 export default Home;
-
-
-

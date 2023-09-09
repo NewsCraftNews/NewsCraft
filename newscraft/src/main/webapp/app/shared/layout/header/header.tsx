@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { Navbar, Nav, NavbarToggler, Collapse } from 'reactstrap';
 import LoadingBar from 'react-redux-loading-bar';
 
-import { Home, Brand, UserMenu } from './header-components';
+import { Home, Brand } from './header-components';
 import { CategoriesMenu } from './categoryheader';
 import { AdminMenu, EntitiesMenu, AccountMenu } from '../menus';
 
@@ -44,12 +44,12 @@ const Header = (props: IHeaderProps) => {
             <CategoriesMenu />
           </Nav>
           <Nav id="header-tabs-right" className="ms-auto" navbar>
-            {props.isAuthenticated && <UserMenu />
             {props.isAuthenticated && props.isAdmin && <EntitiesMenu />}
             {props.isAuthenticated && props.isAdmin && (
               <AdminMenu showOpenAPI={props.isOpenAPIEnabled} showDatabase={!props.isInProduction} />
             )}
             <AccountMenu isAuthenticated={props.isAuthenticated} />
+            <div>&nbsp;&nbsp;&nbsp;</div>
           </Nav>
          </Collapse>
       </Navbar>
