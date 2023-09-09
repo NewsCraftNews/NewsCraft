@@ -44,6 +44,7 @@ export const Home = () => {
           </div>
             <div>
             <News />
+              <br/><br/>
               <WeatherApp />
             </div>
             <div />
