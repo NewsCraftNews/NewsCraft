@@ -12,11 +12,6 @@ import { useAppSelector } from 'app/config/store';
 import News from './BreakingNewsComponent';
 import WeatherApp from "app/modules/home/WeatherApp";
 
-
-import WeatherApp from "app/modules/home/WeatherApp";
-
-
-
 export const Home = () => {
   const account = useAppSelector(state => state.authentication.account);
 
