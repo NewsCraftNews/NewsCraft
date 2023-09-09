@@ -6,28 +6,29 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
 import { IBookMark } from 'app/shared/model/book-mark.model';
-import { getEntities } from 'app/entities/book-mark/book-mark.reducer';
+import { getEntities, getUserSpecificEntities } from 'app/entities/book-mark/book-mark.reducer';
 
 export const Bookmarks = () => {
   const dispatch = useAppDispatch();
 
+  const loggedInUser = useAppSelector(state => state.authentication.account.login);
   const bookMarkList = useAppSelector(state => state.bookMark.entities);
   const loading = useAppSelector(state => state.bookMark.loading);
 
   useEffect(() => {
-    dispatch(getEntities({}));
+    dispatch(getUserSpecificEntities(loggedInUser));
   }, []);
 
-  const handleSyncList = () => {
-    dispatch(getEntities({}));
-  };
-
+  /* IDEA!
+   * let's try to make a delete button instead of refresh
+   * onclick, the delete button will show a checkbox before? to delete? or just bring back the delete button HMMMM
+   */
   return (
     <div>
       <h2 id="book-mark-heading" data-cy="BookMarkHeading">
         Saved Bookmarks
         <div className="d-flex justify-content-end">
-          <Button className="me-2" color="info" onClick={handleSyncList} disabled={loading}>
+          <Button className="me-2" color="info" disabled={true}>
             <FontAwesomeIcon icon="sync" spin={loading} /> Refresh list
           </Button>
         </div>
@@ -37,13 +38,19 @@ export const Bookmarks = () => {
           <Table responsive>
             <thead>
               <tr>
-                <th>Links To</th>
+                <th><h3>Links To</h3></th>
+                <th />
               </tr>
             </thead>
             <tbody>
               {bookMarkList.map((bookMark, i) => (
                 <tr key={`entity-${i}`} data-cy="entityTable">
                   <td>{bookMark.linksTo ? <Link to={`/article/${bookMark.linksTo.id}`}>{bookMark.linksTo.title}</Link> : ''}</td>
+                  <td className="text-end">
+                    <Button tag={Link} to={`/book-mark/${bookMark.id}/delete`} color="danger" size="sm" data-cy="entityDeleteButton">
+                      <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Delete</span>
+                    </Button>
+                  </td>
                 </tr>
               ))}
             </tbody>
