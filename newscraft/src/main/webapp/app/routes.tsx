@@ -10,6 +10,8 @@ import PasswordResetFinish from 'app/modules/account/password-reset/finish/passw
 import Logout from 'app/modules/login/logout';
 import Home from 'app/modules/home/home';
 import ArticleList from "app/HomePage/articles";
+import Article from "app/HomePage/articledetails";
+import Bookmarks from "app/HomePage/bookmarks";
 import EntitiesRoutes from 'app/entities/routes';
 import PrivateRoute from 'app/shared/auth/private-route';
 import ErrorBoundaryRoutes from 'app/shared/error/error-boundary-routes';
@@ -35,7 +37,9 @@ const AppRoutes = () => {
         <Route index element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="logout" element={<Logout />} />
-        <Route path="articlelist" element={<ArticleList />}/>
+{/*         <Route path="articlelist" element={<ArticleList />}/> */}
+        <Route path="articlelist/:category_name" element={<ArticleList />} />
+        <Route path="article/:id" element={<Article />} />
         <Route path="account">
           <Route
             path="*"
@@ -45,6 +49,7 @@ const AppRoutes = () => {
               </PrivateRoute>
             }
           />
+          <Route path="bookmarks" element={<Bookmarks />} />
           <Route path="register" element={<Register />} />
           <Route path="activate" element={<Activate />} />
           <Route path="reset">

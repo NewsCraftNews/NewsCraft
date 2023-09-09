@@ -66,10 +66,10 @@ function showArticleList(data) {
         let title = document.createElement('h3');
         let body = document.createElement('p');
         let by = document.createElement('p');
-        title.innerHTML = `<a href="/articledetails.html?id=${post.id}">${post.title}</a>`;
-        body.innerHTML = `Time Posted: ${post.timePosted}`;
+        title.innerHTML = `<a href="/articles.html?id=${post.id}">${post.title}</a>`;
+        body.innerHTML = `${post.timePosted}`;
         //let postedTime = dateOf(post.time)
-        by.innerHTML = `Likes: ${post.likes}`;
+        by.innerHTML = `${post.likes}`;
 
         li.appendChild(title);
         li.appendChild(body);
@@ -93,16 +93,13 @@ function showArticleDetail(post) {
     let title = document.createElement('h2');
     let body = document.createElement('p');
     let by = document.createElement('p');
-    let likes = document.createElement('p');
     title.innerHTML = `${post.title}`;
-    body.innerHTML = `${post.timePosted}`;
+    // body.innerHTML = `${post.description}`;
     //let postedTime = dateOf(post.time)
-    likes.innerHTML = `${post.likes}`;
-    by.innerHTML = `${post.articleText}`;
+    // by.innerHTML = `${post.origin}`;
 
     li.appendChild(title);
     li.appendChild(body);
-    li.appendChild(likes);
     li.appendChild(by);
     detail.appendChild(li);
 
