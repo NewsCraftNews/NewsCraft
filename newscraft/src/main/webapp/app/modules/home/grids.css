@@ -5,13 +5,15 @@ body, h1, h2, p {
 }
 
 .grid-container {
+  margin: 3%;
+  padding: 0;
   display: grid;
-  grid-template-columns: 1fr 500px 1fr;
-  grid-template-rows: 100px 200px;
+  grid-template-columns: 500px 300px 1fr;
+
   /* Three equal-width columns */
-  grid-gap: 20px; /* Gap between grid items */
+  grid-gap: 10px; /* Gap between grid items */
   max-width: 800px; /* Optional: Set a max width for the grid */
-  margin: 0 auto; /* Optional: Center the grid horizontally */
+
 }
 
 .grid-item {
