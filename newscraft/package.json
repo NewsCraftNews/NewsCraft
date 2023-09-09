@@ -72,11 +72,14 @@
     "packaging": "jar"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@fortawesome/fontawesome-svg-core": "6.2.0",
     "@fortawesome/free-brands-svg-icons": "6.2.0",
     "@fortawesome/free-regular-svg-icons": "6.2.0",
     "@fortawesome/free-solid-svg-icons": "6.2.0",
     "@fortawesome/react-fontawesome": "0.2.0",
+    "@mui/material": "^5.14.8",
     "@reduxjs/toolkit": "1.8.5",
     "@slydragonn/react-easy-comments": "^1.3.0",
     "axios": "0.27.2",
