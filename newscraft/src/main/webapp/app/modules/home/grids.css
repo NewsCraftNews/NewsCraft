@@ -1,0 +1,23 @@
+/* Apply a CSS reset to remove default margin and padding */
+body, h1, h2, p {
+  margin: 0;
+  padding: 0;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 500px 1fr;
+  grid-template-rows: 100px 200px;
+  /* Three equal-width columns */
+  grid-gap: 20px; /* Gap between grid items */
+  max-width: 800px; /* Optional: Set a max width for the grid */
+  margin: 0 auto; /* Optional: Center the grid horizontally */
+}
+
+.grid-item {
+  background-color: #e0e0e0;
+  padding: 20px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-size: 24px;
+}
