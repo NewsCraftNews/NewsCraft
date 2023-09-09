@@ -3,9 +3,10 @@ import React, { useState, useEffect, CSSProperties } from 'react';
 const slideStyles: CSSProperties = {
   width: "100%",
   height: "100%",
-  borderRadius: "10px",
+  borderRadius: "0px",
   backgroundSize: "cover",
   backgroundPosition: "center",
+
 };
 
 const rightArrowStyles: CSSProperties = {
@@ -19,16 +20,7 @@ const rightArrowStyles: CSSProperties = {
   cursor: "pointer",
 };
 
-const textStyle = {
-  position: "center",
-  top: "50%",
-  transform: "translate(0, -50%)",
-  right: "32px",
-  fontSize: "45px",
-  color: "#aaa",
-  zIndex: 1,
-  cursor: "pointer",
-};
+
 
 const leftArrowStyles: CSSProperties = {
   position: "absolute",
@@ -47,8 +39,19 @@ const sliderStyles: CSSProperties = {
 };
 
 const dotsContainerStyles: CSSProperties = {
+  paddingLeft: "100%",
   display: "flex",
   justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "row",
+};
+
+const divStyle: CSSProperties = {
+  width: "200px",
+  height: "200px",
+  alignItems: "center",
+  justifyContent: "center",
+  flexDirection: "row",
 };
 
 const dotStyle: CSSProperties = {
@@ -58,10 +61,17 @@ const dotStyle: CSSProperties = {
 };
 
 const WeatherApp: React.FC = () => {
+
   const containerStyles = {
-    width: "600px",
+    width: "200%",
     height: "200px",
-    margin: "0 auto",
+    margin: "0 auto 0 0",
+    // Set a fixed height for the slide container
+    overflow: 'auto',
+    backgroundColor: '#333',
+    // Add a border
+    border: '2px solid #333',
+    borderRadius: '10px',
   };
   const [weatherData, setWeatherData] = useState<any>(null);
   useEffect(() => {
@@ -79,10 +89,10 @@ const WeatherApp: React.FC = () => {
   console.log(weatherData);
 
 
-
+  const kelvinToCelsius = (kelvin) => (kelvin - 273.15).toFixed(2);
   let slides = [
     {
-      text: `Temperature: ${weatherData ? weatherData.main.temp : "Loading..."}°K`,
+      text: `Temperature: ${weatherData ? kelvinToCelsius(weatherData.main.temp) : "Loading..."}°C`,
       title: "slide1",
       url: "https://clipart-library.com/img1/798831.png",
     },
@@ -121,8 +131,8 @@ const WeatherApp: React.FC = () => {
   };
   const slideStylesWithText = {
     ...slideStyles,
-    color: 'black', // Text color
-    fontSize: '16px', // Font size
+    color: 'white', // Text color
+    fontSize: '24px', // Font size
     backgroundImage: `url(${slides[currentIndex].url})`,
     backgroundPosition: 'top left',
     backgroundRepeat: 'no-repeat',
@@ -131,33 +141,38 @@ const WeatherApp: React.FC = () => {
 
 
 
+  //returns component
   return (
-    <div style={containerStyles}>
-      <div style={sliderStyles}>
-        <div>
-          <div onClick={goToPrevious} style={leftArrowStyles}>
-            ❰
-          </div>
-          <div onClick={goToNext} style={rightArrowStyles}>
-            ❱
-          </div>
-        </div>
+    <div style={divStyle}>
 
-        <div style={slideStylesWithText} onClick={handleClick}>
-          {slides[currentIndex].text}
-        </div>
-
-        <div style={dotsContainerStyles}>
-          {slides.map((slide: any, slideIndex: React.Key) => (
-            <div
-              style={dotStyle}
-              key={slideIndex}
-              onClick={() => goToSlide(slideIndex)}
-            >
-              ●
+      <div style={containerStyles}>
+        <div style={sliderStyles}>
+          <div>
+            <div onClick={goToPrevious} style={leftArrowStyles}>
+              ❰
             </div>
-          ))}
+            <div onClick={goToNext} style={rightArrowStyles}>
+              ❱
+            </div>
+          </div>
+
+          <div style={slideStylesWithText} >
+            {slides[currentIndex].text}
+            <br/> <br/> <br/> <br/> <br/>
+
+          </div>
         </div>
+      </div>
+      <div style={dotsContainerStyles}>
+        {slides.map((slide: any, slideIndex: React.Key) => (
+          <div
+            style={dotStyle}
+            key={slideIndex}
+            onClick={() => goToSlide(slideIndex)}
+          >
+            ●
+          </div>
+        ))}
       </div>
     </div>
   );
