@@ -18,6 +18,11 @@ const apiUrl = 'api/book-marks';
 
 // Actions
 
+export const getUserSpecificEntities = createAsyncThunk('bookMark/fetch_entity_list', async (login: String) => {
+  const requestUrl = `api/user/${login}/bookmarks?cacheBuster=${new Date().getTime()}`;
+  return axios.get<IBookMark[]>(requestUrl);
+});
+
 export const getEntities = createAsyncThunk('bookMark/fetch_entity_list', async ({ page, size, sort }: IQueryParams) => {
   const requestUrl = `${apiUrl}?cacheBuster=${new Date().getTime()}`;
   return axios.get<IBookMark[]>(requestUrl);
@@ -88,6 +93,15 @@ export const BookMarkSlice = createEntitySlice({
         state.updating = false;
         state.updateSuccess = true;
         state.entity = {};
+      })
+      .addMatcher(isFulfilled(getUserSpecificEntities), (state, action) => {
+        const { data } = action.payload;
+
+        return {
+          ...state,
+          loading: false,
+          entities: data,
+        };
       })
       .addMatcher(isFulfilled(getEntities), (state, action) => {
         const { data } = action.payload;
