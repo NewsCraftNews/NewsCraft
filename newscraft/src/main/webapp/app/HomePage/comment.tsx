@@ -21,6 +21,7 @@ export const BoxComponent = (props:ICommentProps) => {
         <br/>
         {props.comments.commentText}
       </p>
+
     </Box>
   );
 }
