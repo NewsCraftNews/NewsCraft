@@ -13,6 +13,10 @@ import News from './BreakingNewsComponent';
 import WeatherApp from "app/modules/home/WeatherApp";
 
 
+import WeatherApp from "app/modules/home/WeatherApp";
+
+
+
 export const Home = () => {
   const account = useAppSelector(state => state.authentication.account);
 
@@ -25,12 +29,11 @@ export const Home = () => {
         <h2>Welcome, News Reader!</h2>
       )}
 
-
-
       <br/>
       <Col md="8">
         <Row>
           <div className="grid-container">
+
             <div className="article-container">
             <h1 className="article-title">Breaking News: Exciting Headline Here</h1>
             <p className="article-meta">Published on September 8, 2023 by Your Name</p>
@@ -48,12 +51,7 @@ export const Home = () => {
               <WeatherApp />
             </div>
             <div />
-
           </div>
-
-
-
-
 
           <section id="feature_news_section" className="feature_news_section">
             <div className="container">
@@ -209,19 +207,16 @@ export const Home = () => {
 
 
 </Row>
-        <br/>
 
+        <br/>
         <p className="lead">This is your homepage</p>
         {account?.login ? (
           <div>
             <Alert color="success">You are logged in as user &quot;{account.login}&quot;.</Alert>
           </div>
         ) : (
-          <div>
-
-          </div>
+          <div></div>
         )}
-
         <p>
           If you like this project, don&apos;t forget to give us a star on{' '}
           <a href="https://github.com/NewsCraftNews/NewsCraft/tree/main" target="_blank" rel="noopener noreferrer">
@@ -230,7 +225,6 @@ export const Home = () => {
           !
 
         </p>
-
 
       </Col>
       <Col md="4">
@@ -325,6 +319,7 @@ export const Home = () => {
 
       </div>
 </Col>
+
     </Row>
 
   );
