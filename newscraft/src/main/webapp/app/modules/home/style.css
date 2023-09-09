@@ -1,0 +1,86 @@
+/* Add CSS classes to style your component */
+
+/* Feature News Section */
+.feature_news_section {
+  background-color: #f9f9f9;
+  padding: 30px 0;
+}
+
+/* Container */
+.container {
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+/* Feature Article Wrapper */
+.feature_article_wrapper {
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
+  margin-bottom: 20px;
+}
+
+/* Feature Article Image */
+.feature_article_img img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Tag */
+.tag_lg {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.tag_lg a {
+  color: #ff5722;
+  text-decoration: none;
+}
+
+/* Article Title */
+.feature_article_title h1 {
+  font-size: 24px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.feature_article_title a {
+  color: #333;
+  text-decoration: none;
+}
+
+/* Article Date */
+.feature_article_date {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+.feature_article_date a {
+  color: #999;
+  text-decoration: none;
+}
+
+/* Article Content */
+.feature_article_content {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* Article Social */
+.article_social {
+  font-size: 14px;
+  color: #777;
+}
+
+.article_social span {
+  margin-right: 20px;
+}
+
+.article_social a {
+  color: #ff5722;
+  text-decoration: none;
+}
