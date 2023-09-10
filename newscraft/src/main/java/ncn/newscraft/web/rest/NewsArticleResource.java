@@ -5,11 +5,15 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
 import ncn.newscraft.domain.NewsArticle;
 import ncn.newscraft.repository.NewsArticleRepository;
+import ncn.newscraft.service.ExternalApis;
 import ncn.newscraft.web.rest.errors.BadRequestAlertException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +28,8 @@ import tech.jhipster.web.util.ResponseUtil;
 @RequestMapping("/api")
 @Transactional
 public class NewsArticleResource {
+    @Autowired
+    public ExternalApis externalApis;
 
     private final Logger log = LoggerFactory.getLogger(NewsArticleResource.class);
 
@@ -189,5 +195,10 @@ public class NewsArticleResource {
             .noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString()))
             .build();
+    }
+    @GetMapping("/api")
+    public List<NewsArticle> newsArticleList() throws JsonProcessingException {
+        return externalApis.fetchNewsArticles();
+
     }
 }
