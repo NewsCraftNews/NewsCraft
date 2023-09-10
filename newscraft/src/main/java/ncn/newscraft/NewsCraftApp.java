@@ -6,6 +6,10 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Optional;
 import javax.annotation.PostConstruct;
+
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import ncn.newscraft.config.ApplicationProperties;
 import ncn.newscraft.config.CRLFLogConverter;
 import org.apache.commons.lang3.StringUtils;
@@ -109,4 +113,10 @@ public class NewsCraftApp {
     public RestTemplate restTemplate(RestTemplateBuilder builder){
         return builder.build();
     }
+    @Bean
+    public ObjectMapper objectMapper (){
+        ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
+        objectMapper.registerModule(new JavaTimeModule());
+        return objectMapper;
+          }
 }

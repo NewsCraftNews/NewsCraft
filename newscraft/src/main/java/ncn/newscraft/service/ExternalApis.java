@@ -1,56 +1,116 @@
 package ncn.newscraft.service;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.reflect.TypeToken;
 import ncn.newscraft.domain.NewsArticle;
+import ncn.newscraft.domain.NewsArticleRaw;
+import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.lang.reflect.Type;
 import java.util.*;
 
 @Service
 public class ExternalApis {
+
     @Autowired
-    RestTemplate restTemplate;
-    ObjectMapper mapper=new ObjectMapper().enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
+    public RestTemplate restTemplate;
+    @Autowired
+    public ObjectMapper mapper;
 
-    String newsApiUrl = "https://newsdata.io/api/1/news?apikey=pub_28913a8dcc770b2edef6b4b77131ecbf52201&country=us&timeframe=48&category=top,world";
+    String newsApiUrl = "https://newsdata.io/api/1/news?apikey=pub_28913a8dcc770b2edef6b4b77131ecbf52201&country=us&timeframe=48&category=top,world&size=3";
 
+    public List<NewsArticleRaw> fetchNewsArticles() throws JsonProcessingException {
+        HttpEntity<String> request = new HttpEntity<>(new HttpHeaders());
+        ResponseEntity<String> response = restTemplate.exchange(newsApiUrl, HttpMethod.GET, request, String.class);
 
-    public List<NewsArticle> fetchNewsArticles() throws JsonProcessingException {
-        //
-        ParameterizedTypeReference NewsArticleType=new ParameterizedTypeReference<List<NewsArticle>>(){};
+        if (response.getStatusCode() == HttpStatus.OK) {
+            String responseBody = response.getBody();
 
-        HttpEntity<String> request=new HttpEntity<>(new HttpHeaders());
-        ResponseEntity<String> response=restTemplate.exchange(newsApiUrl, HttpMethod.GET,request,String.class);
-        List<NewsArticle> something=mapper.readValue(response.getBody(), new TypeReference<List<NewsArticle>>(){});
+            try {
+                ObjectMapper objectMapper = new ObjectMapper();
+                JsonNode root = objectMapper.readTree(responseBody);
+                JsonNode resultsNode = root.get("results");
 
-        return something;
+                if (resultsNode != null && resultsNode.isArray()) {
+                    List<NewsArticleRaw> newsArticles = new ArrayList<>();
+                    for (JsonNode articleNode : resultsNode) {
+                        NewsArticleRaw newsArticle = objectMapper.treeToValue(articleNode, NewsArticleRaw.class);
+                        newsArticles.add(newsArticle);
+                    }
+                    return newsArticles;
+                } else {
 
+                }
+            } catch (JsonProcessingException e) {
+
+            }
+        } else {
+            // Handle non-OK HTTP status code (e.g., log the error)
+
+        }
+
+        // Handle any other error cases here
+        return Collections.emptyList(); // Return an empty list or throw an exception
     }
-    public String fetchNewsArticlesJson(){
-        //
-        Type NewsArticleType=new TypeToken<List<NewsArticle>>(){}.getType();
 
-        HttpEntity<String> request=new HttpEntity<>(new HttpHeaders());
-        ResponseEntity<String> response=restTemplate.exchange(newsApiUrl, HttpMethod.GET,request,String.class);
+    public Long convertStringToLong(String input) {
+        // Remove all non-digit characters (letters) from the input string
+        String numericString = input.replaceAll("[^0-9]", "");
 
-        return response.getBody();
-
+        try {
+            // Attempt to parse the numeric string into a Long
+            return Long.parseLong(numericString);
+        } catch (NumberFormatException e) {
+            // Handle the case where the input doesn't represent a valid Long
+            System.err.println("Invalid input: " + input);
+            return 0L; // You can choose a different default value if needed
+        }
     }
-    public void populate(){
-
-    }
-
-
 }
+
+
+
+
+
+//    //OLD METHODS THESE DONT WORK
+//    public String fetchNewsArticlesJson(){
+//
+//        HttpEntity<String> request=new HttpEntity<>(new HttpHeaders());
+//        ResponseEntity<String> response=restTemplate.exchange(newsApiUrl, HttpMethod.GET,request,String.class);
+//
+//            return response.getBody();
+//
+//
+//    }
+//
+//
+//    public List<NewsArticleRaw> fetchNewsArticlesold() throws JsonProcessingException {
+//        //
+//        ParameterizedTypeReference<List<NewsArticle>> NewsArticleType=new ParameterizedTypeReference<>(){};
+//
+//        HttpEntity<String> request=new HttpEntity<>(new HttpHeaders());
+//        ResponseEntity<String> response=restTemplate.exchange(newsApiUrl, HttpMethod.GET,request,String.class);
+//        List<NewsArticleRaw> something=mapper.readValue(response.getBody(), new TypeReference<List<NewsArticleRaw>>(){});
+//
+//        return something;
+//
+//    }
+//    public List<NewsArticleRaw> fetchNewsArticl() throws JsonProcessingException {
+//        HttpHeaders headers = new HttpHeaders();
+//        HttpEntity<String> request = new HttpEntity<>(headers);
+//
+//        ResponseEntity<String> response = restTemplate.exchange(newsApiUrl, HttpMethod.GET, request, String.class);
+//
+//        String responseBody = response.getBody();
+//        return mapper.readValue(responseBody, new TypeReference<List<NewsArticleRaw>>() {});
+//
+//    }
+
+
+
+
