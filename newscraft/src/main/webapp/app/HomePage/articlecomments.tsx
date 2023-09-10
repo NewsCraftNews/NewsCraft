@@ -8,7 +8,7 @@ import { getArticleComments } from "app/entities/comment/comment.reducer";
 import { IComment } from "app/shared/model/comment.model";
 import { TextFormat } from "react-jhipster";
 import { APP_DATE_TIME_FORMAT, APP_TIMESTAMP_FORMAT } from "app/config/constants";
-import { CommentsSection } from '@slydragonn/react-easy-comments';
+import BoxComponent from "app/HomePage/comment";
 
 export const CommentSection = () => {
   const dispatch = useAppDispatch();
@@ -22,41 +22,16 @@ export const CommentSection = () => {
     dispatch(getArticleComments(id));
   }, []);
 
-  return commentList.map((comment, i) => (
-    <div key={`category-${comment.id}`}>
-      <p key={`category-${comment.id}`}>
-        Written by&nbsp;
-        {comment.author.login}
+  return (
+  <div><h1>Comments</h1>
+    <br/>
+    {commentList.map((comment, i) => (
+      <div>
+        <BoxComponent comments={comment} />
         <br/>
-        Posted on&nbsp;
-        {<TextFormat value={comment.timePosted} type="date" format={APP_TIMESTAMP_FORMAT}/>}
-        <br/>
-        {comment.commentText}
-      </p>
-    </div>))
-//     <div className="table-responsive">
-//       {commentList && commentList.length > 0 ? (
-//         <Table responsive>
-//           {/*<thead>*/}
-//           {/*  <tr>*/}
-//           {/*    <th>ID</th>*/}
-//           {/*    <th>Comment Text</th>*/}
-//           {/*  </tr>*/}
-//           {/*</thead>*/}
-//           <tbody>
-//             {commentList.map((comment, i) => (
-//               <tr key={`entity-${i}`} data-cy="entityTable">
-//                 <td>{comment.author.login}</td>
-//                 <td>{<TextFormat value={comment.timePosted} type="date" format={APP_TIMESTAMP_FORMAT} />}</td>
-//                 <td>{comment.commentText}</td>
-//               </tr>
-//             ))}
-//           </tbody>
-//         </Table>
-//       ) : (
-//         !loading && <div className="alert alert-warning">No Comments found</div>
-//       )}
-//     </div>
-};
+      </div>))}
+
+  </div>
+  )};
 
 export default CommentSection;
