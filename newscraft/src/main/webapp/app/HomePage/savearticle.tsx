@@ -22,12 +22,18 @@ export const BookmarkButton = (props: IArticleProps) => {
   const login = useAppSelector(state => state.authentication.account.login);
   const isAuthenticated = useAppSelector(state => state.authentication.isAuthenticated);
   const bookMarkEntity = useAppSelector(state => state.bookMark.entity);
+  const loading = useAppSelector(state => state.bookMark.loading);
 
   const [toggle, setToggle] = useState(bookMarkEntity);
 
   useEffect(() => {
     dispatch(getUserSpecificEntity({login, id}));
-  }, [id]);
+  }, [login, id]);
+
+  useEffect(() => {
+    var newToggleVal: boolean = loading ? false : bookMarkEntity;
+    setToggle(newToggleVal);
+  });
 
   const handleClick = () => {
     if(bookMarkEntity.id === undefined){
@@ -40,7 +46,6 @@ export const BookmarkButton = (props: IArticleProps) => {
     else {
       dispatch(deleteEntity(bookMarkEntity.id));
     }
-    setToggle(!toggle);
   };
 
 // it looks ugly now BUT IT WORKS!

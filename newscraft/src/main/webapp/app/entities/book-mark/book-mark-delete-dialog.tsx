@@ -25,7 +25,7 @@ export const BookMarkDeleteDialog = () => {
   const updateSuccess = useAppSelector(state => state.bookMark.updateSuccess);
 
   const handleClose = () => {
-    navigate('/book-mark');
+    navigate(-1);
   };
 
   useEffect(() => {
