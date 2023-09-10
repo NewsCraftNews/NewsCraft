@@ -47,7 +47,9 @@ export const Article = () => {
         <br />
         Written by {newsArticleEntity.author ? newsArticleEntity.author.login : ''}
       </p>
+      <br/>
       <p>{newsArticleEntity.articleText}</p>
+      <br/>
       <CommentSection />
     </div>
   );
