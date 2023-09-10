@@ -20,8 +20,8 @@ export const Bookmarks = () => {
   }, []);
 
   /* IDEA!
-   * let's try to make a delete button instead of refresh
-   * onclick, the delete button will show a checkbox before? to delete? or just bring back the delete button HMMMM
+   * the idea worked and is amazing
+   * HOWEVER, the delete dialog leads you to the entities page, which is bad bad - users should not be able to see that page
    */
   return (
     <div>

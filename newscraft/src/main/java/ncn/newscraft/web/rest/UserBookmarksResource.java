@@ -10,10 +10,12 @@ import ncn.newscraft.web.rest.errors.BadRequestAlertException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import tech.jhipster.web.util.HeaderUtil;
+import tech.jhipster.web.util.ResponseUtil;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -106,5 +108,30 @@ public class UserBookmarksResource {
             .created(new URI("/api/book-marks/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
             .body(result);
+    }
+
+    /**
+     * {@code GET  /book-marks/:login} : get the bookMarks associated with this login.
+     *
+     * @param login the login to get the bookmarks of
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the bookMarks, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping("/user/{login}/bookmark")
+    public ResponseEntity<BookMark> getBookmarkForUser(@PathVariable String login, @RequestParam Long articleid) {
+        log.debug("REST request to get BookMark for User {} for Article {}", login, articleid);
+        // check for user profile associated with account
+        UserProfile up = findUserProfileByLogin(login);
+
+        List<BookMark> userBookmarks = bookMarkRepository.findAllWithEagerRelationships()
+            .stream()
+            .filter(bm -> bm.getCreatedBy() != null)
+            .filter(bm -> bm.getCreatedBy().getId().equals(up.getId()))
+            .filter(bm -> bm.getLinksTo() != null)
+            .filter(bm -> bm.getLinksTo().getId().equals(articleid))
+            .collect(Collectors.toList());
+        if(!userBookmarks.isEmpty()){
+            return new ResponseEntity<>(userBookmarks.get(0), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

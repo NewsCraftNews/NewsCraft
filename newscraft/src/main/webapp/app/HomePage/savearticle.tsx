@@ -6,37 +6,50 @@ import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
-// import { IBookMark } from 'app/shared/model/book-mark.model';
-// import { getUserBookmark, deleteUserBookmark } from 'app/entities/book-mark/book-mark.reducer';
+import { IBookMark } from 'app/shared/model/book-mark.model';
+import { INewsArticle } from "app/shared/model/news-article.model";
+import { getUserSpecificEntity, createUserBookmarkEntity, deleteEntity } from 'app/entities/book-mark/book-mark.reducer';
 
-export const BookmarkButton = () => {
+export interface IArticleProps {
+  article: INewsArticle;
+};
+
+export const BookmarkButton = (props: IArticleProps) => {
   const dispatch = useAppDispatch();
+
   const { id } = useParams<'id'>();
 
-  const loggedInUser = useAppSelector(state => state.authentication.account.login);
+  const login = useAppSelector(state => state.authentication.account.login);
   const isAuthenticated = useAppSelector(state => state.authentication.isAuthenticated);
-  const [toggle, setToggle] = useState(true);
+  const bookMarkEntity = useAppSelector(state => state.bookMark.entity);
 
-//   useEffect(() => {
-//     dispatch(getUserBookmark());
-//   }, []);
+  const [toggle, setToggle] = useState(bookMarkEntity);
 
-//   const handleSyncList = () => {
-//     if(category_name) dispatch(getEntitiesOfCategory(category_name));
-//     else dispatch(getEntities({}));
-//   };
+  useEffect(() => {
+    dispatch(getUserSpecificEntity({login, id}));
+  }, [id]);
+
+  const handleClick = () => {
+    if(bookMarkEntity.id === undefined){
+      // if the bookmark doesn't exist then save
+      const entity = {
+        linksTo: props.article,
+      };
+      dispatch(createUserBookmarkEntity({login, entity}));
+    }
+    else {
+      dispatch(deleteEntity(bookMarkEntity.id));
+    }
+    setToggle(!toggle);
+  };
 
 // it looks ugly now BUT IT WORKS!
-  return (
-    <div className="d-flex justify-content-end">
-      {isAuthenticated ?
-        <Button className="me-2" color="info" onClick={() => setToggle(!toggle)} active={toggle}>
-          <FontAwesomeIcon icon={faBookmark} />
-        </Button>
-        :
-        <span>&nbsp;</span>
-      }
-    </div>
+  return ( isAuthenticated ?
+    <Button className="me-2" color="info" onClick={handleClick} active={toggle}>
+      <FontAwesomeIcon icon={faBookmark} />
+    </Button>
+    :
+    <span>&nbsp;</span>
   );
 };
 

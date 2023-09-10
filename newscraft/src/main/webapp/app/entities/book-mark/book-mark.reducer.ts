@@ -14,11 +14,21 @@ const initialState: EntityState<IBookMark> = {
   updateSuccess: false,
 };
 
+export interface IUserBookmarkParams {
+  login: string;
+  id: string | number;
+}
+
+export interface ISaveBookmarkParams {
+  login: string;
+  entity: IBookMark;
+}
+
 const apiUrl = 'api/book-marks';
 
 // Actions
 
-export const getUserSpecificEntities = createAsyncThunk('bookMark/fetch_entity_list', async (login: String) => {
+export const getUserSpecificEntities = createAsyncThunk('bookMark/fetch_entity_list', async (login: string) => {
   const requestUrl = `api/user/${login}/bookmarks?cacheBuster=${new Date().getTime()}`;
   return axios.get<IBookMark[]>(requestUrl);
 });
@@ -28,11 +38,30 @@ export const getEntities = createAsyncThunk('bookMark/fetch_entity_list', async 
   return axios.get<IBookMark[]>(requestUrl);
 });
 
+export const getUserSpecificEntity = createAsyncThunk(
+  'bookMark/fetch_entity',
+  async ({login, id}: IUserBookmarkParams) => {
+    const requestUrl = `api/user/${login}/bookmark?articleid=${id}`;
+    return axios.get<IBookMark>(requestUrl);
+  },
+  { serializeError: serializeAxiosError }
+);
+
 export const getEntity = createAsyncThunk(
   'bookMark/fetch_entity',
   async (id: string | number) => {
     const requestUrl = `${apiUrl}/${id}`;
     return axios.get<IBookMark>(requestUrl);
+  },
+  { serializeError: serializeAxiosError }
+);
+
+export const createUserBookmarkEntity = createAsyncThunk(
+  'bookMark/create_entity',
+  async (params: ISaveBookmarkParams) => {
+    const requestUrl = `api/user/${params.login}/bookmarks`;
+    const result = await axios.post<IBookMark>(requestUrl, cleanEntity(params.entity));
+    return result;
   },
   { serializeError: serializeAxiosError }
 );
