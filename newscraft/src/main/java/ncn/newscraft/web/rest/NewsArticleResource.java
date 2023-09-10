@@ -2,12 +2,16 @@ package ncn.newscraft.web.rest;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import ncn.newscraft.domain.NewsArticle;
+import ncn.newscraft.domain.NewsArticleRaw;
 import ncn.newscraft.repository.NewsArticleRepository;
 import ncn.newscraft.service.ExternalApis;
 import ncn.newscraft.web.rest.errors.BadRequestAlertException;
@@ -28,6 +32,7 @@ import tech.jhipster.web.util.ResponseUtil;
 @RequestMapping("/api")
 @Transactional
 public class NewsArticleResource {
+
     @Autowired
     public ExternalApis externalApis;
 
@@ -197,8 +202,18 @@ public class NewsArticleResource {
             .build();
     }
     @GetMapping("/api")
-    public List<NewsArticle> newsArticleList() throws JsonProcessingException {
-        return externalApis.fetchNewsArticles();
+    public List<NewsArticleRaw> newsArticleListJson() throws JsonProcessingException, URISyntaxException {
+//        for (NewsArticleRaw i:externalApis.fetchNewsArticles()) {
+//            NewsArticle newsArticle=new NewsArticle();
+//            newsArticle.setArticleText(i.getContent());
+//            newsArticle.setTitle(i.getTitle());
+//            // Problem newsArticle.setPicture(i.getImageUrl());
+//            //Problem  newsArticle.setCategories(i.getCategory());
+//            createNewsArticle(newsArticle);
+//        }
+
+//        return externalApis.fetchNewsArticles();
+return null;
 
     }
 }

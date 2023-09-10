@@ -21,6 +21,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @SuppressWarnings("common-java:DuplicatedBlocks")
 public class NewsArticle implements Serializable {
 
+
     private static final long serialVersionUID = 1L;
 
     @Id
