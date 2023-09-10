@@ -1,20 +1,19 @@
-import React, {useState, useEffect} from 'react';
-import {Button, Table, NavLink, NavItem} from 'reactstrap';
-import {NavLink as Link, useParams} from 'react-router-dom';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import React, { useState, useEffect } from 'react';
+import { Button, Table, NavLink, NavItem } from 'reactstrap';
+import { NavLink as Link, useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import {useAppDispatch, useAppSelector} from 'app/config/store';
-import {getArticleComments} from "app/entities/comment/comment.reducer";
-import {IComment} from "app/shared/model/comment.model";
-import {TextFormat} from "react-jhipster";
-import {APP_DATE_TIME_FORMAT, APP_TIMESTAMP_FORMAT} from "app/config/constants";
-import {BoxProps} from "@mui/material";
+import { useAppDispatch, useAppSelector } from 'app/config/store';
+import { getArticleComments } from "app/entities/comment/comment.reducer";
+import { IComment } from "app/shared/model/comment.model";
+import { TextFormat } from "react-jhipster";
+import { APP_DATE_TIME_FORMAT, APP_TIMESTAMP_FORMAT } from "app/config/constants";
 import BoxComponent from "app/HomePage/comment";
 
 export const CommentSection = () => {
   const dispatch = useAppDispatch();
 
-  const {id} = useParams<'id'>();
+  const { id } = useParams<'id'>();
 
   const commentList = useAppSelector(state => state.comment.entities);
   const loading = useAppSelector(state => state.comment.loading);
