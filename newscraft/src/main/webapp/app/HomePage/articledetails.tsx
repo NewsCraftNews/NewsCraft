@@ -37,7 +37,9 @@ export const Article = () => {
     <div>
       <h1 data-cy="NewsArticleHeading">
         {newsArticleEntity.title}
-        <BookmarkButton />
+        <div key={`button-${newsArticleEntity.id}`} className="d-flex justify-content-end">
+          <BookmarkButton article={newsArticleEntity} />
+        </div>
       </h1>
       <p>
         Posted on&nbsp;
