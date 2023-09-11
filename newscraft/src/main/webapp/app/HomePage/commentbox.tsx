@@ -11,13 +11,9 @@ import {useEffect, useState} from "react";
 import {getUserSpecificEntity} from "app/entities/book-mark/book-mark.reducer";
 import {IUserProfile} from "app/shared/model/user-profile.model";
 import {INewsArticle} from "app/shared/model/news-article.model";
+import { IArticleProps } from "app/HomePage/savearticle";
 
-export interface ICommentProps {
-  article: IComment;
-};
-
-
-export const CommentBox = (props: ICommentProps) => {
+export const CommentBox = (props: IArticleProps) => {
   const dispatch = useAppDispatch();
   const [text, setText] = useState("");
   // const [updated, setUpdated] = useState(text);
@@ -53,6 +49,7 @@ export const CommentBox = (props: ICommentProps) => {
       timePosted: new Date().toISOString(),
       article: props.article
     }
+//     entity.article.id = id;
     console.log(entity);
     dispatch(createComment({login, entity}));
   };

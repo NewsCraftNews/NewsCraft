@@ -9,13 +9,16 @@ import { IComment } from "app/shared/model/comment.model";
 import { TextFormat } from "react-jhipster";
 import { APP_DATE_TIME_FORMAT, APP_TIMESTAMP_FORMAT } from "app/config/constants";
 import BoxComponent from "app/HomePage/comment";
-import CommentBox, {ICommentProps} from "app/HomePage/commentbox";
+import CommentBox from "app/HomePage/commentbox";
+import {INewsArticle} from "app/shared/model/news-article.model";
+import { IArticleProps } from "app/HomePage/savearticle";
 
-export const CommentSection = (props: ICommentProps) => {
+export const CommentSection = (props: IArticleProps) => {
   const dispatch = useAppDispatch();
 
   const { id } = useParams<'id'>();
 
+  const isAuthenticated = useAppSelector(state => state.authentication.isAuthenticated);
   const commentList = useAppSelector(state => state.comment.entities);
   const loading = useAppSelector(state => state.comment.loading);
 
@@ -26,7 +29,7 @@ export const CommentSection = (props: ICommentProps) => {
   return (
   <div><h1>Comments</h1>
     <br/>
-    <CommentBox article={props}/>
+    {isAuthenticated && <CommentBox article={props.article}/>}
     {commentList.map((comment, i) => (
       <div>
         <BoxComponent comments={comment} key={i} />

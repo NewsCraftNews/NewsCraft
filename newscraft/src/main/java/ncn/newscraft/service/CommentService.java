@@ -6,8 +6,10 @@ import java.util.Objects;
 import java.util.Optional;
 
 import ncn.newscraft.domain.Comment;
+import ncn.newscraft.domain.NewsArticle;
 import ncn.newscraft.domain.UserProfile;
 import ncn.newscraft.repository.CommentRepository;
+import ncn.newscraft.repository.NewsArticleRepository;
 import ncn.newscraft.repository.UserProfileRepository;
 import ncn.newscraft.service.dto.CommentDTO;
 import ncn.newscraft.service.mapper.CommentMapper;
@@ -34,16 +36,20 @@ public class CommentService {
 
     private final CommentMapper mapper;
 
+    private final NewsArticleRepository newsArticleRepository;
+
     private final CacheManager cacheManager;
 
     public CommentService(
         CommentRepository commentRepository,
         UserProfileRepository userProfileRepository,
+        NewsArticleRepository newsArticleRepository,
         CommentMapper mapper,
         CacheManager cacheManager
     ) {
         this.commentRepository = commentRepository;
         this.userProfileRepository = userProfileRepository;
+        this.newsArticleRepository = newsArticleRepository;
         this.mapper = mapper;
         this.cacheManager = cacheManager;
     }
@@ -81,6 +87,9 @@ public class CommentService {
     }
 
     public Comment saveComment(Comment comment) {
+        log.debug("help {}", comment.getArticle().getId());
+        Optional<NewsArticle> na = newsArticleRepository.findById(comment.getArticle().getId());
+        comment.setArticle(na.get());
         return commentRepository.save(comment);
     }
 }

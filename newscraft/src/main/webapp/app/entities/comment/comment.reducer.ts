@@ -35,9 +35,6 @@ export interface ICommentCreate {
 export const createComment = createAsyncThunk(
     'comment/create_entity',
     async (params: ICommentCreate, thunkAPI) => {
-        delete params.entity.article.author;
-        delete params.entity.article.categories;
-        delete params.entity.article.picture;
         const requestUrl = `api/comments/${params.login}/article`;
         const result = await axios.post<IComment>(requestUrl, cleanEntity(params.entity));
         // thunkAPI.dispatch(getArticleComments({}));
