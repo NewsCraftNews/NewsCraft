@@ -7,14 +7,14 @@ import { faNewspaper } from '@fortawesome/free-solid-svg-icons';
 
 export const BrandIcon = props => (
   <div {...props} className="brand-icon">
-    <img src="content/images/NewsCraftTransparent.png" alt="Logo" />
+    <img src="content/images/NewsCraft3.png" alt="Logo" />
   </div>
 );
 
 export const Brand = () => (
   <NavbarBrand tag={Link} to="/" className="brand-logo">
     <BrandIcon />
-    <span className="brand-title">NewsCraft</span>
+    <span className="brand-title"></span>
     {/*<span className="navbar-version">{VERSION}</span>*/}
   </NavbarBrand>
 );
@@ -22,7 +22,7 @@ export const Brand = () => (
 export const Home = () => (
   <NavItem>
     <NavLink tag={Link} to="/" className="d-flex align-items-center">
-      <FontAwesomeIcon icon="home" />
+{/*      <FontAwesomeIcon icon="home" /> */}
       <span>Home</span>
     </NavLink>
   </NavItem>
