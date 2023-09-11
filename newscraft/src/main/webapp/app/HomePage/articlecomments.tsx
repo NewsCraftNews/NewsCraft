@@ -9,6 +9,7 @@ import { IComment } from "app/shared/model/comment.model";
 import { TextFormat } from "react-jhipster";
 import { APP_DATE_TIME_FORMAT, APP_TIMESTAMP_FORMAT } from "app/config/constants";
 import BoxComponent from "app/HomePage/comment";
+import CommentBox from "app/HomePage/commentbox";
 
 export const CommentSection = () => {
   const dispatch = useAppDispatch();
@@ -25,6 +26,7 @@ export const CommentSection = () => {
   return (
   <div><h1>Comments</h1>
     <br/>
+    <CommentBox/>
     {commentList.map((comment, i) => (
       <div>
         <BoxComponent comments={comment} />
