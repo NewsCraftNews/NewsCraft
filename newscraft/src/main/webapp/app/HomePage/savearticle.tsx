@@ -31,7 +31,7 @@ export const BookmarkButton = (props: IArticleProps) => {
   }, [login, id]);
 
   useEffect(() => {
-    var newToggleVal: boolean = !loading && bookMarkEntity ? true : false;
+    let newToggleVal: boolean = !!(!loading && bookMarkEntity);
     setToggle(newToggleVal);
   });
 
