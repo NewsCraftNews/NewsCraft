@@ -50,7 +50,7 @@ export const Article = () => {
       <br/>
       <p>{newsArticleEntity.articleText}</p>
       <br/>
-      <CommentSection />
+      <CommentSection article={newsArticleEntity} />
     </div>
   );
 };

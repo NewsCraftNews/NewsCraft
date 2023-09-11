@@ -9,9 +9,9 @@ import { IComment } from "app/shared/model/comment.model";
 import { TextFormat } from "react-jhipster";
 import { APP_DATE_TIME_FORMAT, APP_TIMESTAMP_FORMAT } from "app/config/constants";
 import BoxComponent from "app/HomePage/comment";
-import CommentBox from "app/HomePage/commentbox";
+import CommentBox, {ICommentProps} from "app/HomePage/commentbox";
 
-export const CommentSection = () => {
+export const CommentSection = (props: ICommentProps) => {
   const dispatch = useAppDispatch();
 
   const { id } = useParams<'id'>();
@@ -26,7 +26,7 @@ export const CommentSection = () => {
   return (
   <div><h1>Comments</h1>
     <br/>
-    <CommentBox/>
+    <CommentBox article={props}/>
     {commentList.map((comment, i) => (
       <div>
         <BoxComponent comments={comment} />
