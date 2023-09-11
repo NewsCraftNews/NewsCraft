@@ -2,13 +2,14 @@ package ncn.newscraft.web.rest;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import ncn.newscraft.domain.NewsArticle;
-import ncn.newscraft.domain.NewsArticleRaw;
+import ncn.newscraft.domain.*;
 import ncn.newscraft.repository.NewsArticleRepository;
 import ncn.newscraft.service.ExternalApis;
 import ncn.newscraft.web.rest.errors.BadRequestAlertException;
@@ -32,6 +33,12 @@ public class NewsArticleResource {
 
     @Autowired
     public ExternalApis externalApis;
+
+    private List<NewsArticle> jsonList=new ArrayList<>()
+
+    {
+    };
+
 
     private final Logger log = LoggerFactory.getLogger(NewsArticleResource.class);
 
@@ -199,18 +206,31 @@ public class NewsArticleResource {
             .build();
     }
     @GetMapping("/api")
-    public List<NewsArticleRaw> newsArticleListJson() throws JsonProcessingException, URISyntaxException {
-//        for (NewsArticleRaw i:externalApis.fetchNewsArticles()) {
-//            NewsArticle newsArticle=new NewsArticle();
-//            newsArticle.setArticleText(i.getContent());
-//            newsArticle.setTitle(i.getTitle());
-//            // Problem newsArticle.setPicture(i.getImageUrl());
-//            //Problem  newsArticle.setCategories(i.getCategory());
-//            createNewsArticle(newsArticle);
-//        }
+    public List<NewsArticle> newsArticleListJson() throws JsonProcessingException, URISyntaxException {
 
-//        return externalApis.fetchNewsArticles();
-return null;
+        if(jsonList.isEmpty()) {
 
+            for (NewsArticleRaw i:externalApis.fetchNewsArticles()) {
+                NewsArticle newsArticle=new NewsArticle();
+                newsArticle.setArticleText(i.getContent());
+                newsArticle.setTitle(i.getTitle());
+                newsArticle.setLikes((int) (Math.random()*1000));
+                newsArticle.setPicture(new Picture().imageURL(i.getImageUrl()));
+                newsArticle.setAuthor(new UserProfile().login(i.getCreator()[0]));
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                String inputDate = i.getPubDate().trim();
+
+// Parse the input string using the specified format
+                LocalDateTime localDateTime = LocalDateTime.parse(inputDate, formatter);
+
+// You can then convert it to a ZonedDateTime with the desired time zone
+                ZoneId zoneId = ZoneId.of("America/New_York"); // Replace with the desired time zone
+                ZonedDateTime zonedDateTime = localDateTime.atZone(zoneId);
+
+                newsArticle.setTimePosted(zonedDateTime);
+                jsonList.add(newsArticle);
+            }
+        }
+            return jsonList;
     }
 }
