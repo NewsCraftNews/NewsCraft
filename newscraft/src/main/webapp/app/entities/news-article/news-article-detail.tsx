@@ -33,6 +33,9 @@ export const NewsArticleDetail = () => {
           </dt>
           <dd>{newsArticleEntity.title}</dd>
           <dt>
+          <div className="brand-icon">
+            <img src="content/images/Article photo.png" alt="Logo" />
+           </div>
             <span id="articleText">Article Text</span>
           </dt>
           <dd>{newsArticleEntity.articleText}</dd>
