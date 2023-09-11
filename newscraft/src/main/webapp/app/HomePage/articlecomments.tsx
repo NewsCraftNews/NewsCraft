@@ -29,7 +29,7 @@ export const CommentSection = (props: ICommentProps) => {
     <CommentBox article={props}/>
     {commentList.map((comment, i) => (
       <div>
-        <BoxComponent comments={comment} />
+        <BoxComponent comments={comment} key={i} />
         <br/>
       </div>))}
 

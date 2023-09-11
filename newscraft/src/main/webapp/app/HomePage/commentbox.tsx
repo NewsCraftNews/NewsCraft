@@ -28,23 +28,32 @@ export const CommentBox = (props: ICommentProps) => {
   const login = useAppSelector(state => state.authentication.account.login);
   const isAuthenticated = useAppSelector(state => state.authentication.isAuthenticated);
   const commentEntity = useAppSelector(state => state.comment.entity);
+  const updateSuccess = useAppSelector(state => state.comment.updateSuccess);
 
   useEffect(() => {
     dispatch(getUserSpecificEntity({login, id}));
   }, [login, id]);
 
+  useEffect(() => {
+    if (updateSuccess) {
+      // handleClose();
+      console.log("hey, it works")
+    }
+  }, [updateSuccess]);
+
   const handleChange = (event) => {
     setText(event.target.value);
   }
 
-  const handleClick = () => {
+  const handleClick = (event) => {
+    event.preventDefault();
 
     const entity = {
       commentText: text,
       timePosted: new Date(),
       article: props.article
-  }
-  console.log(entity);
+    }
+    console.log(entity);
     return false;
     // dispatch(createEntity({login, entity}));
   };
@@ -59,14 +68,17 @@ export const CommentBox = (props: ICommentProps) => {
       autoComplete="off"
     >
       <form onSubmit={handleClick}>
-          <TextField
-            id="comment-box"
-            label="Write Comment"
-            multiline
-            rows={4}
-          />
-        <Button className="me-2" color="info" type="submit">Post</Button>
+        <TextField
+          id="comment-box"
+          label="Write Comment"
+          multiline
+          rows={4}
+          value={text}
+          onChange={handleChange}
+        />
+        <Button className="me-2" color="info" type="submit" onClick={(event) => handleClick(event)}>Post</Button>
       </form>
+      <br/>
     </Box>
   );
 }
