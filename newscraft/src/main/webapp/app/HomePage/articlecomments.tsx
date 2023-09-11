@@ -18,6 +18,7 @@ export const CommentSection = (props: IArticleProps) => {
 
   const { id } = useParams<'id'>();
 
+  const isAuthenticated = useAppSelector(state => state.authentication.isAuthenticated);
   const commentList = useAppSelector(state => state.comment.entities);
   const loading = useAppSelector(state => state.comment.loading);
 
@@ -28,7 +29,7 @@ export const CommentSection = (props: IArticleProps) => {
   return (
   <div><h1>Comments</h1>
     <br/>
-    <CommentBox article={props.article}/>
+    {isAuthenticated && <CommentBox article={props.article}/>}
     {commentList.map((comment, i) => (
       <div>
         <BoxComponent comments={comment} key={i} />
