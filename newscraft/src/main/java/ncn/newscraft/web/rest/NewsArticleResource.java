@@ -219,11 +219,9 @@ public class NewsArticleResource {
                 newsArticle.setAuthor(new UserProfile().login(i.getCreator()[0]));
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                 String inputDate = i.getPubDate().trim();
-
-// Parse the input string using the specified format
+                // Parse the input string using the specified format
                 LocalDateTime localDateTime = LocalDateTime.parse(inputDate, formatter);
-
-// You can then convert it to a ZonedDateTime with the desired time zone
+                // You can then convert it to a ZonedDateTime with the desired time zone
                 ZoneId zoneId = ZoneId.of("America/New_York"); // Replace with the desired time zone
                 ZonedDateTime zonedDateTime = localDateTime.atZone(zoneId);
 

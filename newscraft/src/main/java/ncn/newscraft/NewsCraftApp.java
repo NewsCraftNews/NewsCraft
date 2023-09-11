@@ -118,14 +118,4 @@ public class NewsCraftApp {
     public RestTemplate restTemplate(RestTemplateBuilder builder){
         return builder.build();
     }
-    @Bean
-    public ObjectMapper objectMapper (){
-        ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
-        objectMapper.registerModule(new JavaTimeModule());
-        return objectMapper;
-          }
-
-
-
-
 }
