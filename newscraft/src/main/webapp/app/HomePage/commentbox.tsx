@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from "@mui/material/Button";
 import {IComment} from "app/shared/model/comment.model";
-import {createEntity} from "app/entities/comment/comment.reducer";
+import {createComment, createEntity} from "app/entities/comment/comment.reducer";
 import {useAppDispatch, useAppSelector} from "app/config/store";
 import {useParams} from "react-router-dom";
 import login from "app/modules/login/login";
@@ -50,12 +50,11 @@ export const CommentBox = (props: ICommentProps) => {
 
     const entity = {
       commentText: text,
-      timePosted: new Date(),
+      timePosted: new Date().toISOString(),
       article: props.article
     }
     console.log(entity);
-    return false;
-    // dispatch(createEntity({login, entity}));
+    dispatch(createComment({login, entity}));
   };
 
   return (
