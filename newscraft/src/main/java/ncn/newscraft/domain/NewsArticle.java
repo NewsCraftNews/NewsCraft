@@ -13,6 +13,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 /**
  * Task entity.\n@author The JHipster team.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Schema(description = "Task entity.\n@author The JHipster team.")
 @Entity
 @Table(name = "news_article")
