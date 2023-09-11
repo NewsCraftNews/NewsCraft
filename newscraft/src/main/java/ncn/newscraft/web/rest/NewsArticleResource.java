@@ -205,7 +205,7 @@ public class NewsArticleResource {
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString()))
             .build();
     }
-    @GetMapping("/api")
+    @GetMapping("/populate")
     public List<NewsArticle> newsArticleListJson() throws JsonProcessingException, URISyntaxException {
 
         if(jsonList.isEmpty()) {
@@ -231,4 +231,5 @@ public class NewsArticleResource {
         }
             return jsonList;
     }
+
 }

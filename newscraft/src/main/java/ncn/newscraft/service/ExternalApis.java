@@ -17,12 +17,13 @@ import java.util.*;
 @Service
 public class ExternalApis {
 
+
     @Autowired
     public RestTemplate restTemplate;
     @Autowired
     public ObjectMapper mapper;
 
-    String newsApiUrl = "https://newsdata.io/api/1/news?apikey=pub_28913a8dcc770b2edef6b4b77131ecbf52201&country=us&timeframe=48&category=top,world&size=1";
+    String newsApiUrl = "https://newsdata.io/api/1/news?apikey=pub_28913a8dcc770b2edef6b4b77131ecbf52201&country=us&timeframe=48&category=top,world";
 
     public List<NewsArticleRaw> fetchNewsArticles() throws JsonProcessingException {
         HttpEntity<String> request = new HttpEntity<>(new HttpHeaders());

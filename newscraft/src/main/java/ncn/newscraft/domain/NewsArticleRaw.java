@@ -19,8 +19,7 @@ import java.util.Map;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class NewsArticleRaw {
 
-    @JsonProperty("article_id")
-    private String article_id;
+
     @JsonProperty("title")
     private String title;
     @JsonProperty("creator")
@@ -49,13 +48,7 @@ public class NewsArticleRaw {
         this.content = (String)brand.get("content");
     }
 
-    public String getArticle_id() {
-        return article_id;
-    }
 
-    public void setArticle_id(String article_id) {
-        this.article_id = article_id;
-    }
 
     public String getTitle() {
         return title;
