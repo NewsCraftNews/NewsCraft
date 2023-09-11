@@ -2,8 +2,62 @@ import * as React from "react";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from "@mui/material/Button";
+import {IComment} from "app/shared/model/comment.model";
+import {createEntity} from "app/entities/comment/comment.reducer";
+import {useAppDispatch, useAppSelector} from "app/config/store";
+import {useParams} from "react-router-dom";
+import login from "app/modules/login/login";
+import {useEffect, useState} from "react";
+import {getUserSpecificEntity} from "app/entities/book-mark/book-mark.reducer";
+import {IUserProfile} from "app/shared/model/user-profile.model";
+import {INewsArticle} from "app/shared/model/news-article.model";
 
-export default function CommentBox() {
+export interface ICommentProps {
+  article: IComment;
+};
+
+
+export const CommentBox = (props: ICommentProps) => {
+  const dispatch = useAppDispatch();
+  const [text, setText] = useState("");
+  // const [updated, setUpdated] = useState(text);
+
+
+  const {id} = useParams<'id'>();
+
+  const login = useAppSelector(state => state.authentication.account.login);
+  const isAuthenticated = useAppSelector(state => state.authentication.isAuthenticated);
+  const commentEntity = useAppSelector(state => state.comment.entity);
+  const updateSuccess = useAppSelector(state => state.comment.updateSuccess);
+
+  useEffect(() => {
+    dispatch(getUserSpecificEntity({login, id}));
+  }, [login, id]);
+
+  useEffect(() => {
+    if (updateSuccess) {
+      // handleClose();
+      console.log("hey, it works")
+    }
+  }, [updateSuccess]);
+
+  const handleChange = (event) => {
+    setText(event.target.value);
+  }
+
+  const handleClick = (event) => {
+    event.preventDefault();
+
+    const entity = {
+      commentText: text,
+      timePosted: new Date(),
+      article: props.article
+    }
+    console.log(entity);
+    return false;
+    // dispatch(createEntity({login, entity}));
+  };
+
   return (
     <Box
       component="form"
@@ -13,16 +67,21 @@ export default function CommentBox() {
       noValidate
       autoComplete="off"
     >
-      <div>
+      <form onSubmit={handleClick}>
         <TextField
-          id="outlined-multiline-static"
+          id="comment-box"
           label="Write Comment"
           multiline
           rows={4}
+          value={text}
+          onChange={handleChange}
         />
-      </div>
-      <Button>Post</Button>
+        <Button className="me-2" color="info" type="submit" onClick={(event) => handleClick(event)}>Post</Button>
+      </form>
       <br/>
     </Box>
   );
 }
+
+export default CommentBox;
+
