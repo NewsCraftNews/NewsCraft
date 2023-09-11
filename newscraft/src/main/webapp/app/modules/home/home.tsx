@@ -19,7 +19,7 @@ export const Home = () => {
   return (
     <Row>
       {account?.login ? (
-        <h2>Welcome, News Crafter!</h2>
+        <h2>Welcome, Reader!</h2>
       ) : (
         <h2>Welcome, News Reader!</h2>
       )}
@@ -30,7 +30,7 @@ export const Home = () => {
           <div className="grid-container">
 
             <div className="article-container">
-            <h1 className="article-title">Breaking News: Exciting Headline Here</h1>
+            <h1 className="article-title">Today's News: Exciting Headline Here</h1>
             <p className="article-meta">Published on September 8, 2023 by Your Name</p>
             <img className="article-image" src="https://www.atptour.com/-/media/images/news/2023/09/08/01/19/medvedev-us-open-2023-sf-preview.jpg" alt="News Image"/>
               <p className="article-content">
@@ -226,7 +226,7 @@ export const Home = () => {
       <div className="col-md-10">
         <div className="widget">
           <div className="widget_title widget_black">
-            <h2><a href="#">Popular News</a></h2>
+            <h2><a href="#">More News</a></h2>
           </div>
           <div className="media">
             <div className="media-left">
