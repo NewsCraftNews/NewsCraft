@@ -19,15 +19,26 @@ import java.util.Map;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class NewsArticleRaw {
 
-
     @JsonProperty("article_id")
     private String article_id;
     @JsonProperty("title")
     private String title;
+    @JsonProperty("creator")
+    @JsonAlias("author") // You can use JsonAlias if "creator" is also known as "author" in the JSON
+    private String[] creator;
+
+
     @JsonProperty("content")
     private String content;
+
+    @JsonProperty("pubDate")
+    private String pubDate;
+
     @JsonProperty("image_url")
     private String imageUrl;
+
+    @JsonProperty("category")
+    private String[] category;
 
 
 
@@ -54,6 +65,13 @@ public class NewsArticleRaw {
         this.title = title;
     }
 
+    public String[] getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String[] creator) {
+        this.creator = creator;
+    }
 
     public String getContent() {
         return content;
@@ -63,11 +81,29 @@ public class NewsArticleRaw {
         this.content = content;
     }
 
+    public String getPubDate() {
+        return pubDate;
+    }
+
+    public void setPubDate(String pubDate) {
+        this.pubDate=pubDate;
+    }
+
     public String getImageUrl() {
         return imageUrl;
     }
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+
+
+    public String[] getCategory() {
+        return category;
+    }
+
+    public void setCategory(String[] category) {
+        this.category = category;
     }
 }
