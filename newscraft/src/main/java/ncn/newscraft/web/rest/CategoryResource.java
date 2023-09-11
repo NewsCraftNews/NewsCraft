@@ -189,40 +189,6 @@ public class CategoryResource {
     }
 
     /**
-     * {@code GET  /categories/:name/articles} : get the articles associated with "categoryName".
-     *
-     * @param name the name of the category to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with list of articles, or with status {@code 404 (Not Found)}.
-     */
-    @GetMapping("/categories/{name}/articles")
-    public List<NewsArticle> getCategoryArticles(@PathVariable String name) {
-        log.debug("REST request to get Category : {}", name);
-        List<Category> categoryFound =
-            categoryRepository.findAll()
-            .stream()
-            .filter(category -> category.getName().equalsIgnoreCase(name))
-            .collect(Collectors.toList());
-        return categoryFound.isEmpty() ? new ArrayList<>() : new ArrayList<>(categoryFound.get(0).getArticles());
-    }
-
-    /**
-     * {@code GET  /categories/:name/articles} : get the articles associated with "categoryName".
-     *
-     * @param name the name of the category to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with list of articles, or with status {@code 404 (Not Found)}.
-     */
-    @GetMapping("/categories/{name}/articles")
-    public List<NewsArticle> getCategoryArticles(@PathVariable String name) {
-        log.debug("REST request to get Category : {}", name);
-        List<Category> categoryFound =
-            categoryRepository.findAll()
-            .stream()
-            .filter(category -> category.getName().equalsIgnoreCase(name))
-            .collect(Collectors.toList());
-        return categoryFound.isEmpty() ? new ArrayList<>() : new ArrayList<>(categoryFound.get(0).getArticles());
-    }
-
-    /**
      * {@code DELETE  /categories/:id} : delete the "id" category.
      *
      * @param id the id of the category to delete.
