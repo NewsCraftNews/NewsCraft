@@ -87,6 +87,7 @@ public class CommentService {
     }
 
     public Comment saveComment(Comment comment) {
+        log.debug("help {}", comment.getArticle().getId());
         Optional<NewsArticle> na = newsArticleRepository.findById(comment.getArticle().getId());
         comment.setArticle(na.get());
         return commentRepository.save(comment);
