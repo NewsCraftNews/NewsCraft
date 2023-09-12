@@ -210,24 +210,24 @@ public class NewsArticleResource {
 
         if(jsonList.isEmpty()) {
 
-            for (NewsArticleRaw i:externalApis.fetchNewsArticles()) {
-                NewsArticle newsArticle=new NewsArticle();
-                newsArticle.setArticleText(i.getContent());
-                newsArticle.setTitle(i.getTitle());
-                newsArticle.setLikes((int) (Math.random()*1000));
-                newsArticle.setPicture(new Picture().imageURL(i.getImageUrl()));
-                newsArticle.setAuthor(new UserProfile().login(i.getCreator()[0]));
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                String inputDate = i.getPubDate().trim();
-                // Parse the input string using the specified format
-                LocalDateTime localDateTime = LocalDateTime.parse(inputDate, formatter);
-                // You can then convert it to a ZonedDateTime with the desired time zone
-                ZoneId zoneId = ZoneId.of("America/New_York"); // Replace with the desired time zone
-                ZonedDateTime zonedDateTime = localDateTime.atZone(zoneId);
-
-                newsArticle.setTimePosted(zonedDateTime);
-                jsonList.add(newsArticle);
-            }
+//            for (NewsArticleRaw i : externalApis.fetchNewsArticles(category, size)) {
+//                NewsArticle newsArticle=new NewsArticle();
+//                newsArticle.setArticleText(i.getContent());
+//                newsArticle.setTitle(i.getTitle());
+//                newsArticle.setLikes((int) (Math.random()*1000));
+//                newsArticle.setPicture(new Picture().imageURL(i.getImageUrl()));
+//                newsArticle.setAuthor(new UserProfile().login(i.getCreator()[0]));
+//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+//                String inputDate = i.getPubDate().trim();
+//                // Parse the input string using the specified format
+//                LocalDateTime localDateTime = LocalDateTime.parse(inputDate, formatter);
+//                // You can then convert it to a ZonedDateTime with the desired time zone
+//                ZoneId zoneId = ZoneId.of("America/New_York"); // Replace with the desired time zone
+//                ZonedDateTime zonedDateTime = localDateTime.atZone(zoneId);
+//
+//                newsArticle.setTimePosted(zonedDateTime);
+//                jsonList.add(newsArticle);
+//            }
         }
             return jsonList;
     }

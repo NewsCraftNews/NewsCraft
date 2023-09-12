@@ -11,7 +11,8 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.random.RandomGenerator;
+
+
 
 @Service
 
@@ -39,6 +40,9 @@ public class ExternalApiMapper {
     }
 
     public UserProfile getUserProfile(NewsArticleRaw rawArticle){
+        if(rawArticle.getCreator() == null){
+            return new UserProfile().login("Anonymous Writer");
+        }
         return new UserProfile().login(rawArticle.getCreator()[0]);
     }
 }
