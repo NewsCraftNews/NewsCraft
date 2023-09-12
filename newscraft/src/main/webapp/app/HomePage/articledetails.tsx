@@ -20,7 +20,7 @@ export const Article = () => {
 
   useEffect(() => {
     dispatch(getEntity(id));
-  }, []);
+  }, [id]);
 
   const newsArticleEntity = useAppSelector(state => state.newsArticle.entity);
 

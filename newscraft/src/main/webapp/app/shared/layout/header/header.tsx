@@ -40,7 +40,7 @@ const Header = (props: IHeaderProps) => {
         <Brand />
         <Collapse isOpen={menuOpen} navbar>
           <Nav id="header-tabs-left" className="me-auto" navbar>
-            <Home />
+{/*             <Home /> */}
             <CategoriesMenu />
           </Nav>
           <Nav id="header-tabs-right" className="ms-auto" navbar>

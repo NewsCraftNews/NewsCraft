@@ -6,12 +6,13 @@ import {APP_TIMESTAMP_FORMAT} from "app/config/constants";
 import {IComment} from "app/shared/model/comment.model";
 
 export interface ICommentProps {
-  comments:IComment;
+  comments: IComment;
 }
 
 export const BoxComponent = (props:ICommentProps) => {
   return (
     <Box sx={{ p: 2, border: '1px solid grey' }}>
+      <div className="card bg-secondary mb-3">
       <p key={`category-${props.comments.id}`}>
         Written by&nbsp;
         {props.comments.author.login}
@@ -21,7 +22,7 @@ export const BoxComponent = (props:ICommentProps) => {
         <br/>
         {props.comments.commentText}
       </p>
-
+      </div>
     </Box>
   );
 }
