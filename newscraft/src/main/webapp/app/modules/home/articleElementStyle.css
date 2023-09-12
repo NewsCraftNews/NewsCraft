@@ -6,7 +6,7 @@ body, h1, p {
 
 /* Define styles for the container */
 .article-container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   background-color: #f4f4f4;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -44,7 +44,7 @@ body, h1, p {
 
 /* Define styles for article images */
 .article-image {
-  max-width: 60%;
+  max-width: 70%;
   height: auto;
   float: left; /* Float the image to the left */
   margin-right: 20px; /* Add margin to create space between text and image */

@@ -11,6 +11,7 @@ import { Row, Col, Alert } from 'reactstrap';
 import { useAppSelector } from 'app/config/store';
 import News from './BreakingNewsComponent';
 import WeatherApp from "app/modules/home/WeatherApp";
+import SmallArticleRight from "app/modules/home/SmallArticleRight";
 
 export const Home = () => {
   const account = useAppSelector(state => state.authentication.account);
@@ -27,7 +28,7 @@ export const Home = () => {
       <br/>
       <Col md="8">
         <Row>
-          <div className="grid-container">
+
 
             <div className="article-container">
             <h1 className="article-title">Today's News: Exciting Headline Here</h1>
@@ -40,13 +41,9 @@ export const Home = () => {
                 Nunc consectetur orci ut justo tincidunt, sit amet dignissim quam vehicula. Curabitur a erat vel urna feugiat dictum eget eget ipsum. Nullam scelerisque fringilla diam, vel iaculis odio consequat non. Duis vitae justo et justo congue commodo.
               </p>
           </div>
-            <div>
-            <News />
-              <br/><br/>
-              <WeatherApp />
-            </div>
+
             <div />
-          </div>
+
 
           <section id="feature_news_section" className="feature_news_section">
             <div className="container">
@@ -201,121 +198,51 @@ export const Home = () => {
 
 
 
-</Row>
+{/* </Row> */}
 
-        <br/>
-        <p className="lead">This is your homepage</p>
-        {account?.login ? (
-          <div>
-            <Alert color="success">You are logged in as user &quot;{account.login}&quot;.</Alert>
-          </div>
-        ) : (
-          <div></div>
-        )}
-        <p>
-          If you like this project, don&apos;t forget to give us a star on{' '}
-          <a href="https://github.com/NewsCraftNews/NewsCraft/tree/main" target="_blank" rel="noopener noreferrer">
-            GitHub
-          </a>
-          !
+{/*         <br/> */}
+{/*         <p className="lead">This is your homepage</p> */}
+{/*         {account?.login ? ( */}
+{/*           <div> */}
+{/*             <Alert color="success">You are logged in as user &quot;{account.login}&quot;.</Alert> */}
+{/*           </div> */}
+{/*         ) : ( */}
+{/*           <div></div> */}
+{/*         )} */}
+{/*         <p> */}
+{/*           If you like this project, don&apos;t forget to give us a star on{' '} */}
+{/*           <a href="https://github.com/NewsCraftNews/NewsCraft/tree/main" target="_blank" rel="noopener noreferrer"> */}
+{/*             GitHub */}
+{/*           </a> */}
+{/*           ! */}
 
-        </p>
+{/*         </p> */}
 
-      </Col>
-      <Col md="4">
-      <div className="col-md-10">
+ </Col>
+
+
+      <div className="col-md-4">
         <div className="widget">
-          <div className="widget_title widget_black">
-            <h2><a href="#">More News</a></h2>
-          </div>
-          <div className="media">
-            <div className="media-left">
-              <a href="#"><img className="media-object" src="https://www.cabq.gov/artsculture/biopark/news/10-cool-facts-about-penguins/@@images/1a36b305-412d-405e-a38b-0947ce6709ba.jpeg" alt="Generic placeholder image" /></a>
-            </div>
-            <div className="media-body">
-              <h3 className="media-heading">
-                <a href="single.html" target="_self">Canon launches photo-centric 00214 Model super shutter camera</a>
-              </h3>
-              <span className="media-date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric Joan</a></span>
+          <div >
 
-              <div className="widget_article_social">
-        <span>
-        <a href="single.html" target="_self"> <i className="fa fa-share-alt"></i>424</a> Shares
-        </span>
-                <span>
-        <a href="single.html" target="_self"><i className="fa fa-comments-o"></i>4</a> Comments
-        </span>
-              </div>
-            </div>
+            <div className="widget_title widget_black"><a href="#" >More News</a></div>
           </div>
-          <div className="media">
-            <div className="media-left">
-              <a href="#"><img className="media-object" src="https://www.cabq.gov/artsculture/biopark/news/10-cool-facts-about-penguins/@@images/1a36b305-412d-405e-a38b-0947ce6709ba.jpeg" alt="Generic placeholder image" /></a>
-            </div>
-            <div className="media-body">
-              <h3 className="media-heading">
-                <a href="single.html" target="_self">Samsung galaxy note is the super mobile of all products.</a>
-              </h3>
-              <span className="media-date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric Joan</a></span>
-
-              <div className="widget_article_social">
-        <span>
-        <a href="single.html" target="_self"> <i className="fa fa-share-alt"></i>424</a> Shares
-        </span>
-                <span>
-        <a href="single.html" target="_self"><i className="fa fa-comments-o"></i>4</a> Comments
-        </span>
-              </div>
-            </div>
-          </div>
-          <div className="media">
-            <div className="media-left">
-              <a href="#"><img className="media-object" src="https://www.cabq.gov/artsculture/biopark/news/10-cool-facts-about-penguins/@@images/1a36b305-412d-405e-a38b-0947ce6709ba.jpeg" alt="Generic placeholder image" /></a>
-            </div>
-            <div className="media-body">
-              <h3 className="media-heading">
-                <a href="single.html" target="_self">Apple launches photo-centric wristwatch for Android</a>
-              </h3>
-              <span className="media-date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric Joan</a></span>
-
-              <div className="widget_article_social">
-        <span>
-        <a href="single.html" target="_self"> <i className="fa fa-share-alt"></i>424</a> Shares
-        </span>
-                <span>
-        <a href="single.html" target="_self"><i className="fa fa-comments-o"></i>4</a> Comments
-        </span>
-              </div>
-            </div>
-          </div>
-          <div className="media">
-            <div className="media-left">
-              <a href="#"><img className="media-object" src="https://www.cabq.gov/artsculture/biopark/news/10-cool-facts-about-penguins/@@images/1a36b305-412d-405e-a38b-0947ce6709ba.jpeg" alt="Generic placeholder image" /></a>
-            </div>
-            <div className="media-body">
-              <h3 className="media-heading">
-                <a href="single.html" target="_self">Kodak Hi-Speed shutter double shot camera coming soon</a>
-              </h3>
-              <span className="media-date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric Joan</a></span>
-
-              <div className="widget_article_social">
-        <span>
-        <a href="single.html" target="_self"><i className="fa fa-share-alt"></i>424</a> Shares
-        </span>
-                <span>
-        <a href="single.html" target="_self"><i className="fa fa-comments-o"></i>4</a> Comments
-        </span>
-              </div>
-            </div>
-          </div>
+          <SmallArticleRight/>
+          <SmallArticleRight/>
+          <SmallArticleRight/>
+         <div>
           <p className="widget_divider"><a href="#" target="_self">More News&nbsp;&raquo;</a></p>
+          <WeatherApp/>
         </div>
+
 
 
       </div>
 </Col>
 
     </Row>
+
+
 
   );
 };
