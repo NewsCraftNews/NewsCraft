@@ -2,12 +2,18 @@ package ncn.newscraft;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Optional;
+import java.util.*;
 import javax.annotation.PostConstruct;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import ncn.newscraft.config.ApplicationProperties;
 import ncn.newscraft.config.CRLFLogConverter;
+import ncn.newscraft.domain.NewsArticleRaw;
+import ncn.newscraft.service.ExternalApis;
+import ncn.newscraft.service.mapper.ExternalApiTransactionalService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +21,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
+import org.springframework.web.client.RestTemplate;
 import tech.jhipster.config.DefaultProfileUtil;
 import tech.jhipster.config.JHipsterConstants;
 
@@ -26,6 +35,8 @@ public class NewsCraftApp {
     private static final Logger log = LoggerFactory.getLogger(NewsCraftApp.class);
 
     private final Environment env;
+
+
 
     public NewsCraftApp(Environment env) {
         this.env = env;
@@ -102,5 +113,9 @@ public class NewsCraftApp {
             contextPath,
             env.getActiveProfiles().length == 0 ? env.getDefaultProfiles() : env.getActiveProfiles()
         );
+    }
+    @Bean
+    public RestTemplate restTemplate(RestTemplateBuilder builder){
+        return builder.build();
     }
 }
