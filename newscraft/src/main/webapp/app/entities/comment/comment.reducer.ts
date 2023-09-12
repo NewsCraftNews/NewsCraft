@@ -37,7 +37,7 @@ export const createComment = createAsyncThunk(
     async (params: ICommentCreate, thunkAPI) => {
         const requestUrl = `api/comments/${params.login}/article`;
         const result = await axios.post<IComment>(requestUrl, cleanEntity(params.entity));
-        // thunkAPI.dispatch(getArticleComments({}));
+        thunkAPI.dispatch(getArticleComments(params.entity.article.id));
         return result;
     },
     {serializeError: serializeAxiosError}
