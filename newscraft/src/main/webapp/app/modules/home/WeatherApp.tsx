@@ -92,7 +92,7 @@ const WeatherApp: React.FC = () => {
   const kelvinToCelsius = (kelvin) => (kelvin - 273.15).toFixed(2);
   let slides = [
     {
-      text: `Temperature: ${weatherData ? kelvinToCelsius(weatherData.main.temp) : "Loading..."}°C`,
+      text: `Temperature: ${weatherData ? kelvinToCelsius(weatherData.main.temp) : "Loading..."}°F`,
       title: "slide1",
       url: "https://clipart-library.com/img1/798831.png",
     },
@@ -134,7 +134,7 @@ const WeatherApp: React.FC = () => {
     color: 'white', // Text color
     fontSize: '24px', // Font size
     backgroundImage: `url(${slides[currentIndex].url})`,
-    backgroundPosition: 'top left',
+    backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: '50%',
   };

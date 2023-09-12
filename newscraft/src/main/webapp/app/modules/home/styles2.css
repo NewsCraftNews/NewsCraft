@@ -4,8 +4,21 @@
 .widget {
   background-color: #fff;
   padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
   margin-bottom: 20px;
+}
+.something {
+
+  background-color: #fff;
+  padding: 0px;
+  box-shadow: 10px 10px rgba(0, 0, 0, 0.1); /* Reduced box shadow */
+  width: flex; /* Allow the width to be flexible */
+
+}
+.widget_title widget_black{
+
+    justify-content: center;
+    align-items: center;
 }
 
 /* Widget Title */
@@ -63,7 +76,7 @@
 }
 
 .widget_article_social span {
-  margin-right: 20px;
+  margin-right: 50px;
 }
 
 .widget_article_social a {
