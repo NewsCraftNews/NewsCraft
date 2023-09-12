@@ -21,29 +21,21 @@ export const ArticleList = () => {
         else dispatch(getEntities({}));
     }, [category_name]);
 
-    const handleSyncList = () => {
-        if (category_name) dispatch(getEntitiesOfCategory(category_name));
-        else dispatch(getEntities({}));
-    };
-
     return (
-        <div>
-            <h1 id="news-article-heading" data-cy="NewsArticleHeading">
-                {category_name.charAt(0).toUpperCase() + category_name.slice(1)} Articles
-                <div className="d-flex justify-content-end">
-                    {/*           <Button className="me-2" color="info" onClick={handleSyncList} disabled={loading}> */}
-                    {/*             <FontAwesomeIcon icon="sync" spin={loading} /> Refresh list */}
-                    {/*           </Button> */}
-                    <span>&nbsp;</span>
-                </div>
-            </h1>
-            {newsArticleList.map((newsArticle, i) => (
-                <h3 key={i}>
-                    <NavLink tag={Link} to={`/article/${newsArticle.id}`}>{newsArticle.title}</NavLink>
-                    <br/>
-                </h3>
-            ))}
-        </div>
+      <div>
+        <h1 id="news-article-heading" data-cy="NewsArticleHeading">
+          {category_name.charAt(0).toUpperCase() + category_name.slice(1)} Articles
+          <div className="d-flex justify-content-end">
+            <span>&nbsp;</span>
+          </div>
+        </h1>
+        {newsArticleList.map((newsArticle, i) => (
+          <h3 key={i}>
+            <NavLink tag={Link} to={`/article/${newsArticle.id}`}>{newsArticle.title}</NavLink>
+            <br/>
+          </h3>
+        ))}
+      </div>
     );
 };
 
