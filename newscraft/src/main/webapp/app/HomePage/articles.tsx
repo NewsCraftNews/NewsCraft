@@ -30,9 +30,10 @@ export const ArticleList = () => {
       <h1 id="news-article-heading" data-cy="NewsArticleHeading">
         News Articles
         <div className="d-flex justify-content-end">
-          <Button className="me-2" color="info" onClick={handleSyncList} disabled={loading}>
-            <FontAwesomeIcon icon="sync" spin={loading} /> Refresh list
-          </Button>
+{/*           <Button className="me-2" color="info" onClick={handleSyncList} disabled={loading}> */}
+{/*             <FontAwesomeIcon icon="sync" spin={loading} /> Refresh list */}
+{/*           </Button> */}
+          <span>&nbsp;</span>
         </div>
       </h1>
       <div className="table-responsive">
