@@ -17,7 +17,7 @@
             <column name="title" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="article_text" type="varchar(255)">
+            <column name="article_text" type="longtext">
                 <constraints nullable="true" />
             </column>
             <column name="time_posted" type="${datetimeType}">

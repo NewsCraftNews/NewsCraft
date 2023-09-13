@@ -178,14 +178,29 @@ public class CategoryResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with list of articles, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/categories/{name}/articles")
-    public List<NewsArticle> getCategoryArticles(@PathVariable String name) {
+    public List<NewsArticle> getCategoryArticles(
+        @PathVariable String name,
+        @RequestParam(required = false) Integer limit
+    ) {
         log.debug("REST request to get Category : {}", name);
-        List<Category> categoryFound =
-            categoryRepository.findAll()
-            .stream()
-            .filter(category -> category.getName().equalsIgnoreCase(name))
-            .collect(Collectors.toList());
-        return categoryFound.isEmpty() ? new ArrayList<>() : new ArrayList<>(categoryFound.get(0).getArticles());
+        List<Category> categoryFound = categoryRepository.findAll()
+                .stream()
+                .filter(category -> category.getName().equalsIgnoreCase(name))
+                .collect(Collectors.toList());
+        List<NewsArticle> result;
+        if(categoryFound.isEmpty()){
+            result = new ArrayList<>();
+        }
+        else if(limit == null){
+            result = new ArrayList<>(categoryFound.get(0).getArticles());
+        }
+        else{
+            result = categoryFound.get(0).getArticles()
+                .stream()
+                .limit(limit)
+                .collect(Collectors.toList());
+        }
+        return result;
     }
 
     /**

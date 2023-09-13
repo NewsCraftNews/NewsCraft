@@ -7,6 +7,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import ncn.newscraft.domain.*;
@@ -164,16 +165,20 @@ public class NewsArticleResource {
     /**
      * {@code GET  /news-articles} : get all the newsArticles.
      *
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
+     * @param limit flag to limit the number of articles retrieved.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of newsArticles in body.
      */
     @GetMapping("/news-articles")
-    public List<NewsArticle> getAllNewsArticles(@RequestParam(required = false, defaultValue = "true") boolean eagerload) {
-        log.debug("REST request to get all NewsArticles");
-        if (eagerload) {
+    public List<NewsArticle> getAllNewsArticles(@RequestParam(required = false) Integer limit) {
+        if (limit == null) {
+            log.debug("REST request to get all NewsArticles");
             return newsArticleRepository.findAllWithEagerRelationships();
         } else {
-            return newsArticleRepository.findAll();
+            log.debug("REST request to get {} NewsArticles", limit);
+            return newsArticleRepository.findAllWithEagerRelationships()
+                .stream()
+                .limit(limit)
+                .collect(Collectors.toList());
         }
     }
 

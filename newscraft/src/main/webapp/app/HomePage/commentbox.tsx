@@ -52,6 +52,7 @@ export const CommentBox = (props: IArticleProps) => {
 //     entity.article.id = id;
     console.log(entity);
     dispatch(createComment({login, entity}));
+    setText('');
   };
 
   return (
