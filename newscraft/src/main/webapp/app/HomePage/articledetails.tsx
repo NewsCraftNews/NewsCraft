@@ -54,10 +54,13 @@ export const Article = () => {
       <div key={`button-${newsArticleEntity.id}`} className="d-flex justify-content-end">
         <BookmarkButton article={newsArticleEntity} />
       </div>
-      <br/>
+      {/*<br/>*/}
       {newsArticleEntity && newsArticleEntity.picture && newsArticleEntity.picture.imageURL && (
-        <img src={newsArticleEntity.picture.imageURL} alt={newsArticleEntity.picture.caption} width="100%"/>
+        <div id="article-image" style={{textAlign: 'center'}}>
+          <img src={newsArticleEntity.picture.imageURL} alt={newsArticleEntity.picture.caption} width="60%" />
+        </div>
       )}
+      <br/>
       <br/>
       <p>{newsArticleEntity.articleText}</p>
       <CommentSection article={newsArticleEntity} />
