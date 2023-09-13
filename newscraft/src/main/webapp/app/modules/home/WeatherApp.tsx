@@ -80,7 +80,7 @@ const WeatherApp: React.FC = () => {
     const city = 'Wilmington'; // Replace with the name of the city you want to get weather data for
 
     // Fetch weather data from OpenWeatherMap API
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=39.7459&lon=-75.5466&appid=${apiKey}`)
       .then((response) => response.json())
       .then((data) => setWeatherData(data))
       .catch((error) => console.error('Error fetching weather data:', error));
