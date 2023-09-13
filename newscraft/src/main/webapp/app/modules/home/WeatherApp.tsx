@@ -89,7 +89,7 @@ const WeatherApp: React.FC = () => {
   console.log(weatherData);
 
 
-  const kelvinToCelsius = (kelvin) => (kelvin - 273.15).toFixed(2);
+  const kelvinToCelsius = (kelvin) => ((kelvin - 273.15)*9/5 +32 ).toFixed(2);
   let slides = [
     {
       text: `Temperature: ${weatherData ? kelvinToCelsius(weatherData.main.temp) : "Loading..."}°F`,
