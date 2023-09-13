@@ -22,7 +22,7 @@ export const Home = () => {
       {account?.login ? (
         <h2>Welcome, Reader!</h2>
       ) : (
-        <h2>Welcome, News Reader!</h2>
+        <h2>Welcome, Reader!</h2>
       )}
 
       <br/>
