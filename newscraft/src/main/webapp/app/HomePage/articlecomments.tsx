@@ -27,11 +27,10 @@ export const CommentSection = (props: IArticleProps) => {
   }, []);
 
   return (
-  <div><h2><u>Comments</u></h2>
-    <br />
+  <div><h2>&nbsp;&nbsp;<u>Comments</u></h2>
     {isAuthenticated && <CommentBox article={props.article}/>}
     {commentList && commentList.length > 0 ? (commentList.map((comment, i) => (
-      <div>
+      <div id={i}>
         <BoxComponent comments={comment} key={i} />
         <br/>
       </div>)))

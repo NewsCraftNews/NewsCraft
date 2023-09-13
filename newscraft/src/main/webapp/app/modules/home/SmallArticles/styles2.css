@@ -1,0 +1,104 @@
+/* Add CSS classes to style your component */
+
+/* Widget */
+.widget {
+  background-color: #f4f4f4;
+  padding: 20px;
+
+  margin-bottom: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    overflow: auto; /* Contain floated elements within the container */
+    border-radius: 10px; /* Rounded corners */
+}
+.something {
+
+  background-color: #fff;
+  padding: 0px;
+  box-shadow: 10px 10px rgba(0, 0, 0, 0.1); /* Reduced box shadow */
+  width: flex; /* Allow the width to be flexible */
+
+}
+.widget_title widget_black{
+
+    justify-content: center;
+    align-items: center;
+}
+
+/* Widget Title */
+.widget_title {
+  background-color: #56aeff;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+.widget_title a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Media */
+.media {
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+
+}
+
+.media-left {
+  flex: 0 0 auto;
+  margin-right: 20px;
+}
+
+.media-left img {
+  max-width: 120px;
+  height: auto;
+}
+
+.media-body {
+  flex: 1;
+}
+
+/* Media Heading */
+.media-heading a {
+  color: #7b8ab8;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+/* Media Date */
+.media-date {
+  color: #777;
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+/* Widget Article Social */
+.widget_article_social {
+  margin-top: 10px;
+}
+
+.widget_article_social span {
+  margin-right: 50px;
+}
+
+.widget_article_social a {
+  color: #ff5722;
+  text-decoration: none;
+}
+
+/* Widget Divider */
+.widget_divider {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.widget_divider a {
+  color: #ff5722;
+  text-decoration: none;
+  font-weight: bold;
+}
+.fafa-share-alt{
+font-size: 16px;
+}

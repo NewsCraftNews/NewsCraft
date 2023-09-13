@@ -9,7 +9,8 @@ import { useAppDispatch, useAppSelector } from 'app/config/store';
 import { TextFormat } from 'react-jhipster';
 
 import { getEntity } from 'app/entities/news-article/news-article.reducer';
-import { INewsArticle } from "app/shared/model/news-article.model";
+import { INewsArticle } from 'app/shared/model/news-article.model';
+import { IPicture } from 'app/shared/model/picture.model';
 import { CommentSection } from "app/HomePage/articlecomments"
 import { BookmarkButton } from "./savearticle"
 
@@ -18,11 +19,17 @@ export const Article = () => {
 
   const { id } = useParams<'id'>();
 
+  const newsArticleEntity = useAppSelector(state => state.newsArticle.entity);
+
   useEffect(() => {
     dispatch(getEntity(id));
   }, [id]);
 
-  const newsArticleEntity = useAppSelector(state => state.newsArticle.entity);
+  useEffect(() => {
+    console.log(newsArticleEntity.picture);
+    console.log(JSON.stringify(newsArticleEntity.picture));
+
+  }, [newsArticleEntity]);
 
   /*
    * The News Article Page idea:
@@ -47,12 +54,19 @@ export const Article = () => {
       <div key={`button-${newsArticleEntity.id}`} className="d-flex justify-content-end">
         <BookmarkButton article={newsArticleEntity} />
       </div>
+      {/*<br/>*/}
+      {newsArticleEntity && newsArticleEntity.picture && newsArticleEntity.picture.imageURL && (
+        <div id="article-image" style={{textAlign: 'center'}}>
+          <img src={newsArticleEntity.picture.imageURL} alt={newsArticleEntity.picture.caption} width="60%" />
+        </div>
+      )}
+      <br/>
       <br/>
       <p>{newsArticleEntity.articleText}</p>
+      <br/>
       <br/>
       <CommentSection article={newsArticleEntity} />
     </div>
   );
 };
-
 export default Article;
