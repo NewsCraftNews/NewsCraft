@@ -31,14 +31,25 @@ export const Home = () => {
 
 
             <div className="article-container">
-            <h1 className="article-title">Today's News: Exciting Headline Here</h1>
-            <p className="article-meta">Published on September 8, 2023 by Your Name</p>
+            <h1 className="article-title">See you later, alligator: New Jersey police capture reptile on the loose for 2 weeks</h1>
+            <p className="article-meta">Published on September 13th, 2023 </p>
             <img className="article-image" src="https://www.atptour.com/-/media/images/news/2023/09/08/01/19/medvedev-us-open-2023-sf-preview.jpg" alt="News Image"/>
               <p className="article-content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in ex eu quam efficitur congue vel a sem. Vestibulum vel vehicula lorem. Fusce aliquet urna quis fermentum.
+                New Jersey law enforcement and wildlife officials teamed up as alligator investigators to capture a reptile running rampant across two towns over the last two weeks.
+
+                The Middlesex Borough Police Department chronicled the missing gator saga on its Facebook page.
+
+                The alligator, described as a “non-indigenous reptile” between 3 and 4 feet long, was first spotted in the Ambrose Brook at Victor Crowell Park in Middlesex County on August 23, according to the Middlesex Borough Police Department.
+
+                Middlesex County is located about 38 miles southwest of New York City.
+
+                The initial sighting prompted the closure of the park, which has since reopened to the public with no fishing or swimming allowed, Middlesex Borough police said in a statement Friday.
               </p>
               <p className="article-content">
-                Nunc consectetur orci ut justo tincidunt, sit amet dignissim quam vehicula. Curabitur a erat vel urna feugiat dictum eget eget ipsum. Nullam scelerisque fringilla diam, vel iaculis odio consequat non. Duis vitae justo et justo congue commodo.
+                The police department, along with the New Jersey Department of Environmental Protection, the state’s Division of Fish and Wildlife Conservation Police and several other agencies searched for the alligator until it was finally caught Thursday night in another town.
+                READ MORE HERE
+
+
               </p>
           </div>
 
