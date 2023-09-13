@@ -1,4 +1,7 @@
 import React, { useState, useEffect, CSSProperties } from 'react';
+import {getTopEntities} from "app/entities/news-article/news-article.reducer";
+import {useAppDispatch, useAppSelector} from "app/config/store";
+
 const slideStyles: CSSProperties = {
   width: "100%",
   height: "100%",
@@ -60,7 +63,12 @@ const dotStyle: CSSProperties = {
 };
 
 const BreakingNews: React.FC = () => {
-
+  const dispatch =useAppDispatch();
+  const newsArticleList =useAppSelector(state => state.newsArticle.entities);
+ const loading = useAppSelector(state => state.newsArticle.loading);
+  useEffect(() => {
+    dispatch(getTopEntities(5));
+  }, []);
   const containerStyles = {
     width: "200%",
     height: "200px",
@@ -74,44 +82,34 @@ const BreakingNews: React.FC = () => {
   };
 
 
-  const [newsData, setNewsData] = useState<any>(null);
-  useEffect(() => {
-    // ApiKeys
-    const apiKey = 'pub_28913a8dcc770b2edef6b4b77131ecbf52201';
-    const apiKey2 ='pub_29020fd2922d18a540758f747c11ab8c9fac7';
 
-
-    // Fetch weather data from API
-    fetch(`https://newsdata.io/api/1/news?apikey=${apiKey}&country=us&timeframe=48&category=top,world`)
-      //gets-response
-      .then((response) => response.json())
-      //sets data
-      .then((data) => setNewsData(data))
-      .catch((error) => console.error('Error fetching data:', error));
-  }, []);
-
-  console.log(newsData);
 
 
   // sets the newsData into slides component
   const slides = [
     {
-      text: `Title: ${newsData ? newsData.results[1].title : "Loading..."}`,
+      text: `Title: ${newsArticleList && newsArticleList[0] && newsArticleList[0].title ? newsArticleList[0].title : "Loading..."}`,
       title: "slide1",
-      url: "https://media.istockphoto.com/id/1183338499/vector/0547.jpg?s=612x612&w=0&k=20&c=yNkIf4DxCEkOb0EXoq5kQ0XX1k5T53QYQLgL_j2Rg5M=",
-      text2: `Content: ${newsData ? newsData.results[1].description : "Loading..."}`,
+      url: newsArticleList && newsArticleList[0] && newsArticleList[0].picture ? newsArticleList[0].picture.imageURL : '',
+      text2: `Content: ${newsArticleList && newsArticleList[0] && newsArticleList[0].articleText ? newsArticleList[0].articleText : "Loading..."}`,
     },
     {
-      text: `Title: ${newsData ? newsData.results[2].title : "Loading..."}`,
+      text: `Title: ${newsArticleList && newsArticleList[1] && newsArticleList[1].title ? newsArticleList[2].title : "Loading..."}`,
       title: "slide1",
-      url: "https://media.istockphoto.com/id/1183338499/vector/0547.jpg?s=612x612&w=0&k=20&c=yNkIf4DxCEkOb0EXoq5kQ0XX1k5T53QYQLgL_j2Rg5M=",
-      text2: `Content: ${newsData ? newsData.results[2].description : "Loading..."}`,
+      url: newsArticleList && newsArticleList[1] && newsArticleList[1].picture ? newsArticleList[1].picture.imageURL : '',
+      text2: `Content: ${newsArticleList && newsArticleList[1] && newsArticleList[1].articleText ? newsArticleList[1].articleText : "Loading..."}`,
     },
     {
-      text: `Title: ${newsData ? newsData.results[3].title : "Loading..."}`,
+      text: `Title: ${newsArticleList && newsArticleList[2] && newsArticleList[2].title ? newsArticleList[2].title : "Loading..."}`,
       title: "slide1",
-      url: "https://media.istockphoto.com/id/1183338499/vector/0547.jpg?s=612x612&w=0&k=20&c=yNkIf4DxCEkOb0EXoq5kQ0XX1k5T53QYQLgL_j2Rg5M=",
-      text2: `Content: ${newsData ? newsData.results[3].description : "Loading..."}`,
+      url: newsArticleList && newsArticleList[2] && newsArticleList[2].picture ? newsArticleList[2].picture.imageURL : '',
+      text2: `Content: ${newsArticleList && newsArticleList[2] && newsArticleList[2].articleText ? newsArticleList[2].articleText : "Loading..."}`,
+    },
+    {
+      text: `Title: ${newsArticleList && newsArticleList[3] && newsArticleList[3].title ? newsArticleList[3].title : "Loading..."}`,
+      title: "slide1",
+      url: newsArticleList && newsArticleList[3] && newsArticleList[3].picture ? newsArticleList[3].picture.imageURL : '',
+      text2: `Content: ${newsArticleList && newsArticleList[3] && newsArticleList[3].articleText ? newsArticleList[3].articleText : "Loading..."}`,
     },
   ];
 
@@ -135,13 +133,16 @@ const BreakingNews: React.FC = () => {
   const slideStylesWithText = {
     ...slideStyles,
     color: 'white', // Text color
-    fontSize: '24px', // Font size
+    fontSize: '30px', // Font size
     backgroundImage: `url(${slides[currentIndex].url})`,
-    backgroundPosition: 'center',
+    backgroundPosition: 'top',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '100%',
+    backgroundSize: '50%',
     border: '5px solid #333',
+    // Background color behind text (e.g., semi-transparent black)
   };
+
+
 
 
 //returns component
@@ -160,7 +161,9 @@ const BreakingNews: React.FC = () => {
         </div>
 
         <div style={slideStylesWithText} >
-          {slides[currentIndex].text}
+          <br/> <br/> <br/>
+            {slides[currentIndex].text}
+
           <br/> <br/> <br/> <br/> <br/>
           {slides[currentIndex].text2}
         </div>
