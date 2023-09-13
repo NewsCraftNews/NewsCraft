@@ -36,7 +36,7 @@ export const Article = () => {
   return (
     <div>
       <h1 data-cy="NewsArticleHeading">
-        {newsArticleEntity.title}
+        <u>{newsArticleEntity.title}</u>
       </h1>
       <p>
         Posted on&nbsp;

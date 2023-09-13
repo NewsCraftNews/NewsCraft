@@ -15,8 +15,8 @@ export const CategoriesMenu = () => {
   const loading = useAppSelector(state => state.category.loading);
 
   useEffect(() => {
-  // limiting the number of categories to 8
-    dispatch(getSomeEntities(8));
+  // limiting the number of categories to 7
+    dispatch(getSomeEntities(7));
   }, []);
 
   return categoryList.map((category, i) => (
