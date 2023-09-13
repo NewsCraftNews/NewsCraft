@@ -52,6 +52,7 @@ export const CommentBox = (props: IArticleProps) => {
 //     entity.article.id = id;
     console.log(entity);
     dispatch(createComment({login, entity}));
+    setText('');
   };
 
   return (
@@ -72,6 +73,7 @@ export const CommentBox = (props: IArticleProps) => {
           value={text}
           onChange={handleChange}
         />
+        <br />
         <Button className="me-2" color="info" type="submit" onClick={(event) => handleClick(event)}>Post</Button>
       </form>
       <br/>

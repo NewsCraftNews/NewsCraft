@@ -18,11 +18,14 @@ export const Login = () => {
     setShowModal(true);
   }, []);
 
-  const handleLogin = (username, password, rememberMe = false) => dispatch(login(username, password, rememberMe));
+  const handleLogin = (username, password, rememberMe = false) => {
+    dispatch(login(username, password, rememberMe));
+    navigate(-1);
+  };
 
   const handleClose = () => {
     setShowModal(false);
-    navigate(-1);
+    navigate("/");
   };
 
   const { from } = (location.state as any) || { from: { pathname: '/', search: location.search } };

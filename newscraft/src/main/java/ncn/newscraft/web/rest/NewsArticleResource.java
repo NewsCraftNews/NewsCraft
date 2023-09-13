@@ -2,14 +2,21 @@ package ncn.newscraft.web.rest;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import ncn.newscraft.domain.NewsArticle;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+import java.util.stream.Collectors;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import ncn.newscraft.domain.*;
 import ncn.newscraft.repository.NewsArticleRepository;
+import ncn.newscraft.service.ExternalApis;
 import ncn.newscraft.web.rest.errors.BadRequestAlertException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +31,15 @@ import tech.jhipster.web.util.ResponseUtil;
 @RequestMapping("/api")
 @Transactional
 public class NewsArticleResource {
+
+    @Autowired
+    public ExternalApis externalApis;
+
+    private List<NewsArticle> jsonList=new ArrayList<>()
+
+    {
+    };
+
 
     private final Logger log = LoggerFactory.getLogger(NewsArticleResource.class);
 
@@ -149,16 +165,20 @@ public class NewsArticleResource {
     /**
      * {@code GET  /news-articles} : get all the newsArticles.
      *
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
+     * @param limit flag to limit the number of articles retrieved.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of newsArticles in body.
      */
     @GetMapping("/news-articles")
-    public List<NewsArticle> getAllNewsArticles(@RequestParam(required = false, defaultValue = "true") boolean eagerload) {
-        log.debug("REST request to get all NewsArticles");
-        if (eagerload) {
+    public List<NewsArticle> getAllNewsArticles(@RequestParam(required = false) Integer limit) {
+        if (limit == null) {
+            log.debug("REST request to get all NewsArticles");
             return newsArticleRepository.findAllWithEagerRelationships();
         } else {
-            return newsArticleRepository.findAll();
+            log.debug("REST request to get {} NewsArticles", limit);
+            return newsArticleRepository.findAllWithEagerRelationships()
+                .stream()
+                .limit(limit)
+                .collect(Collectors.toList());
         }
     }
 
@@ -190,4 +210,31 @@ public class NewsArticleResource {
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString()))
             .build();
     }
+    @GetMapping("/populate")
+    public List<NewsArticle> newsArticleListJson() throws JsonProcessingException, URISyntaxException {
+
+        if(jsonList.isEmpty()) {
+
+//            for (NewsArticleRaw i : externalApis.fetchNewsArticles(category, size)) {
+//                NewsArticle newsArticle=new NewsArticle();
+//                newsArticle.setArticleText(i.getContent());
+//                newsArticle.setTitle(i.getTitle());
+//                newsArticle.setLikes((int) (Math.random()*1000));
+//                newsArticle.setPicture(new Picture().imageURL(i.getImageUrl()));
+//                newsArticle.setAuthor(new UserProfile().login(i.getCreator()[0]));
+//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+//                String inputDate = i.getPubDate().trim();
+//                // Parse the input string using the specified format
+//                LocalDateTime localDateTime = LocalDateTime.parse(inputDate, formatter);
+//                // You can then convert it to a ZonedDateTime with the desired time zone
+//                ZoneId zoneId = ZoneId.of("America/New_York"); // Replace with the desired time zone
+//                ZonedDateTime zonedDateTime = localDateTime.atZone(zoneId);
+//
+//                newsArticle.setTimePosted(zonedDateTime);
+//                jsonList.add(newsArticle);
+//            }
+        }
+            return jsonList;
+    }
+
 }

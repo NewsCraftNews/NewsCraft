@@ -28,9 +28,10 @@ export const Bookmarks = () => {
       <h2 id="book-mark-heading" data-cy="BookMarkHeading">
         Saved Bookmarks
         <div className="d-flex justify-content-end">
-          <Button className="me-2" color="info" disabled={true}>
-            <FontAwesomeIcon icon="sync" spin={loading} /> Refresh list
-          </Button>
+{/*           <Button className="me-2" color="info" disabled={true}> */}
+{/*             <FontAwesomeIcon icon="sync" spin={loading} /> Refresh list */}
+{/*           </Button> */}
+          <span>&nbsp;</span>
         </div>
       </h2>
       <div className="table-responsive">

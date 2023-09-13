@@ -20,7 +20,7 @@ export const Article = () => {
 
   useEffect(() => {
     dispatch(getEntity(id));
-  }, []);
+  }, [id]);
 
   const newsArticleEntity = useAppSelector(state => state.newsArticle.entity);
 
@@ -36,10 +36,7 @@ export const Article = () => {
   return (
     <div>
       <h1 data-cy="NewsArticleHeading">
-        {newsArticleEntity.title}
-        <div key={`button-${newsArticleEntity.id}`} className="d-flex justify-content-end">
-          <BookmarkButton article={newsArticleEntity} />
-        </div>
+        <u>{newsArticleEntity.title}</u>
       </h1>
       <p>
         Posted on&nbsp;
@@ -47,6 +44,9 @@ export const Article = () => {
         <br />
         Written by {newsArticleEntity.author ? newsArticleEntity.author.login : ''}
       </p>
+      <div key={`button-${newsArticleEntity.id}`} className="d-flex justify-content-end">
+        <BookmarkButton article={newsArticleEntity} />
+      </div>
       <br/>
       <p>{newsArticleEntity.articleText}</p>
       <br/>

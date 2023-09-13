@@ -5,12 +5,16 @@
 @import '~bootswatch/dist/morph/bootswatch';
 
 body {
-  margin: 10px;
+  margin: 0px;
+  font-size: 150%;
 }
 
 a {
   color: #533f03;
   font-weight: bold;
+  &:hover {
+    color: blue;
+  }
 }
 
 * {

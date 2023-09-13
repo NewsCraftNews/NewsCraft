@@ -30,6 +30,16 @@ export const getEntities = createAsyncThunk('newsArticle/fetch_entity_list', asy
   return axios.get<INewsArticle[]>(requestUrl);
 });
 
+export const getSomeEntities = createAsyncThunk('newsArticle/fetch_entity_list', async (limit: number) => {
+  const requestUrl = `${apiUrl}?limit=${limit}&cacheBuster=${new Date().getTime()}`;
+  return axios.get<INewsArticle[]>(requestUrl);
+});
+
+export const getTopEntities = createAsyncThunk('newsArticle/fetch_entity_list', async (limit: number) => {
+  const requestUrl = `api/categories/top/articles?limit=${limit}&cacheBuster=${new Date().getTime()}`;
+  return axios.get<INewsArticle[]>(requestUrl);
+});
+
 export const getEntity = createAsyncThunk(
   'newsArticle/fetch_entity',
   async (id: string | number) => {
