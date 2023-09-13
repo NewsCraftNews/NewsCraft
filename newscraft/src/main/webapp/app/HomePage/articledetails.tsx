@@ -63,6 +63,8 @@ export const Article = () => {
       <br/>
       <br/>
       <p>{newsArticleEntity.articleText}</p>
+      <br/>
+      <br/>
       <CommentSection article={newsArticleEntity} />
     </div>
   );

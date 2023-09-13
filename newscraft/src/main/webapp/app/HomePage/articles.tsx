@@ -23,7 +23,7 @@ export const ArticleList = () => {
 
     return (
       <div>
-        <h1 id="news-article-heading" data-cy="NewsArticleHeading">
+        <h1 id="news-article-heading" data-cy="NewsArticleHeading" className="text-info-emphasis">
           <u>{category_name.charAt(0).toUpperCase() + category_name.slice(1)} Articles</u>
           <div className="d-flex justify-content-end">
             <span>&nbsp;</span>
@@ -32,6 +32,7 @@ export const ArticleList = () => {
         {newsArticleList.map((newsArticle, i) => (
           <h3 key={i}>
             <Link to={`/article/${newsArticle.id}`}>{newsArticle.title}</Link>
+            <br/>
             <br/>
           </h3>
         ))}

@@ -33,6 +33,7 @@ const Footer = () => (
           <a href="https://github.com/NewsCraftNews/NewsCraft/tree/main" target="_blank" rel="noopener noreferrer">
             <FontAwesomeIcon icon={faGithub} />
           </a>
+          <br />&nbsp;
         </p>
       </Col>
     </Row>
