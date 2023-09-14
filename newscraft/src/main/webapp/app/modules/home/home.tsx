@@ -4,7 +4,7 @@ import './articleElementStyle.css'
 import './style.css'
 import './styles2.css'
 import React, { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'
 
 import { Row, Col, Alert } from 'reactstrap';
 
