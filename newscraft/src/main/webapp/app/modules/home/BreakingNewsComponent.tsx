@@ -1,5 +1,5 @@
 import React, { useState, useEffect, CSSProperties } from 'react';
-import {getTopEntities} from "app/entities/news-article/news-article.reducer";
+import {getEntertainmentEntities} from "app/entities/news-article/news-article.reducer";
 import {useAppDispatch, useAppSelector} from "app/config/store";
 
 const slideStyles: CSSProperties = {
@@ -67,7 +67,7 @@ const BreakingNews: React.FC = () => {
   const newsArticleList =useAppSelector(state => state.newsArticle.entities);
  const loading = useAppSelector(state => state.newsArticle.loading);
   useEffect(() => {
-    dispatch(getTopEntities(5));
+    dispatch(getEntertainmentEntities(5));
   }, []);
   const containerStyles = {
     width: "200%",
