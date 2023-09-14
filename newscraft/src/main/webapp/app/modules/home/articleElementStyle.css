@@ -1,13 +1,10 @@
 /* Reset some default styles */
-body, h1, p {
-  margin: 0;
-  padding: 0;
-}
+/* took these out sorry */
 
 /* Define styles for the container */
 .article-container {
   max-width: 1000px;
-  margin: 0 auto;
+  padding: 1rem;
   background-color: #f4f4f4;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   overflow: auto; /* Contain floated elements within the container */
@@ -23,21 +20,19 @@ body, h1, p {
 
 /* Define styles for the article heading */
 .article-title {
-  font-size: 24px;
+
   font-weight: bold;
   margin: 20px;
 }
 
 /* Define styles for the article meta information */
 .article-meta {
-  font-size: 14px;
-  color: #666;
-  margin: 0 20px 10px;
+  font-size: 22px;
 }
 
 /* Define styles for the article content */
 .article-content {
-  font-size: 16px;
+  font-size: 24px;
   line-height: 1.6;
   margin: 0 20px 20px;
 }

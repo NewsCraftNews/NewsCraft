@@ -27,16 +27,18 @@ export const CommentSection = (props: IArticleProps) => {
   }, []);
 
   return (
-  <div><h2>&nbsp;&nbsp;<u>Comments</u></h2>
+  <div><h2>&nbsp;&nbsp;<strong><u>Comments</u></strong></h2>
+    <div style={{margin: '1rem'}}>
     {isAuthenticated && <CommentBox article={props.article}/>}
     {commentList && commentList.length > 0 ? (commentList.map((comment, i) => (
-      <div id={i}>
+      <div id={i} {{padding: '0px'}}>
         <BoxComponent comments={comment} key={i} />
         <br/>
       </div>)))
       : (
       !loading && <div className="alert alert-secondary">No Comments Yet</div>
     )}
+    </div>
   </div>
   )};
 

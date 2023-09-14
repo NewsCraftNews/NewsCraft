@@ -1,4 +1,4 @@
-import './style.css'
+ import './style.css'
 import './styles2.css'
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -19,7 +19,7 @@ export const SmallArticle2 = () => {
               <h3 className="media-heading">
                 <a href="single.html" target="_self">Astronaut Frank Rubio sets US record for longest trip in space</a>
               </h3>
-              <span className="media-date">September 14th, 2023 by: Jack Hailey</span>
+              <span className="media-date">Sept 14th, 2023 by: Jack Hailey</span>
 
               <div className="widget_article_social">
         <span className="fafa-share-alt">

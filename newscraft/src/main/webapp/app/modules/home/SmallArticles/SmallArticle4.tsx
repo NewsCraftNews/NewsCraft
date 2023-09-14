@@ -19,7 +19,7 @@ export const SmallArticle4 = () => {
               <h3 className="media-heading">
                 <a href="single.html" target="_self">‘Kelce,’ ‘Wrexham’ and ‘Wrestlers’ add to the wave of sports-related documentaries</a>
               </h3>
-              <span className="media-date">September 13th, 2023 by: Alex Crank</span>
+              <span className="media-date">Sept 13th, 2023 by: Alex Crank</span>
 
               <div className="widget_article_social">
         <span className="fafa-share-alt">
