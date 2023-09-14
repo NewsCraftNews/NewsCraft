@@ -18,7 +18,7 @@ export const SmallArticleRight = () => {
         <h3 className="media-heading">
           <a href="single.html" target="_self">Hawaii’s Kilauea volcano is erupting again after months of quiet</a>
         </h3>
-        <span className="media-date">September 14th, 2023 by: Anna Lewis</span>
+        <span className="media-date">Sept 14th, 2023 by: Anna Lewis</span>
 
         <div className="widget_article_social">
           <span className="fafa-share-alt">

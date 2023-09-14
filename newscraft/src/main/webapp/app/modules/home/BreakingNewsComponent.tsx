@@ -22,8 +22,6 @@ const rightArrowStyles: CSSProperties = {
   cursor: "pointer",
 };
 
-
-
 const leftArrowStyles: CSSProperties = {
   position: "absolute",
   top: "50%",
@@ -54,6 +52,8 @@ const divStyle: CSSProperties = {
   alignItems: "center",
   justifyContent: "center",
   flexDirection: "row",
+  margin: "10px",
+  marginBottom: "20px",
 };
 
 const dotStyle: CSSProperties = {
@@ -65,10 +65,12 @@ const dotStyle: CSSProperties = {
 const BreakingNews: React.FC = () => {
   const dispatch =useAppDispatch();
   const newsArticleList =useAppSelector(state => state.newsArticle.entities);
- const loading = useAppSelector(state => state.newsArticle.loading);
-  useEffect(() => {
-    dispatch(getEntertainmentEntities(5));
-  }, []);
+  const loading = useAppSelector(state => state.newsArticle.loading);
+//
+//   useEffect(() => {
+//     dispatch(getEntertainmentEntities());
+//   }, []);
+
   const containerStyles = {
     width: "200%",
     height: "200px",
@@ -81,36 +83,32 @@ const BreakingNews: React.FC = () => {
     borderRadius: '10px',
   };
 
-
-
-
-
   // sets the newsData into slides component
   const slides = [
     {
-      text: `Title: ${newsArticleList && newsArticleList[0] && newsArticleList[0].title ? newsArticleList[0].title : "Loading..."}`,
+      text: `${newsArticleList && newsArticleList[3] && newsArticleList[3].title ? newsArticleList[3].title : "Loading..."}`,
       title: "slide1",
-      url: newsArticleList && newsArticleList[0] && newsArticleList[0].picture ? newsArticleList[0].picture.imageURL : '',
-      link: `/article/${newsArticleList && newsArticleList[0] && newsArticleList[0].id ? newsArticleList[0].id:""}`
+      url: newsArticleList && newsArticleList[3] && newsArticleList[3].picture ? newsArticleList[3].picture.imageURL : '',
+      link: `/article/${newsArticleList && newsArticleList[3] && newsArticleList[3].id ? newsArticleList[3].id:""}`
     },
     {
-      text: `Title: ${newsArticleList && newsArticleList[1] && newsArticleList[1].title ? newsArticleList[1].title : "Loading..."}`,
+      text: `${newsArticleList && newsArticleList[4] && newsArticleList[4].title ? newsArticleList[4].title : "Loading..."}`,
       title: "slide1",
-      url: newsArticleList && newsArticleList[1] && newsArticleList[1].picture ? newsArticleList[1].picture.imageURL : '',
-      link: `/article/${newsArticleList && newsArticleList[1] && newsArticleList[1].id ? newsArticleList[1].id: ""}`
+      url: newsArticleList && newsArticleList[4] && newsArticleList[4].picture ? newsArticleList[4].picture.imageURL : '',
+      link: `/article/${newsArticleList && newsArticleList[4] && newsArticleList[4].id ? newsArticleList[4].id: ""}`
 
     },
     {
-      text: `Title: ${newsArticleList && newsArticleList[2] && newsArticleList[2].title ? newsArticleList[2].title : "Loading..."}`,
+      text: `${newsArticleList && newsArticleList[5] && newsArticleList[5].title ? newsArticleList[5].title : "Loading..."}`,
       title: "slide1",
-      url: newsArticleList && newsArticleList[2] && newsArticleList[2].picture ? newsArticleList[2].picture.imageURL : '',
-      link: `/article/${newsArticleList && newsArticleList[2] && newsArticleList[2].id ? newsArticleList[2].id: ""}`
+      url: newsArticleList && newsArticleList[5] && newsArticleList[5].picture ? newsArticleList[5].picture.imageURL : '',
+      link: `/article/${newsArticleList && newsArticleList[5] && newsArticleList[5].id ? newsArticleList[5].id: ""}`
     },
     {
-      text: `Title: ${newsArticleList && newsArticleList[3] && newsArticleList[3].title ? newsArticleList[3].title : "Loading..."}`,
+      text: `${newsArticleList && newsArticleList[6] && newsArticleList[6].title ? newsArticleList[6].title : "Loading..."}`,
       title: "slide1",
-      url: newsArticleList && newsArticleList[3] && newsArticleList[3].picture ? newsArticleList[3].picture.imageURL : '',
-      link: `/article/${newsArticleList && newsArticleList[3] && newsArticleList[3].id ? newsArticleList[3].id: ""}`
+      url: newsArticleList && newsArticleList[6] && newsArticleList[6].picture ? newsArticleList[6].picture.imageURL : '',
+      link: `/article/${newsArticleList && newsArticleList[6] && newsArticleList[6].id ? newsArticleList[6].id: ""}`
 
     },
   ];
@@ -164,7 +162,7 @@ const BreakingNews: React.FC = () => {
 
         < div style={slideStylesWithText} >
           <br/> <br/> <br/>
-          <a href={slides[currentIndex].link} >
+          <a href={slides[currentIndex].link} style={{color: 'white', opacity: 0.7}}>
             {slides[currentIndex].text}
           </a>
         </div>

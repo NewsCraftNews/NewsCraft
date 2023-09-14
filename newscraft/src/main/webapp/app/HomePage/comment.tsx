@@ -11,7 +11,7 @@ export interface ICommentProps {
 
 export const BoxComponent = (props:ICommentProps) => {
   return (
-    <div className="card bg-secondary mb-3">
+    <div className="card bg-secondary mb-3" style={{padding:'1.5rem'}}>
       <p key={`category-${props.comments.id}`}>
         Written by&nbsp;
         {props.comments.author.login}

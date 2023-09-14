@@ -19,7 +19,7 @@ export const SmallArticle3 = () => {
               <h3 className="media-heading">
                 <a href="single.html" target="_self">You can host a private Swiftie party at a movie theater</a>
               </h3>
-              <span className="media-date">September 14th, 2023 by: Heather Jones</span>
+              <span className="media-date">Sept 14th, 2023 by: Heather Jones</span>
 
               <div className="widget_article_social">
         <span className="fafa-share-alt">

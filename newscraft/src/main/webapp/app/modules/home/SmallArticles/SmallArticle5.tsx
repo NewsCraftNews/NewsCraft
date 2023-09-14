@@ -19,7 +19,7 @@ export const SmallArticle5 = () => {
               <h3 className="media-heading">
                 <a href="single.html" target="_self">*NSYNC reunites at MTV Video Music Awards</a>
               </h3>
-              <span className="media-date">September 13th, 2023 by: David White</span>
+              <span className="media-date">Sept 13th, 2023 by: David White</span>
 
               <div className="widget_article_social">
         <span className="fafa-share-alt">

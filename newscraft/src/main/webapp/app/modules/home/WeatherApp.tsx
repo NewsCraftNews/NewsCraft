@@ -53,7 +53,7 @@ const divStyle: CSSProperties = {
   justifyContent: "center",
   flexDirection: "row",
   margin: "10px",
-  marginBottom: "20px",
+  marginBottom: "40px",
 };
 
 const dotStyle: CSSProperties = {

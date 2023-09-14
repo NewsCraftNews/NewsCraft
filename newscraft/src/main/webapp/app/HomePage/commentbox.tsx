@@ -74,7 +74,9 @@ export const CommentBox = (props: IArticleProps) => {
           onChange={handleChange}
         />
         <br />
-        <Button className="me-2" color="info" type="submit" onClick={(event) => handleClick(event)}>Post</Button>
+        <Button className="me-2" color="info" type="submit" onClick={(event) => handleClick(event)}>
+          <span style={{fontSize: '24px'}}><strong>Post</strong></span>
+        </Button>
       </form>
       <br/>
     </Box>

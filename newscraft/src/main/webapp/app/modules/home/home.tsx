@@ -27,7 +27,7 @@ export const Home = () => {
   const loading = useAppSelector(state => state.newsArticle.loading);
 
   useEffect(() => {
-    dispatch(getTopEntities(3));
+    dispatch(getTopEntities(7));
   }, []);
 
   return (
@@ -37,7 +37,7 @@ export const Home = () => {
       <br />
       <Col md="8">
         <Row>
-          {newsArticleList.map((oneArticle, i) => <HomeArticleBox article={oneArticle} />)}
+          {newsArticleList.map((oneArticle, i) => i < 3 ? <HomeArticleBox article={oneArticle} /> : <span />)}
         </Row>
       </Col>
       <Col md="4">
@@ -45,6 +45,7 @@ export const Home = () => {
           <div className="widget">
             <div className="widget_title widget_black"><strong>More News</strong></div>
             <div style={{paddingLeft: "4%"}}><WeatherApp /></div>
+            <div style={{paddingLeft: "4%"}}><News /></div>
           </div>
           <div className="widget">
             <div className="widget_title widget_black"><strong>More News</strong></div>

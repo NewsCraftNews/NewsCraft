@@ -19,7 +19,7 @@ export const SmallArticle6 = () => {
               <h3 className="media-heading">
                 <a href="single.html" target="_self">The world’s biggest national park is larger than most countries</a>
               </h3>
-              <span className="media-date">September 12th, 2023 by: Alice Potter</span>
+              <span className="media-date">Sept 12th, 2023 by: Alice Potter</span>
 
               <div className="widget_article_social">
         <span className="fafa-share-alt">
