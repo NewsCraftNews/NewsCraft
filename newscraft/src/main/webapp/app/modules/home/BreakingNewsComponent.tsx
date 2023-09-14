@@ -91,25 +91,27 @@ const BreakingNews: React.FC = () => {
       text: `Title: ${newsArticleList && newsArticleList[0] && newsArticleList[0].title ? newsArticleList[0].title : "Loading..."}`,
       title: "slide1",
       url: newsArticleList && newsArticleList[0] && newsArticleList[0].picture ? newsArticleList[0].picture.imageURL : '',
-      text2: `Content: ${newsArticleList && newsArticleList[0] && newsArticleList[0].articleText ? newsArticleList[0].articleText : "Loading..."}`,
+      link: `/article/${newsArticleList && newsArticleList[0] && newsArticleList[0].id ? newsArticleList[0].id:""}`
     },
     {
-      text: `Title: ${newsArticleList && newsArticleList[1] && newsArticleList[1].title ? newsArticleList[2].title : "Loading..."}`,
+      text: `Title: ${newsArticleList && newsArticleList[1] && newsArticleList[1].title ? newsArticleList[1].title : "Loading..."}`,
       title: "slide1",
       url: newsArticleList && newsArticleList[1] && newsArticleList[1].picture ? newsArticleList[1].picture.imageURL : '',
-      text2: `Content: ${newsArticleList && newsArticleList[1] && newsArticleList[1].articleText ? newsArticleList[1].articleText : "Loading..."}`,
+      link: `/article/${newsArticleList && newsArticleList[1] && newsArticleList[1].id ? newsArticleList[1].id: ""}`
+
     },
     {
       text: `Title: ${newsArticleList && newsArticleList[2] && newsArticleList[2].title ? newsArticleList[2].title : "Loading..."}`,
       title: "slide1",
       url: newsArticleList && newsArticleList[2] && newsArticleList[2].picture ? newsArticleList[2].picture.imageURL : '',
-      text2: `Content: ${newsArticleList && newsArticleList[2] && newsArticleList[2].articleText ? newsArticleList[2].articleText : "Loading..."}`,
+      link: `/article/${newsArticleList && newsArticleList[2] && newsArticleList[2].id ? newsArticleList[2].id: ""}`
     },
     {
       text: `Title: ${newsArticleList && newsArticleList[3] && newsArticleList[3].title ? newsArticleList[3].title : "Loading..."}`,
       title: "slide1",
       url: newsArticleList && newsArticleList[3] && newsArticleList[3].picture ? newsArticleList[3].picture.imageURL : '',
-      text2: `Content: ${newsArticleList && newsArticleList[3] && newsArticleList[3].articleText ? newsArticleList[3].articleText : "Loading..."}`,
+      link: `/article/${newsArticleList && newsArticleList[3] && newsArticleList[3].id ? newsArticleList[3].id: ""}`
+
     },
   ];
 
@@ -160,12 +162,11 @@ const BreakingNews: React.FC = () => {
           </div>
         </div>
 
-        <div style={slideStylesWithText} >
+        < div style={slideStylesWithText} >
           <br/> <br/> <br/>
+          <a href={slides[currentIndex].link} >
             {slides[currentIndex].text}
-
-          <br/> <br/> <br/> <br/> <br/>
-          {slides[currentIndex].text2}
+          </a>
         </div>
       </div>
       </div>
