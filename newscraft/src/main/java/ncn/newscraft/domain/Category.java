@@ -30,7 +30,7 @@ public class Category implements Serializable {
     private String name;
 
     @ManyToMany(mappedBy = "categories")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+//    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "picture", "author", "categories" }, allowSetters = true)
     private Set<NewsArticle> articles = new HashSet<>();
 

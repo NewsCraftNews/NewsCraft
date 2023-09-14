@@ -44,13 +44,13 @@ public class ExternalApiTransactionalService {
         //Save pictue
         Picture picture= externalApiMapper.getPicture(newsArticleRaw);
         Picture savedPicture=pictureRepository.save(picture);
+
         //Save User Profile
-        UserProfile userProfile = externalApiMapper.getUserProfile(newsArticleRaw);
-        UserProfile userProfile1 = userProfileRepository.save(userProfile);
+        UserProfile userProfile = findOrMakeNewProfile(externalApiMapper.getUserProfileLogin(newsArticleRaw));
 
         //Save News Article
         article.setPicture(savedPicture);
-        article.setAuthor(userProfile1);
+        article.setAuthor(userProfile);
 
         //Categories
         for(String s: newsArticleRaw.getCategory()) {
@@ -59,6 +59,20 @@ public class ExternalApiTransactionalService {
         }
 
         return newsArticleRepository.save(article);
+    }
+
+    private UserProfile findOrMakeNewProfile(String loginToFind){
+        List<UserProfile> listOfAuthors = userProfileRepository.findAll()
+            .stream()
+            .filter(profile -> profile.getLogin() != null)
+            .filter(profile -> profile.getLogin().equals(loginToFind))
+            .collect(Collectors.toList());
+        if(listOfAuthors.isEmpty()){
+            // create new category in repository
+            return userProfileRepository.save(new UserProfile().login(loginToFind));
+        }
+        // otherwise return the category found
+        return listOfAuthors.get(0);
     }
 
     private String capitalize(String input){

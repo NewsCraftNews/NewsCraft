@@ -54,7 +54,7 @@ public class NewsArticle implements Serializable {
         joinColumns = @JoinColumn(name = "news_article_id"),
         inverseJoinColumns = @JoinColumn(name = "categories_id")
     )
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+//    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "articles" }, allowSetters = true)
     private Set<Category> categories = new HashSet<>();
 

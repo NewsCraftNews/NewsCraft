@@ -39,10 +39,10 @@ public class ExternalApiMapper {
 
     }
 
-    public UserProfile getUserProfile(NewsArticleRaw rawArticle){
+    public String getUserProfileLogin(NewsArticleRaw rawArticle){
         if(rawArticle.getCreator() == null){
-            return new UserProfile().login("Anonymous Writer");
+            return "Anonymous Writer";
         }
-        return new UserProfile().login(rawArticle.getCreator()[0]);
+        return rawArticle.getCreator()[0];
     }
 }
