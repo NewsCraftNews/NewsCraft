@@ -367,6 +367,7 @@ export const Home = () => {
          <div>
           <p className="widget_divider"><a href="#" target="_self">More News&nbsp;&raquo;</a></p>
           <WeatherApp/>
+             <News/>
         </div>
 
 
