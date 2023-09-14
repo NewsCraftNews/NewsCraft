@@ -4,21 +4,20 @@
 .widget {
   background-color: #fff;
   padding: 20px;
-
   margin-bottom: 20px;
+  overflow: hidden;
 }
-.something {
 
+.something {
   background-color: #fff;
   padding: 0px;
   box-shadow: 10px 10px rgba(0, 0, 0, 0.1); /* Reduced box shadow */
   width: flex; /* Allow the width to be flexible */
-
 }
-.widget_title widget_black{
 
-    justify-content: center;
-    align-items: center;
+.widget_title widget_black{
+  justify-content: center;
+  align-items: center;
 }
 
 /* Widget Title */

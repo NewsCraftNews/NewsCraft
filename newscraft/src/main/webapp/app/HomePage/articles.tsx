@@ -24,7 +24,7 @@ export const ArticleList = () => {
     return (
       <div>
         <h1 id="news-article-heading" data-cy="NewsArticleHeading" className="text-info-emphasis">
-          <u>{category_name.charAt(0).toUpperCase() + category_name.slice(1)} Articles</u>
+          <strong><u>{category_name.charAt(0).toUpperCase() + category_name.slice(1)} Articles</u></strong>
           <div className="d-flex justify-content-end">
             <span>&nbsp;</span>
           </div>

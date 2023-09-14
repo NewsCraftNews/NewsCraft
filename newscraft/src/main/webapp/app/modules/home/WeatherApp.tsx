@@ -52,6 +52,8 @@ const divStyle: CSSProperties = {
   alignItems: "center",
   justifyContent: "center",
   flexDirection: "row",
+  margin: "10px",
+  marginBottom: "20px",
 };
 
 const dotStyle: CSSProperties = {

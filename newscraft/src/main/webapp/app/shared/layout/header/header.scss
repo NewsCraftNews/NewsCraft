@@ -58,6 +58,8 @@ Navbar styles
     text-decoration: none;
   }
   .brand-icon {
+    position: relative;
+    top: -6px;
     height: 35px;
     width: auto;
     display: inline-block;

@@ -19,7 +19,7 @@ public class ExternalApis {
     @Autowired
     public ObjectMapper mapper;
 
-    String newsApiUrl = "https://newsdata.io/api/1/news?apikey=pub_29020fd2922d18a540758f747c11ab8c9fac7&country=us&timeframe=48&image=1";
+    String newsApiUrl = "https://newsdata.io/api/1/news?apikey=pub_29020fd2922d18a540758f747c11ab8c9fac7&country=us&timezone=America/New_York&timeframe=48&image=1";
 
     public List<NewsArticleRaw> fetchNewsArticles(String category, String size) throws JsonProcessingException {
         HttpEntity<String> request = new HttpEntity<>(new HttpHeaders());

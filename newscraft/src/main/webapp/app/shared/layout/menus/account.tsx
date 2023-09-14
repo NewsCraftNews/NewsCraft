@@ -9,7 +9,7 @@ import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 
 const accountMenuItemsAuthenticated = () => (
   <>
-    <DropdownItem tag={Link} to="/account/bookmarks" data-cy="bookmarks">
+    <DropdownItem tag={Link} to="/account/bookmarks" data-cy="bookmarks" style={{opacity: 1, fontWeight: 'bold', fontSize:'20px'}}>
       <FontAwesomeIcon icon={faBookmark} fixedWidth /> Bookmarks
     </DropdownItem>
 {/*     <NavDropdown.Divider /> */}

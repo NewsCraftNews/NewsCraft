@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import { NavItem, NavLink } from 'reactstrap';
 import { NavLink as Link } from 'react-router-dom';
 
@@ -21,8 +20,10 @@ export const CategoriesMenu = () => {
 
   return categoryList.map((category, i) => (
     <NavItem key={`category-${category.id}`}>
-      <NavLink tag={Link} to={`/articlelist/${category.name.toLowerCase()}`} className="d-flex align-items-center">
-          {category.name}
+      <NavLink tag={Link} to={`/articlelist/${category.name.toLowerCase()}`}
+          style={{opacity: 1, fontWeight: 'bold'}}
+          className="d-flex align-items-center">
+        {category.name}
       </NavLink>
     </NavItem> ))
 };
