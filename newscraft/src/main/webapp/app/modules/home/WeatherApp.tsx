@@ -94,12 +94,12 @@ const WeatherApp: React.FC = () => {
     {
       text: `Temperature: ${weatherData ? kelvinToCelsius(weatherData.main.temp) : "Loading..."}°F`,
       title: "slide1",
-      url: "https://clipart-library.com/img1/798831.png",
+      url: "https://t3.ftcdn.net/jpg/02/50/08/68/360_F_250086872_srlXRqANYR2IbNfIylRDc3eMO9MinjnV.jpg",
     },
     {
       text: `Weather: ${weatherData ? weatherData.weather[0].description : "Loading..."}`,
       title: "slide2",
-      url: "http://localhost:3000/image2.png",
+      url: "https://media.istockphoto.com/id/162428248/photo/cloudscape.jpg?s=612x612&w=0&k=20&c=9yNkLzvPtJouuJw7XRuvKQ0rD9Dh_UksrKKlvtEpKMg=",
     },
   ];
 
