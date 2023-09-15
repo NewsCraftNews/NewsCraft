@@ -17,16 +17,16 @@ export const SmallArticle5 = () => {
             </div>
             <div className="media-body">
               <h3 className="media-heading">
-                <a href="single.html" target="_self">*NSYNC reunites at MTV Video Music Awards</a>
+                <a href="/article/148" target="_self">*NSYNC reunites at MTV Video Music Awards</a>
               </h3>
               <span className="media-date">Sept 13th, 2023 by: David White</span>
 
               <div className="widget_article_social">
         <span className="fafa-share-alt">
-        <a href="single.html" target="_self"> <i className="fa fa-share-alt"></i>568</a> Likes
+        <a href="/article/148" target="_self"> <i className="fa fa-share-alt"></i>568</a> Likes
         </span>
                 <span className="fafa-share-alt">
-        <a href="single.html" target="_self"><i className="fa fa-comments-o"></i>400</a> Comments
+        <a href="/article/148" target="_self"><i className="fa fa-comments-o"></i>400</a> Comments
         </span>
               </div>
             </div>
