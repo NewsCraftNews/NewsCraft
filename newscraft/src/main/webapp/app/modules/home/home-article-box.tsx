@@ -22,7 +22,11 @@ export const HomeArticleBox = (props: IHomeProps) => {
   return (
     <div>
       <div className="article-container">
-        <h2>{props.article.title}</h2>
+        <h2>
+          <a href={`/article/${props.article.id }`}>
+          {props.article.title}
+        </a>
+        </h2>
         <p className="article-meta">
           Posted on {props.article.timePosted ? <TextFormat value={props.article.timePosted} type="date" format={APP_DATE_TIME_FORMAT} /> : null}
         </p>

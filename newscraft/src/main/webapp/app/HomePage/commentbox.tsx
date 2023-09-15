@@ -72,12 +72,10 @@ export const CommentBox = (props: IArticleProps) => {
           rows={4}
           value={text}
           onChange={handleChange}
-          inputProps={{style: {fontSize:'30px'}}}
+          inputProps={{ style: { fontSize: '30px' } }}
         />
         <br />
-        <Button className="me-2" color="info" type="submit" onClick={(event) => handleClick(event)}>
-          <span style={{fontSize: '24px'}}><strong>Post</strong></span>
-        </Button>
+        <Button className="me-2" color="info" type="submit" onClick={(event) => handleClick(event)}>Post</Button>
       </form>
       <br/>
     </Box>
