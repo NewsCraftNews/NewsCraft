@@ -2,10 +2,7 @@ package ncn.newscraft.web.rest;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import ncn.newscraft.domain.Category;
@@ -200,6 +197,7 @@ public class CategoryResource {
                 .limit(limit)
                 .collect(Collectors.toList());
         }
+        Collections.reverse(result);
         return result;
     }
 
