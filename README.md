@@ -1,4 +1,5 @@
 # NewsCraft News
+https://newscraft.zipcode.rocks
 
 Product Overview: A web application that aims to develop a web application that mirrors the functionality and user experience of a news website. It will provide users with a seamless platform to access and interact with news articles, multimedia content, and live updates. Our goal is to offer an intuitive, feature-rich news platform that caters to diverse user needs and preferences.
 
