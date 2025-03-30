@@ -29,12 +29,11 @@ public class RawToNewsArticle {
 
     @GetMapping("/fetch-and-save")
     public ResponseEntity<String> fetchAndSaveNews(
-        @RequestParam String category,
-        @RequestParam String size
+        @RequestParam String category
     ) throws JsonProcessingException {
         // Fetch news articles from the external API
-        log.debug("request params are {} {}", category, size);
-        List<NewsArticleRaw> articles = externalApis.fetchNewsArticles(category, size); // Fetch and map raw articles here
+        log.debug("request params are {}", category);
+        List<NewsArticleRaw> articles = externalApis.fetchNewsArticles(category); // Fetch and map raw articles here
         // Save the articles to the database
         newsArticleService.saveToDataBase(articles);
         return ResponseEntity.ok("News articles saved successfully.");

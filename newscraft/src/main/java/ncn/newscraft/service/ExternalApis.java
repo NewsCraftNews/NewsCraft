@@ -19,11 +19,11 @@ public class ExternalApis {
     @Autowired
     public ObjectMapper mapper;
 
-    String newsApiUrl = "https://newsdata.io/api/1/news?apikey=pub_29020fd2922d18a540758f747c11ab8c9fac7&country=us&timezone=America/New_York&timeframe=2&image=1";
+    String newsApiUrl = "https://newsdata.io/api/1/news?apikey=pub_7719496a55c9462c92b0f3a79135dfd171b3f&country=us&timezone=America/New_York&image=1";
 
-    public List<NewsArticleRaw> fetchNewsArticles(String category, String size) throws JsonProcessingException {
+    public List<NewsArticleRaw> fetchNewsArticles(String category) throws JsonProcessingException {
         HttpEntity<String> request = new HttpEntity<>(new HttpHeaders());
-        String finalURL = newsApiUrl + "&category=" + category + "&size=" + size;
+        String finalURL = newsApiUrl + "&category=" + category;
         ResponseEntity<String> response = restTemplate.exchange(finalURL, HttpMethod.GET, request, String.class);
 
         if (response.getStatusCode() == HttpStatus.OK) {
